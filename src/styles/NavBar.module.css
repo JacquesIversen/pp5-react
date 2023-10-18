@@ -1,61 +1,39 @@
-/* styles/Navbar.css */
-
-/* Navbar background and text color */
-.NavBar {
-  background-color: red;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+/* Navbar.module.css */
+.navbar {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar-brand {
+.NavLink {
+  text-decoration: none;
   color: #333;
-  font-weight: 700;
+  transition: color 0.3s ease;
+  margin: 0 1rem;
 }
 
-/* Navbar links color */
-.navbar-nav .nav-link {
-  color: #333;
-  font-weight: 500;
+.NavLink :hover {
+  color: #007bff;
+  text-decoration: underline;
 }
 
-/* Navbar links hover effect */
-.navbar-nav .nav-link:hover {
+.Active i {
   color: #007bff;
 }
 
-/* Navbar toggle icon color */
-.navbar-toggler-icon {
-  background-color: #333;
+.navbarButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.custom-navbar {
-  transition: all 0.3s ease; /* Add transition for smooth sliding effect */
+.Navlink {
+  
 }
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: #ffffff; /* Change the background color for the sticky navbar */
-  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.1);
-}
-
-.sticky .navbar-brand img {
-  transform: translateX(200px); /* Adjust the value based on how much you want the logo to slide */
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .navbar-nav {
-    background-color: #ffffff;
-  }
-
-  .navbar-nav .nav-link {
-    color: #333;
-  }
-
-  .navbar-nav .nav-link:hover {
-    color: #007bff;
-  }
-}
-
