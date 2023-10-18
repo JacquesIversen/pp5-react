@@ -1,7 +1,7 @@
 /* Navbar.module.css */
 .navbar {
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #ddd;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -16,12 +16,12 @@
 }
 
 .NavLink :hover {
-  color: #007bff;
+  color: #ffd166;
   text-decoration: underline;
 }
 
 .Active i {
-  color: #007bff;
+  color: #ffd166;
 }
 
 .navbarButton {
