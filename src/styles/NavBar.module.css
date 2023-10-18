@@ -1,0 +1,61 @@
+/* styles/Navbar.css */
+
+/* Navbar background and text color */
+.custom-navbar {
+  background-color: red;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  color: #333;
+  font-weight: 700;
+}
+
+/* Navbar links color */
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Navbar links hover effect */
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+/* Navbar toggle icon color */
+.navbar-toggler-icon {
+  background-color: #333;
+}
+
+.custom-navbar {
+  transition: all 0.3s ease; /* Add transition for smooth sliding effect */
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff; /* Change the background color for the sticky navbar */
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+.sticky .navbar-brand img {
+  transform: translateX(200px); /* Adjust the value based on how much you want the logo to slide */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar-nav {
+    background-color: #ffffff;
+  }
+
+  .navbar-nav .nav-link {
+    color: #333;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #007bff;
+  }
+}
+
