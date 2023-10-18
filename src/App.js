@@ -1,11 +1,11 @@
-import "./App.css";
+import styles from "./App.module.css";
 import Button from "react-bootstrap/Button";
 import Content from "./pages/Content";
 import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <NavBar />
       <Content />
       <Content />
