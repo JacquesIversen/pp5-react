@@ -1,33 +1,42 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-export const CurrentUserContext = createContext();
-export const SetCurrentUserContext = createContext();
+const AuthContext = createContext();
 
-export const useCurrentUser = () => useContext(CurrentUserContext);
-export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
-
-export const CurrentUserProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
-  const handleMount = async () => {
+  /* const handleMount = async () => {
     try {
       const { data } = await axios.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
       console.log(err);
     }
+  }; */
+
+  /*   useEffect(() => {
+    handleMount();
+  }, []); */
+
+  const login = async (event, signInData) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
+      console.log("logged in");
+    } catch (err) {
+      /* setErrors(err.response?.data); */
+    }
   };
 
-  useEffect(() => {
-    handleMount();
-  }, []);
-
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <SetCurrentUserContext.Provider value={setCurrentUser}>
-        {children}
-      </SetCurrentUserContext.Provider>
-    </CurrentUserContext.Provider>
+    <AuthContext.Provider value={{ currentUser, login }}>
+      {children}
+    </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
 };
