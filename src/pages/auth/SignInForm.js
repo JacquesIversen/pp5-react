@@ -15,7 +15,7 @@ function SignInForm() {
     password: "",
   });
 
-  const { login, currentUser } = useContext(useAuth);
+  const { login, currentUser } = useAuth();
   const { username, password } = signInData;
 
   const [errors /* setErrors */] = useState({});

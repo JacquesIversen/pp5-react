@@ -23,8 +23,8 @@ export const AuthProvider = ({ children }) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
-      setCurrentUser(data.user);
-      console.log("logged in");
+      setCurrentUser(data.key);
+      console.log(data.token);
     } catch (err) {
       /* setErrors(err.response?.data); */
     }
