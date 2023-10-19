@@ -3,7 +3,6 @@ import { useHistory, Link } from "react-router-dom";
 import { Form, Button, Alert, Container } from "react-bootstrap";
 import axios from "axios";
 import styles from "../../styles/SignUpForm.module.css";
-import formStyles from "../../styles/SignUpForm.module.css";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -36,14 +35,14 @@ const SignUpForm = () => {
 
   return (
     <div className="my-auto py-2 p-md-2" md={6}>
-      <Container className={`${styles.signupFormContainer} p-4`}>
+      <Container className={`${styles.FormContainer} p-4`}>
         <h1 className={styles.Header}>Sign up</h1>
 
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="username">
             <Form.Label className="d-none">username</Form.Label>
             <Form.Control
-              className={styles.formInput}
+              className={styles.Input}
               type="text"
               placeholder="Username"
               name="username"
@@ -60,7 +59,7 @@ const SignUpForm = () => {
           <Form.Group controlId="password1">
             <Form.Label className="d-none">Password</Form.Label>
             <Form.Control
-              className={styles.formInput}
+              className={styles.Input}
               type="password"
               placeholder="Password"
               name="password1"
@@ -77,7 +76,7 @@ const SignUpForm = () => {
           <Form.Group controlId="password2">
             <Form.Label className="d-none">Confirm password</Form.Label>
             <Form.Control
-              className={styles.formInput}
+              className={styles.Input}
               type="password"
               placeholder="Confirm password"
               name="password2"
@@ -91,10 +90,7 @@ const SignUpForm = () => {
             </Alert>
           ))}
 
-          <Button
-            className={`${formStyles.formButton} ${formStyles.btnStyles} ${formStyles.Bright}`}
-            type="submit"
-          >
+          <Button className={styles.Button} type="submit">
             Sign up
           </Button>
           {errors.non_field_errors?.map((message, idx) => (
@@ -103,7 +99,7 @@ const SignUpForm = () => {
             </Alert>
           ))}
         </Form>
-        <Link className={formStyles.signupLink} to="/signin">
+        <Link className={styles.Link} to="/signin">
           Already have an account? <span>Sign in</span>
         </Link>
       </Container>

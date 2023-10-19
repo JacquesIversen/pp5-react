@@ -1,25 +1,25 @@
 /* SignupForm.module.css */
 
   
-  body::before {
-    content: "";
-    background-image: url('../Assets/enginebay-background-signin/signup.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    position: fixed;
-    top: 0;
-    left: 0;
+body::before {
+content: "";
+background-image: url('../Assets/enginebay-background-signin/signup.png');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0.6;
+z-index: -1;
+}
+
+.FormContainer {
+    max-width: 75%;
     width: 100%;
-    height: 100%;
-    opacity: 0.6;
-    z-index: -1;
-  }
-  
-  .signupFormContainer {
-    max-width: 90vw;
-    width: 400px; 
     margin: 0 auto;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.8);
@@ -27,38 +27,33 @@
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
-  }
-  
-  .Header {
-    font-size: 2.5rem; 
-    font-weight: bold; 
-    color: #ff7e5f; 
-    margin-bottom: 1rem; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
   }
 
-.signupFormContainer {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-  }
-  
-  .formInput {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .formButton {
+.Header {
+font-size: 2.5rem; 
+font-weight: bold; 
+color: #ff7e5f; 
+margin-bottom: 1rem; 
+text-transform: uppercase;
+letter-spacing: 2px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.Input {
+width: 100%;
+padding: 0.5rem;
+margin-bottom: 1rem;
+font-size: 1rem;
+border: 1px solid #ddd;
+border-radius: 4px;
+text-align: center;
+}
+
+.Button {
     background-color: #ff7e5f;
     color: #fff;
     border: none;
@@ -67,21 +62,21 @@
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .formButton:hover {
-    background-color: #feb47b;
+    margin: 0 auto; /* Center the button horizontally */
   }
 
-  .signupLink {
-    color: #ff7e5f; 
-    text-decoration: none;
-    font-weight: bold; 
-    transition: color 0.3s ease, transform 0.3s ease; 
-  }
-  
-  .signupLink:hover {
-    color: #feb47b; 
-    transform: scale(1.05); 
-  }
-  
+.Button:hover {
+background-color: #feb47b;
+}
+
+.Link {
+color: #ff7e5f; 
+text-decoration: none;
+font-weight: bold; 
+transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.Link:hover {
+color: #feb47b; 
+transform: scale(1.05); 
+}
