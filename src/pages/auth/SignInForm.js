@@ -1,17 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import styles from "../../styles/SignUpForm.module.css";
-
 import { Link, useHistory } from "react-router-dom";
-import { SetCurrentUserContext } from "../../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -29,7 +27,6 @@ function SignInForm() {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       history.push("/");
-      console.log("success");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -52,7 +49,6 @@ function SignInForm() {
             <Form.Control
               type="text"
               placeholder="Username"
-              name="username"
               className={styles.Input}
               value={username}
               onChange={handleChange}

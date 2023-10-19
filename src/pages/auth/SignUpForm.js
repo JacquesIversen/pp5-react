@@ -27,7 +27,8 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/signin");
+      history.push("/");
+      console.log("logged in");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -46,7 +47,7 @@ const SignUpForm = () => {
               type="text"
               placeholder="Username"
               name="username"
-              value={signUpData.username}
+              value={username}
               onChange={handleChange}
             />
           </Form.Group>
@@ -63,7 +64,7 @@ const SignUpForm = () => {
               type="password"
               placeholder="Password"
               name="password1"
-              value={signUpData.password1}
+              value={password1}
               onChange={handleChange}
             />
           </Form.Group>
@@ -80,7 +81,7 @@ const SignUpForm = () => {
               type="password"
               placeholder="Confirm password"
               name="password2"
-              value={signUpData.password2}
+              value={password2}
               onChange={handleChange}
             />
           </Form.Group>

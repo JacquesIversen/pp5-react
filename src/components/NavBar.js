@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css"; // Import the CSS file
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import { CurrentUserContext } from "../App";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useCurrentUser();
 
   const loggedInIcons = <>{currentUser?.username}</>;
   const loggedOutIcons = (
@@ -16,14 +16,14 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/signin"
       >
-        <i className="fa-solid fa-right-to-bracket"></i> Sign In
+        <i className="fas fa-sign-in-alt"></i>Sign in
       </NavLink>
       <NavLink
+        to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/signup"
       >
-        <i className="fa-solid fa-user-plus"></i> Sign Up
+        <i className="fas fa-user-plus"></i>Sign up
       </NavLink>
     </>
   );
