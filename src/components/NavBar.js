@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import styles from "../styles/NavBar.module.css"; // Import the CSS file
+import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useAuth } from "../contexts/CurrentUserContext";
@@ -18,7 +18,7 @@ const NavBar = () => {
         </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
+          <Nav>
             <NavLink
               exact
               className={styles.NavLink}
@@ -38,14 +38,24 @@ const NavBar = () => {
               </NavLink>
             )}
             {!currentUser && (
-              <NavLink
-                exact
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-                to="/"
-              >
-                <i className="fa-solid fa-house"></i> Sign In
-              </NavLink>
+              <>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  activeClassName={styles.Active}
+                  to="/signin"
+                >
+                  <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                </NavLink>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  activeClassName={styles.Active}
+                  to="/signup"
+                >
+                  <i class="fa-solid fa-user-plus"></i> Sign Up
+                </NavLink>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>
