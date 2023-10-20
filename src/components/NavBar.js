@@ -61,7 +61,7 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/"
                 >
-                  <i class="fa-solid fa-user"></i> My Profile
+                  <i className="fa-solid fa-user"></i> My Profile
                 </NavLink>
                 <NavLink
                   exact
@@ -69,8 +69,8 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/"
                 >
-                  <i class="fa-solid fa-right-from-bracket"></i> Sign Out (to be
-                  removed)
+                  <i className="fa-solid fa-right-from-bracket"></i> Sign Out
+                  (to be removed)
                 </NavLink>
                 <form onSubmit={"handleSearch"}>
                   <input
@@ -91,7 +91,7 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/signin"
                 >
-                  <i class="fa-solid fa-right-to-bracket"></i> Sign In
+                  <i className="fa-solid fa-right-to-bracket"></i> Sign In
                 </NavLink>
                 <NavLink
                   exact
@@ -99,7 +99,7 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/signup"
                 >
-                  <i class="fa-solid fa-user-plus"></i> Sign Up
+                  <i className="fa-solid fa-user-plus"></i> Sign Up
                 </NavLink>
               </>
             )}

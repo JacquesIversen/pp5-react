@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "../../styles/Profile.module.css";
+import { useAuth } from "../../contexts/CurrentUserContext";
 
 const Profile = () => {
+  const { currentUser } = useAuth();
+
   const user = {
-    username: "john_doe",
-    bio: "Passionate developer exploring the world of coding.",
-    avatarUrl: "path_to_avatar_image.jpg",
+    username: currentUser.user.username,
   };
 
   const recentPosts = [

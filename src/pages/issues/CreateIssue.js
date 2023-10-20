@@ -10,8 +10,10 @@ import UploadIssue from "../../Assets/TiredAsIAm.png";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
+import { useAuth } from "../../contexts/CurrentUserContext";
 
 function CreateIssue() {
+  const { currentUser } = useAuth();
   const [errors, setErrors] = useState({});
 
   const [issueData, setIssueData] = useState({
@@ -58,9 +60,11 @@ function CreateIssue() {
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
 
+    console.log(currentUser.access);
     try {
-      console.log(axios.post("/issue/", formData));
-      const { data } = await axios.post("/issue/", formData);
+      const { data } = await axios.post("/issue/", formData, {
+        headers: { Authorization: "Bearer " + currentUser.access },
+      });
       console.log(data);
       history.push(`/issue/${data.id}`);
     } catch (err) {
