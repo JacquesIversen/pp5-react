@@ -32,10 +32,10 @@ function SignInForm() {
       [event.target.name]: event.target.value,
     });
   };
-  /*   className={`${styles.Content} `} */
+
   return (
     <Container
-      className={`${styles.Container} d-flex flex-column align-items-center justify-content-center vh-100`}
+      className={`${styles.SiteBackground} d-flex flex-column align-items-center justify-content-center vh-100`}
     >
       <h1 className={`${styles.Header} mb-4`}>Sign In</h1>
       <Form onSubmit={handleSubmit} className={`${styles.Form} w-100`}>

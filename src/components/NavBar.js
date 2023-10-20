@@ -9,8 +9,8 @@ const NavBar = () => {
   const { currentUser } = useAuth();
   console.log(currentUser);
   return (
-    <Navbar className={styles.navbar} expand="lg">
-      <Container>
+    <Navbar className={`${styles.navbar} mr-auto`} expand="lg">
+      <Container className="ml-auto">
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
@@ -35,7 +35,8 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/"
                 >
-                  <i class="fa-solid fa-right-from-bracket"></i> Post an Issue now
+                  <i class="fa-solid fa-right-from-bracket"></i> Post an Issue
+                  now
                 </NavLink>
                 <NavLink
                   exact
