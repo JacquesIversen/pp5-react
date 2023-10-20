@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -8,6 +8,8 @@ import styles from "../../styles/CreateIssue.module.css";
 import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
 import { Image } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import axios from "axios";
 
 function CreateIssue() {
   const [errors, setErrors] = useState({});
@@ -24,6 +26,9 @@ function CreateIssue() {
   const { title, car, model, year, engine_size, description, image } =
     issueData;
 
+  const imageInput = useRef(null);
+  const history = useHistory();
+
   const handleChange = (event) => {
     setIssueData({
       ...issueData,
@@ -38,6 +43,31 @@ function CreateIssue() {
         ...issueData,
         image: URL.createObjectURL(event.target.files[0]),
       });
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("car", car);
+    formData.append("model", model);
+    formData.append("year", year);
+    formData.append("engine_size", engine_size);
+    formData.append("description", description);
+    formData.append("image", imageInput.current.files[0]);
+
+    try {
+      console.log(axios.post("/issue/", formData));
+      const { data } = await axios.post("/issue/", formData);
+      console.log(data);
+      history.push(`/issue/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
@@ -108,7 +138,7 @@ function CreateIssue() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -138,8 +168,9 @@ function CreateIssue() {
 
               <Form.File
                 id="image-upload"
-                accept="image/"
+                accept="image/*"
                 onChange={handleChangeImage}
+                ref={imageInput}
               />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
