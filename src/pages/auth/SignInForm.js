@@ -1,10 +1,8 @@
-import React, { useContext, useState } from "react";
-
+import React, { useState } from "react";
+import styles from "../../styles/AuthForm.module.css";
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
@@ -34,11 +32,13 @@ function SignInForm() {
       [event.target.name]: event.target.value,
     });
   };
-
+  /*   className={`${styles.Content} `} */
   return (
-    <Container className="d-flex flex-column align-items-center justify-content-center vh-100">
-      <h1 className="mb-4">Sign In</h1>
-      <Form onSubmit={handleSubmit} className="w-100">
+    <Container
+      className={`${styles.Container} d-flex flex-column align-items-center justify-content-center vh-100`}
+    >
+      <h1 className={`${styles.Header} mb-4`}>Sign In</h1>
+      <Form onSubmit={handleSubmit} className={`${styles.Form} w-100`}>
         <Form.Group controlId="username">
           <Form.Control
             type="text"
@@ -46,7 +46,7 @@ function SignInForm() {
             name="username"
             value={username}
             onChange={handleChange}
-            className="mb-2"
+            className={`${styles.Input} mb-2`}
           />
           {errors.username?.map((message, idx) => (
             <Alert key={idx} variant="warning">
@@ -61,7 +61,7 @@ function SignInForm() {
             name="password"
             value={password}
             onChange={handleChange}
-            className="mb-2"
+            className={`${styles.Input} mb-2`}
           />
           {errors.password?.map((message, idx) => (
             <Alert key={idx} variant="warning">
@@ -69,7 +69,7 @@ function SignInForm() {
             </Alert>
           ))}
         </Form.Group>
-        <Button type="submit" className="mb-3">
+        <Button type="submit" className={`${styles.Button} mb-3`}>
           Sign in
         </Button>
         {errors.non_field_errors?.map((message, idx) => (
@@ -77,10 +77,10 @@ function SignInForm() {
             {message}
           </Alert>
         ))}
+        <Link to="/signup" className={styles.Link}>
+          Don't have an account? <span>Sign up now!</span>
+        </Link>
       </Form>
-      <Link to="/signup">
-        Don't have an account? <span>Sign up now!</span>
-      </Link>
     </Container>
   );
 }

@@ -28,14 +28,24 @@ const NavBar = () => {
               <i className="fa-solid fa-house"></i> Home
             </NavLink>
             {currentUser && (
-              <NavLink
-                exact
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-                to="/"
-              >
-                <i className="fa-solid fa-house"></i> signout
-              </NavLink>
+              <>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  activeClassName={styles.Active}
+                  to="/"
+                >
+                  <i class="fa-solid fa-right-from-bracket"></i> Post an Issue now
+                </NavLink>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  activeClassName={styles.Active}
+                  to="/"
+                >
+                  <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                </NavLink>
+              </>
             )}
             {!currentUser && (
               <>
