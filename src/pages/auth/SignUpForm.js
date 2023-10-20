@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
+import { Form, Button, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 import styles from "../../styles/AuthForm.module.css";
 

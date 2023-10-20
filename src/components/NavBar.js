@@ -7,10 +7,23 @@ import { useAuth } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
   const { currentUser } = useAuth();
-  console.log(currentUser);
+
+  const UserAuthenticated = (
+    <>
+      <NavLink
+        exact
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/"
+      >
+        <i className="fa-solid fa-house"></i> Home
+      </NavLink>
+    </>
+  );
+
   return (
-    <Navbar className={`${styles.navbar} mr-auto`} expand="lg">
-      <Container className="ml-auto">
+    <Navbar className={`${styles.navbar} `} expand="lg">
+      <Container className="">
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
@@ -38,13 +51,23 @@ const NavBar = () => {
                   <i class="fa-solid fa-right-from-bracket"></i> Post an Issue
                   now
                 </NavLink>
+
                 <NavLink
                   exact
                   className={styles.NavLink}
                   activeClassName={styles.Active}
                   to="/"
                 >
-                  <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+                  <i class="fa-solid fa-user"></i> My Profile
+                </NavLink>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  activeClassName={styles.Active}
+                  to="/"
+                >
+                  <i class="fa-solid fa-right-from-bracket"></i> Sign Out (to be
+                  removed)
                 </NavLink>
               </>
             )}
