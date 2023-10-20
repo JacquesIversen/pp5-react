@@ -132,7 +132,7 @@ function CreateIssue() {
         />
       </Form.Group>
 
-      <Button onClick={() => {}}>cancel</Button>
+      <Button onClick={() => history.goBack()}>cancel</Button>
       <Button type="submit">create</Button>
     </div>
   );
