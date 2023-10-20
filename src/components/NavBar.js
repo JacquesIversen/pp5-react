@@ -8,19 +8,6 @@ import { useAuth } from "../contexts/CurrentUserContext";
 const NavBar = () => {
   const { currentUser } = useAuth();
 
-  const UserAuthenticated = (
-    <>
-      <NavLink
-        exact
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/"
-      >
-        <i className="fa-solid fa-house"></i> Home
-      </NavLink>
-    </>
-  );
-
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
       <Container className="">
@@ -39,6 +26,14 @@ const NavBar = () => {
               to="/"
             >
               <i className="fa-solid fa-house"></i> Home
+            </NavLink>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/myprofile"
+            >
+              <i className="fa-solid fa-house"></i> My profile
             </NavLink>
             {currentUser && (
               <>
@@ -69,6 +64,15 @@ const NavBar = () => {
                   <i class="fa-solid fa-right-from-bracket"></i> Sign Out (to be
                   removed)
                 </NavLink>
+                <form onSubmit={"handleSearch"}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={""}
+                    onChange={""}
+                  />
+                  <button type="submit">Search</button>
+                </form>
               </>
             )}
             {!currentUser && (
