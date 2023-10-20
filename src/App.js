@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import { AuthProvider } from "./contexts/CurrentUserContext";
 import Profile from "./pages/profiles/Profile";
+import CreateIssue from "./pages/issues/CreateIssue";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/" render={() => <h1>Home Page</h1>} />
             <Route exact path="/signin" render={() => <SignInForm />} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
+            <Route exact path="/issue/create" render={() => <CreateIssue />} />
             <Route exact path="/myprofile" render={() => <Profile />} />
             <Route render={() => <h1>Ooops, this page does not exist</h1>} />
           </Switch>

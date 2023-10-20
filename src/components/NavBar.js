@@ -35,6 +35,14 @@ const NavBar = () => {
             >
               <i className="fa-solid fa-house"></i> My profile
             </NavLink>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/issue/create"
+            >
+              <i className="fa-solid fa-house"></i> List an issue
+            </NavLink>
             {currentUser && (
               <>
                 <NavLink

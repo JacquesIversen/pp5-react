@@ -1,0 +1,55 @@
+.Form {
+max-width: 400px;
+margin: 0 auto;
+padding: 20px;
+border: 1px solid #ccc;
+border-radius: 10px;
+}
+
+.FormGroup {
+margin-bottom: 20px;
+}
+
+.Label {
+display: block;
+font-size: 1.2rem;
+margin-bottom: 10px;
+color: #333;
+}
+
+.Input {
+width: 100%;
+padding: 10px;
+font-size: 1rem;
+border: 1px solid #ccc;
+border-radius: 5px;
+}
+
+.ButtonGroup {
+display: flex;
+justify-content: space-between;
+}
+
+.Button {
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 1rem;
+transition: background-color 0.3s ease;
+}
+
+.CancelButton {
+background-color: #ff4f4f;
+color: #fff;
+}
+
+.CreateButton {
+background-color: #4caf50;
+color: #fff;
+}
+
+.Button:hover {
+background-color: #333;
+color: #fff;
+}
