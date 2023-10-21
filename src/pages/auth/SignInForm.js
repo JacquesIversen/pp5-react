@@ -19,7 +19,7 @@ function SignInForm() {
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
-  const handleSubmit = async (event) => {
+  /*   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
@@ -30,6 +30,17 @@ function SignInForm() {
       console.log("not logged in");
       setErrors(err.response?.data);
     }
+  }; */
+
+  const userLogIn = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await axios.post("dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
+      console.log("success logging in");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleChange = (event) => {
@@ -39,25 +50,12 @@ function SignInForm() {
     });
   };
 
-  /*   const handleSubmit = async (event) => {
-    await login(event, signInData);
-    console.log(currentUser);
-    history.push("/");
-  }; */
-
-  /* const handleChange = (event) => {
-    setSignInData({
-      ...signInData,
-      [event.target.name]: event.target.value,
-    });
-  }; */
-
   return (
     <Container
       className={`${styles.SiteBackground} d-flex flex-column align-items-center justify-content-center vh-100`}
     >
       <h1 className={`${styles.Header} mb-4`}>Sign In</h1>
-      <Form onSubmit={handleSubmit} className={`${styles.Form} w-100`}>
+      <Form onSubmit={userLogIn} className={`${styles.Form} w-100`}>
         <Form.Group controlId="username">
           <Form.Control
             type="text"

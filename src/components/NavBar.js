@@ -23,6 +23,8 @@ const NavBar = () => {
     }
   };
 
+  console.log(currentUser);
+
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
       <Container className="">
@@ -42,37 +44,35 @@ const NavBar = () => {
             >
               <i className="fa-solid fa-house"></i> Home
             </NavLink>
-            {currentUser && (
-              <>
-                <h1>Logged in</h1>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/"
-                >
-                  <i className="fa-solid fa-right-from-bracket"></i> Post an
-                  Issue now
-                </NavLink>
+            <h1>Logged in</h1>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/issue/create"
+            >
+              <i className="fa-solid fa-right-from-bracket"></i> Post an Issue
+              now
+            </NavLink>
 
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/"
-                >
-                  <i className="fa-solid fa-user"></i> My Profile
-                </NavLink>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  onClick={userLogOut}
-                  to="/"
-                >
-                  <i className="fa-solid fa-right-from-bracket"></i> Sign Out
-                </NavLink>
-                {/*   <form onSubmit={handleSearch}>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/"
+            >
+              <i className="fa-solid fa-user"></i> My Profile
+            </NavLink>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              onClick={userLogOut}
+              to="/"
+            >
+              <i className="fa-solid fa-right-from-bracket"></i> Sign Out
+            </NavLink>
+            {/*   <form onSubmit={handleSearch}>
                   <input
                     type="text"
                     placeholder="Search..."
@@ -81,29 +81,23 @@ const NavBar = () => {
                   />
                   <button type="submit">Search</button>
                 </form> */}
-              </>
-            )}
-            {!currentUser && (
-              <>
-                <h1>Not logged in</h1>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/signin"
-                >
-                  <i className="fa-solid fa-right-to-bracket"></i> Sign In
-                </NavLink>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/signup"
-                >
-                  <i className="fa-solid fa-user-plus"></i> Sign Up
-                </NavLink>
-              </>
-            )}
+            <h1>Not logged in</h1>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/signin"
+            >
+              <i className="fa-solid fa-right-to-bracket"></i> Sign In
+            </NavLink>
+            <NavLink
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/signup"
+            >
+              <i className="fa-solid fa-user-plus"></i> Sign Up
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

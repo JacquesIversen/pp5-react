@@ -9,9 +9,10 @@ import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function CreateIssue() {
-  /*  const [errors, setErrors] = useState({}); */
+  const [errors, setErrors] = useState({});
 
   const [issueData, setIssueData] = useState({
     title: "",
@@ -56,6 +57,16 @@ function CreateIssue() {
     formData.append("engine_size", engine_size);
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
+
+    try {
+      const { data } = await axiosReq.post("/issue/", formData);
+      history.push(`/posts/${data.id}`);
+    } catch (err) {
+      // console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
+    }
 
     /*     console.log(currentUser.access);
     try {

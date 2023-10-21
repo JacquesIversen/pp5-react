@@ -12,10 +12,11 @@ export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const history = useHistory();
 
-  const handleMount = async () => {
+/*   const handleMount = async () => {
     try {
       const { data } = await axiosRes.get("dj-rest-auth/user/");
       setCurrentUser(data);
+      console.log("from handlemount data", data);
     } catch (err) {
       console.log(err);
     }
@@ -23,13 +24,14 @@ export const CurrentUserProvider = ({ children }) => {
 
   useEffect(() => {
     handleMount();
-  }, []);
+  }, []); */
 
   useMemo(() => {
     axiosReq.interceptors.request.use(
       async (confiq) => {
         try {
           await axios.post("/dj-rest-auth/token/refresh/");
+          console.log("user logged in");
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
