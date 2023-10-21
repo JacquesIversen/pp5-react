@@ -1,4 +1,4 @@
-/* import React, { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -13,7 +13,7 @@ import axios from "axios";
 import { useAuth } from "../../contexts/CurrentUserContext";
 
 function CreateIssue() {
-    const { currentUser } = useAuth();
+  const { currentUser } = useAuth();
   const [errors, setErrors] = useState({});
 
   const [issueData, setIssueData] = useState({
@@ -189,4 +189,3 @@ function CreateIssue() {
 }
 
 export default CreateIssue;
- */
