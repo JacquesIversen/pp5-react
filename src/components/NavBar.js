@@ -3,10 +3,25 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+
+  const userLogOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+      console.log("succes logged out");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
@@ -26,22 +41,6 @@ const NavBar = () => {
               to="/"
             >
               <i className="fa-solid fa-house"></i> Home
-            </NavLink>
-            <NavLink
-              exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/myprofile"
-            >
-              <i className="fa-solid fa-house"></i> My profile
-            </NavLink>
-            <NavLink
-              exact
-              className={styles.NavLink}
-              activeClassName={styles.Active}
-              to="/issue/create"
-            >
-              <i className="fa-solid fa-house"></i> List an issue
             </NavLink>
             {currentUser && (
               <>
@@ -68,10 +67,10 @@ const NavBar = () => {
                   exact
                   className={styles.NavLink}
                   activeClassName={styles.Active}
+                  onClick={userLogOut}
                   to="/"
                 >
                   <i className="fa-solid fa-right-from-bracket"></i> Sign Out
-                  (to be removed)
                 </NavLink>
                 {/*   <form onSubmit={handleSearch}>
                   <input
