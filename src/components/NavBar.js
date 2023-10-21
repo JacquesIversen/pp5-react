@@ -3,10 +3,10 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import { useAuth } from "../contexts/CurrentUserContext";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-  const { currentUser } = useAuth();
+  const currentUser = useCurrentUser();
 
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
@@ -45,14 +45,15 @@ const NavBar = () => {
             </NavLink>
             {currentUser && (
               <>
+                <h1>Logged in</h1>
                 <NavLink
                   exact
                   className={styles.NavLink}
                   activeClassName={styles.Active}
                   to="/"
                 >
-                  <i class="fa-solid fa-right-from-bracket"></i> Post an Issue
-                  now
+                  <i className="fa-solid fa-right-from-bracket"></i> Post an
+                  Issue now
                 </NavLink>
 
                 <NavLink
@@ -72,7 +73,7 @@ const NavBar = () => {
                   <i className="fa-solid fa-right-from-bracket"></i> Sign Out
                   (to be removed)
                 </NavLink>
-                <form onSubmit={"handleSearch"}>
+                {/*   <form onSubmit={handleSearch}>
                   <input
                     type="text"
                     placeholder="Search..."
@@ -80,11 +81,12 @@ const NavBar = () => {
                     onChange={""}
                   />
                   <button type="submit">Search</button>
-                </form>
+                </form> */}
               </>
             )}
             {!currentUser && (
               <>
+                <h1>Not logged in</h1>
                 <NavLink
                   exact
                   className={styles.NavLink}

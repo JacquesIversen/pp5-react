@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import styles from "../../styles/Profile.module.css";
 import { useAuth } from "../../contexts/CurrentUserContext";
 
@@ -33,11 +33,11 @@ const Profile = () => {
       <div className={styles.ProfileContainer}>
         <div className={styles.LeftColumn}>
           <div className={styles.ProfileHeader}>
-            {/*  <Avatar
+            { <Avatar
             src={user.avatarUrl}
             alt="User Avatar"
             className={styles.Avatar}
-          /> */}
+          />}
             <h2>This is your profile {user.username}</h2>
             <p>{user.bio}</p>
           </div>
@@ -79,3 +79,4 @@ const Profile = () => {
 };
 
 export default Profile;
+ */
