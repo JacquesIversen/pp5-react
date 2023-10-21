@@ -3,11 +3,26 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import { useAuth } from "../contexts/CurrentUserContext";
-
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import axios from "axios";
 
 const NavBar = () => {
-  const { currentUser } = useAuth();
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
+
+  const userLogOut = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+      console.log("succes logged out");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
       <Container className="">
@@ -29,15 +44,17 @@ const NavBar = () => {
             </NavLink>
             {currentUser && (
               <>
+                <h1>Logged in</h1>
                 <NavLink
                   exact
                   className={styles.NavLink}
                   activeClassName={styles.Active}
-                  to="issue/create"
+                  to="/"
                 >
-                  <i class="fa-solid fa-right-from-bracket"></i> Post an Issue
-                  now
+                  <i className="fa-solid fa-right-from-bracket"></i> Post an
+                  Issue now
                 </NavLink>
+
                 <NavLink
                   exact
                   className={styles.NavLink}
@@ -50,13 +67,12 @@ const NavBar = () => {
                   exact
                   className={styles.NavLink}
                   activeClassName={styles.Active}
+                  onClick={userLogOut}
                   to="/"
                 >
-                  {" "}
                   <i className="fa-solid fa-right-from-bracket"></i> Sign Out
-                  (to be removed)
                 </NavLink>
-                <form onSubmit={"handleSearch"}>
+                {/*   <form onSubmit={handleSearch}>
                   <input
                     type="text"
                     placeholder="Search..."
@@ -64,18 +80,18 @@ const NavBar = () => {
                     onChange={""}
                   />
                   <button type="submit">Search</button>
-                </form>
+                </form> */}
               </>
             )}
             {!currentUser && (
               <>
+                <h1>Not logged in</h1>
                 <NavLink
                   exact
                   className={styles.NavLink}
                   activeClassName={styles.Active}
                   to="/signin"
                 >
-                  {" "}
                   <i className="fa-solid fa-right-to-bracket"></i> Sign In
                 </NavLink>
                 <NavLink
@@ -84,7 +100,6 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/signup"
                 >
-                  {" "}
                   <i className="fa-solid fa-user-plus"></i> Sign Up
                 </NavLink>
               </>
@@ -95,4 +110,5 @@ const NavBar = () => {
     </Navbar>
   );
 };
+
 export default NavBar;

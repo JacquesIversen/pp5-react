@@ -4,27 +4,32 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import { useAuth } from "../../contexts/CurrentUserContext";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
 
 function SignInForm() {
+  const setCurrentUser = useSetCurrentUser();
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
   });
 
-  const { login, currentUser } = useAuth();
   const { username, password } = signInData;
-
-  const [errors /* setErrors */] = useState({});
-
+  const [errors, setErrors] = useState({});
   const history = useHistory();
 
   const handleSubmit = async (event) => {
-    await login(event, signInData);
-    console.log(currentUser);
-    console.log("logged in");
-    history.push("/");
+    event.preventDefault();
+    try {
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
+      history.push("/");
+      console.log("logged in");
+    } catch (err) {
+      console.log("not logged in");
+      setErrors(err.response?.data);
+    }
   };
 
   const handleChange = (event) => {
@@ -33,6 +38,19 @@ function SignInForm() {
       [event.target.name]: event.target.value,
     });
   };
+
+  /*   const handleSubmit = async (event) => {
+    await login(event, signInData);
+    console.log(currentUser);
+    history.push("/");
+  }; */
+
+  /* const handleChange = (event) => {
+    setSignInData({
+      ...signInData,
+      [event.target.name]: event.target.value,
+    });
+  }; */
 
   return (
     <Container

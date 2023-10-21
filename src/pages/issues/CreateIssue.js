@@ -9,12 +9,9 @@ import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import axios from "axios";
-import { useAuth } from "../../contexts/CurrentUserContext";
 
 function CreateIssue() {
-  const { currentUser } = useAuth();
-  const [errors, setErrors] = useState({});
+  /*  const [errors, setErrors] = useState({}); */
 
   const [issueData, setIssueData] = useState({
     title: "",
@@ -60,7 +57,7 @@ function CreateIssue() {
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
 
-    console.log(currentUser.access);
+    /*     console.log(currentUser.access);
     try {
       const { data } = await axios.post("/issue/", formData, {
         headers: { Authorization: "Bearer " + currentUser.access },
@@ -72,7 +69,7 @@ function CreateIssue() {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
-    }
+    } */
   };
 
   const textFields = (
