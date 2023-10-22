@@ -4,43 +4,27 @@ import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { useAuth } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
-import axios from "axios";
 
 function SignInForm() {
-  const setCurrentUser = useSetCurrentUser();
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
   });
 
+  const { login, currentUser } = useAuth();
   const { username, password } = signInData;
-  const [errors, setErrors] = useState({});
+
+  const [errors /* setErrors */] = useState({});
+
   const history = useHistory();
 
-  /*   const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
-      setCurrentUser(data.user);
-      history.push("/");
-      console.log("logged in");
-    } catch (err) {
-      console.log("not logged in");
-      setErrors(err.response?.data);
-    }
-  }; */
-
-  const userLogIn = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await axios.post("dj-rest-auth/login/", signInData);
-      setCurrentUser(data.user);
-      console.log("success logging in");
-    } catch (err) {
-      console.log(err);
-    }
+  const handleSubmit = async (event) => {
+    await login(event, signInData);
+    console.log(currentUser);
+    console.log("logged in");
+    history.push("/");
   };
 
   const handleChange = (event) => {
@@ -55,7 +39,7 @@ function SignInForm() {
       className={`${styles.SiteBackground} d-flex flex-column align-items-center justify-content-center vh-100`}
     >
       <h1 className={`${styles.Header} mb-4`}>Sign In</h1>
-      <Form onSubmit={userLogIn} className={`${styles.Form} w-100`}>
+      <Form onSubmit={handleSubmit} className={`${styles.Form} w-100`}>
         <Form.Group controlId="username">
           <Form.Control
             type="text"
