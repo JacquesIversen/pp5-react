@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext();
@@ -27,7 +28,8 @@ export const AuthProvider = ({ children }) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
-      setCurrentUser(data);
+      Cookies.set("access", data.access);
+      setCurrentUser(data.user);
       console.log(data);
     } catch (err) {
       /* setErrors(err.response?.data); */

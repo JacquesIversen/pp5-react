@@ -3,7 +3,6 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import { getUser } from "../contexts/CurrentUserContext";
 import axios from "axios";
 
 const NavBar = () => {

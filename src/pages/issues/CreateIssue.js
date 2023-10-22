@@ -9,7 +9,8 @@ import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { axiosReq } from "../../api/axiosDefaults";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function CreateIssue() {
   const [errors, setErrors] = useState({});
@@ -58,29 +59,19 @@ function CreateIssue() {
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
 
-    try {
-      const { data } = await axiosReq.post("/issue/", formData);
-      history.push(`/posts/${data.id}`);
-    } catch (err) {
-      // console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
-      }
-    }
+    console.log({ Authorization: "Bearer " + Cookies.get("access") });
 
-    /*     console.log(currentUser.access);
     try {
       const { data } = await axios.post("/issue/", formData, {
-        headers: { Authorization: "Bearer " + currentUser.access },
+        headers: { Authorization: "Bearer " + Cookies.get("access") },
       });
-      console.log(data);
       history.push(`/issue/${data.id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
-    } */
+    }
   };
 
   const textFields = (
