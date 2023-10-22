@@ -59,8 +59,6 @@ function CreateIssue() {
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
 
-    console.log({ Authorization: "Bearer " + Cookies.get("access") });
-
     try {
       const { data } = await axios.post("/issue/", formData, {
         headers: { Authorization: "Bearer " + Cookies.get("access") },

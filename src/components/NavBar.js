@@ -4,19 +4,39 @@ import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
+import { SetAuthContext, useAuth } from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-  /*   const setCurrentUser = useSetCurrentUser(); */
-
   const userLogOut = async () => {
     try {
       await axios.post("dj-rest-auth/logout/");
-      /*  setCurrentUser(null); */
+      SetAuthContext(null);
       console.log("succes logged out");
     } catch (err) {
       console.log(err);
     }
   };
+
+  const loggedIn = (
+    <NavLink
+      exact
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/"
+    >
+      <i className="fa-solid fa-house"></i> Logged in from auth
+    </NavLink>
+  );
+  const notLoggedIn = (
+    <NavLink
+      exact
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/"
+    >
+      <i className="fa-solid fa-house"></i> Logged out from auth
+    </NavLink>
+  );
 
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
@@ -91,6 +111,7 @@ const NavBar = () => {
             >
               <i className="fa-solid fa-user-plus"></i> Sign Up
             </NavLink>
+            {useAuth ? loggedIn : notLoggedIn}
           </Nav>
         </Navbar.Collapse>
       </Container>

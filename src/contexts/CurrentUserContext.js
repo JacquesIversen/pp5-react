@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 
 const AuthContext = createContext();
+export const SetAuthContext = createContext();
+
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
