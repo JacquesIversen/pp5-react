@@ -1,7 +1,8 @@
 import React from "react";
 import { useAuth } from "../../contexts/CurrentUserContext";
-import { Card, ListGroup, Media } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import styles from "../../styles/Issue.module.css";
 
 const Issue = (props) => {
   const {
@@ -27,23 +28,30 @@ const Issue = (props) => {
   console.log(is_owner);
 
   return (
-    <Card>
-      <Card.Body>
-        <Media className="align-items-center justify-content-between">
-          {title && <h2>{title}</h2>}
-        </Media>
-        <div>
+    <Card className={styles.issueCard}>
+      <Link to={`/issue/${id}`}>
+        <Card.Img
+          className={styles.issueImage}
+          variant="top"
+          src={image}
+          alt={title}
+        />
+      </Link>
+      <Card.Body className={styles.issueContent}>
+        <Card.Title className={styles.issueTitle}>{title}</Card.Title>
+        <div className={styles.issueMeta}>
           <span>Listed at {created_at}</span>
-          {is_owner && issuePage && "Where does this go?"}
+          {is_owner && issuePage && <span>Your Content Here</span>}
+        </div>
+        {description && (
+          <Card.Text className={styles.issueDescription}>
+            {description}
+          </Card.Text>
+        )}
+        <div className={styles.commentsCount}>
+          Total comments: {comments_count}
         </div>
       </Card.Body>
-      <Link to={`/issue/${id}`}>
-        <Card.Img src={image} alt={title} />
-      </Link>
-      <Card.Body className="text-center">
-        {description && <Card.Text>{description}</Card.Text>}
-      </Card.Body>
-      <h4>Total comments {comments_count}</h4>
     </Card>
   );
 };
