@@ -3,6 +3,8 @@ import styles from "../../styles/IssueFeed.module.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
+import Issue from "./Issue";
+import IssueDescription from "./IssueDescription";
 
 function IssuePage() {
   const { id } = useParams();
@@ -25,11 +27,15 @@ function IssuePage() {
   return (
     <Container>
       <Row>
-        <Col sm={8}>sm=8</Col>
-        <Col sm={4}>sm=4</Col>
+        <Col sm={8}>
+          <Issue {...issue.results[0]} setIssue={setIssue} issuePage />
+        </Col>
+        <Col sm={4}>
+          <IssueDescription {...issue.results[0]} setIssue={setIssue} issuePage/>
+        </Col>
       </Row>
       <Row>
-        <Col sm>sm=true</Col>
+        <Col sm>This is another tingting</Col>
         <Col sm>sm=true</Col>
         <Col sm>sm=true</Col>
       </Row>
