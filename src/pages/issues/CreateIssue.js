@@ -140,47 +140,41 @@ function CreateIssue() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
-          <Container
-            className={`${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image src={image} />
-                  </figure>
-                  <div>
-                    <Form.Label htmlFor="image-upload">Change Image</Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="image-upload"
-                >
-                  <Asset
-                    src={UploadIssue}
-                    message="Tap the tired man, to upload your own picture"
-                  />
-                </Form.Label>
-              )}
-
-              <Form.File
-                id="image-upload"
-                accept="image/*"
-                onChange={handleChangeImage}
-                ref={imageInput}
+      <Container
+        className={`${styles.Container} d-flex flex-column justify-content-center`}
+      >
+        <Form.Group className="text-center">
+          {image ? (
+            <>
+              <figure>
+                <Image src={image} />
+              </figure>
+              <div>
+                <Form.Label htmlFor="image-upload">Change Image</Form.Label>
+              </div>
+            </>
+          ) : (
+            <Form.Label
+              className="d-flex justify-content-center"
+              htmlFor="image-upload"
+            >
+              <Asset
+                src={UploadIssue}
+                message="Tap the tired man, to upload your own picture"
               />
-            </Form.Group>
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container>{textFields}</Container>
-        </Col>
-      </Row>
+            </Form.Label>
+          )}
+
+          <Form.File
+            id="image-upload"
+            accept="image/*"
+            onChange={handleChangeImage}
+            ref={imageInput}
+          />
+        </Form.Group>
+        <div className="d-md-none">{textFields}</div>
+      </Container>
+      <Container>{textFields}</Container>
     </Form>
   );
 }
