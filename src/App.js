@@ -10,8 +10,13 @@ import CreateIssue from "./pages/issues/CreateIssue";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 import IssuePage from "./pages/issues/IssuePage";
+import Feed from "./pages/issues/Feed";
+import { useAuth } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useAuth;
+  const profile_id = currentUser?.profile_id || "";
+
   return (
     <div className={styles.App}>
       <NavBar />
@@ -20,43 +25,13 @@ function App() {
           <Route
             exact
             path="/"
+            render={() => <Feed message="No results found:" />}
+          />
+          <Route
+            exact
+            path="/feed"
             render={() => (
-              <>
-                <h1>Home Page</h1>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/issue/create"
-                >
-                  <i className="fa-solid fa-right-from-bracket"></i> Post an
-                  Issue now
-                </NavLink>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/"
-                >
-                  <i className="fa-solid fa-user"></i> My Profile
-                </NavLink>
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/signin"
-                >
-                  <i className="fa-solid fa-right-to-bracket"></i> Sign In
-                </NavLink>{" "}
-                <NavLink
-                  exact
-                  className={styles.NavLink}
-                  activeClassName={styles.Active}
-                  to="/issue/1"
-                >
-                  <i className="fa-solid fa-right-to-bracket"></i> Feed
-                </NavLink>
-              </>
+              <Feed message="No results found. Adjust the search keyword." />
             )}
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
