@@ -1,43 +1,66 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import styles from "../../styles/Feed.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
 import Issue from "./Issue";
 import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/Utils";
 
 function Feed(message) {
   const [issue, setIssue] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [query, setQuery] = useState("");
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     const fetchIssue = async () => {
       try {
-        const { data } = await axios.get(`/issue/`);
+        const { data } = await axios.get(`/issue/?search=${query}`);
         setIssue(data);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
       }
     };
+
     setHasLoaded(false);
-    fetchIssue();
-  }, [pathname]);
+    const timer = setTimeout(() => {
+      fetchIssue();
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [pathname, query]);
 
   return (
     <Container>
       <Row>
         <Col sm={8}>
-          {" "}
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <Form onSubmit={(event) => event.preventDefault()}>
+            <Form.Control
+              type="text"
+              placeholder="Search Issues, Cars, or Models"
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </Form>
           {hasLoaded ? (
             <>
               {issue.results.length ? (
-                issue.results.map((issue) => (
-                  <Issue key={issue.id} {...issue} setIssue={setIssue} />
-                ))
+                <InfiniteScroll
+                  children={issue.results.map((issue) => (
+                    <Issue key={issue.id} {...issue} setIssue={setIssue} />
+                  ))}
+                  dataLength={issue.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!issue.next}
+                  next={() => fetchMoreData(issue, setIssue)}
+                />
               ) : (
                 <Container>
                   <Asset src={NoResultsYet} message={message} />
