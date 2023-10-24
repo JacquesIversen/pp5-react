@@ -56,11 +56,13 @@ const Issue = (props) => {
         />
       </Link>
       <Card.Body className={styles.issueContent}>
-        <Card.Title className={styles.issueTitle}>{title}</Card.Title>
-        <DropdownComponent
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
-        />
+        <div className={styles.header}>
+          <Card.Title className={styles.issueTitle}>{title}</Card.Title>
+          <DropdownComponent
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        </div>
         <div className={styles.issueMeta}>
           {/*           {is_owner && issuePage && <DropdownComponent />} not working cause of currentUser===False */}
           <span>Listed at {created_at}</span>

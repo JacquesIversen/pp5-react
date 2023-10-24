@@ -7,6 +7,7 @@ import IssueDescription from "./IssueDescription";
 import styles from "../../styles/Issue.module.css";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import CommentCreateForm from "../comments/CreateComment";
+import Comment from "../comments/Comment";
 
 function IssuePage() {
   const { id } = useParams();
@@ -18,10 +19,12 @@ function IssuePage() {
   useEffect(() => {
     const getIssue = async () => {
       try {
-        const [{ data: issue }] = await Promise.all([
+        const [{ data: issue }, { data: comments }] = await Promise.all([
           axios.get(`/issue/${id}`),
+          axios.get(`/comments/?issue=${id}`),
         ]);
         setIssue({ results: [issue] });
+        setComments(comments);
         console.log(issue);
       } catch (err) {
         console.log(err);
@@ -56,6 +59,15 @@ function IssuePage() {
             ) : comments.results.length ? (
               "Comments"
             ) : null}
+            {comments.results.length ? (
+              comments.results.map((comment) => (
+                <Comment key={comment.id} {...comment} />
+              ))
+            ) : currentUser ? (
+              <span>No comments yet. be the first</span>
+            ) : (
+              <span>No commen, yet</span>
+            )}
           </Container>
           <br />
           <h1>Here goes Solutions if any</h1>

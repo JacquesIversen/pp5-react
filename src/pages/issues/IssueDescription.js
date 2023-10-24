@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, ListGroup, Media } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import styles from "../../styles/Issue.module.css";
 
 const Issue = (props) => {
   const {
@@ -22,11 +23,11 @@ const Issue = (props) => {
   } = props;
 
   return (
-    <Card>
-      <Card.Body>
-        <link to={`/profiles/${profile_id}`}></link>
+    <Card className={styles.issueCard}>
+      <Card.Body className={styles.issueContent}>
+        <Link to={`/profiles/${profile_id}`}></Link>
         <h2>This will be an Avatar {owner}</h2>
-        <ListGroup variant="flush">
+        <ListGroup variant="flush" >
           <ListGroup.Item>Car: {car}</ListGroup.Item>
           <ListGroup.Item>Model: {model}</ListGroup.Item>
           <ListGroup.Item>Year: {year}</ListGroup.Item>
