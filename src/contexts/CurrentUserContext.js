@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 export const SetAuthContext = createContext();
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -14,8 +15,8 @@ export const AuthProvider = ({ children }) => {
       const { data } = await axios.get("dj-rest-auth/user/", {
         headers: { Authorization: `Bearer ${Cookies.get("access")}` },
       });
-      setCurrentUser(data);
-      console.log("user data from get user", data);
+      setCurrentUser(data.user);
+      console.log("user data from get user", data.user);
     } catch (err) {
       console.log(err);
     }
@@ -42,8 +43,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  return useContext(AuthContext);
 };
