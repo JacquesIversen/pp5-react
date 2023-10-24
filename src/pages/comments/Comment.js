@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Media } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { DropdownComponent } from "../../components/Dropdown";
 import axios from "axios";
 import styles from "../../styles/Comment.module.css";
+import CommentEditForm from "./EditComment";
 
 const Comment = (props) => {
   const {
@@ -18,6 +19,7 @@ const Comment = (props) => {
     setComments,
   } = props;
 
+  const [showEditForm, setShowEditForm] = useState(false);
   /*   const currentUser = useAuth();
     const is_owner = currentUser?.pk === owner; */
   const is_owner = true;
@@ -55,11 +57,22 @@ const Comment = (props) => {
           <span>{owner}</span>
           <br />
           <span>{created_at}</span>
-          <p>{comment_area}</p>
+          {showEditForm ? (
+            <CommentEditForm
+              id={id}
+              profile_id={profile_id}
+              content={comment_area}
+              profileImage={profile_image}
+              setComments={setComments}
+              setShowEditForm={setShowEditForm}
+            />
+          ) : (
+            <p>{comment_area}</p>
+          )}
         </Media.Body>
-        {is_owner && (
+        {is_owner && !showEditForm && (
           <DropdownComponent
-            handleEdit={() => {}}
+            handleEdit={() => setShowEditForm(true)}
             handleDelete={handleDelete}
           />
         )}

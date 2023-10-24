@@ -8,6 +8,8 @@ import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
+import RecentIssues from "./RecentIssues";
+import SolvedIssues from "./SolvedIssues";
 
 function Feed(message) {
   const [issue, setIssue] = useState({ results: [] });
@@ -66,7 +68,7 @@ function Feed(message) {
             </Container>
           )}
         </Col>
-        <Col sm={12} md={4} >
+        <Col sm={12} md={4}>
           <Form onSubmit={(event) => event.preventDefault()}>
             <Form.Control
               type="text"
@@ -75,9 +77,9 @@ function Feed(message) {
             />
           </Form>
           <br />
-          <h2>Here goes solved issues</h2>
+          <RecentIssues />
           <br />
-          <h2>Here goes pupolar post</h2>
+          <SolvedIssues />
         </Col>
       </Row>
     </Container>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Issue from "./Issue";
@@ -8,6 +8,8 @@ import styles from "../../styles/Issue.module.css";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import CommentCreateForm from "../comments/CreateComment";
 import Comment from "../comments/Comment";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/Utils";
 
 function IssuePage() {
   const { id } = useParams();
@@ -60,14 +62,20 @@ function IssuePage() {
               "Comments"
             ) : null}
             {comments.results.length ? (
-              comments.results.map((comment) => (
-                <Comment
-                  key={comment.id}
-                  {...comment}
-                  setIssue={setIssue}
-                  setComments={setComments}
-                />
-              ))
+              <InfiniteScroll
+                children={comments.results.map((comment) => (
+                  <Comment
+                    key={comment.id}
+                    {...comment}
+                    setIssue={setIssue}
+                    setComments={setComments}
+                  />
+                ))}
+                dataLength={comments.results.length}
+                loader={Spinner}
+                hasMore={!!comments.next}
+                next={() => fetchMoreData(comments, setComments)}
+              />
             ) : currentUser ? (
               <span>No comments yet. be the first</span>
             ) : (
