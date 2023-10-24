@@ -1,8 +1,10 @@
 import React from "react";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import styles from "../../styles/Issue.module.css";
+import { DropdownComponent } from "../../components/Dropdown";
+import axios from "axios";
 
 const Issue = (props) => {
   const {
@@ -24,8 +26,24 @@ const Issue = (props) => {
   } = props;
 
   const currentUser = useAuth();
-  const is_owner = currentUser?.username === owner;
-  console.log(is_owner);
+  const is_owner = true; /* currentUser?.username === owner; */
+  console.log(currentUser, is_owner);
+
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/issue/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`issue/${id}/`);
+      /*  Not working 401. error */
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card className={styles.issueCard}>
@@ -39,9 +57,13 @@ const Issue = (props) => {
       </Link>
       <Card.Body className={styles.issueContent}>
         <Card.Title className={styles.issueTitle}>{title}</Card.Title>
+        <DropdownComponent
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
         <div className={styles.issueMeta}>
+          {/*           {is_owner && issuePage && <DropdownComponent />} not working cause of currentUser===False */}
           <span>Listed at {created_at}</span>
-          {is_owner && issuePage && <span>Your Content Here</span>}
         </div>
         {description && (
           <Card.Text className={styles.issueDescription}>

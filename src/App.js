@@ -7,16 +7,13 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import Profile from "./pages/profiles/Profile";
 import CreateIssue from "./pages/issues/CreateIssue";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 import IssuePage from "./pages/issues/IssuePage";
 import Feed from "./pages/issues/Feed";
 import { useAuth } from "./contexts/CurrentUserContext";
+import EditForm from "./pages/issues/Edit";
 
 function App() {
-  const currentUser = useAuth;
-  const profile_id = currentUser?.profile_id || "";
-
   return (
     <div className={styles.App}>
       <NavBar />
@@ -39,6 +36,7 @@ function App() {
           <Route exact path="/issue/create" render={() => <CreateIssue />} />
           <Route exact path="/myprofile" render={() => <Profile />} />
           <Route exact path="/issue/:id" render={() => <IssuePage />} />
+          <Route exact path="/issue/:id/edit" render={() => <EditForm />} />
           <Route render={() => <h1>Ooops, this page does not exist</h1>} />
         </Switch>
       </Container>

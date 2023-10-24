@@ -41,7 +41,7 @@ function Feed(message) {
     <Container>
       <Row>
         <Col sm={8}>
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
           <Form onSubmit={(event) => event.preventDefault()}>
             <Form.Control
               type="text"

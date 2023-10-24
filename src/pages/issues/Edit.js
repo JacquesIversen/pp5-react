@@ -1,16 +1,15 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import styles from "../../styles/CreateIssue.module.css";
-import Asset from "../../components/Asset";
-import UploadIssue from "../../Assets/TiredAsIAm.png";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
-function CreateIssue() {
+function EditForm() {
   const [errors, setErrors] = useState({});
 
   const [issueData, setIssueData] = useState({
@@ -27,6 +26,43 @@ function CreateIssue() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getIssueData = async () => {
+      try {
+        const { data } = await axios.get(`/issue/${id}/`);
+        const {
+          title,
+          content,
+          image,
+          is_owner,
+          car,
+          model,
+          year,
+          engine_size,
+          description,
+        } = data;
+        console.log(is_owner);
+
+        is_owner
+          ? issueData({
+              title,
+              content,
+              image,
+              car,
+              model,
+              year,
+              engine_size,
+              description,
+            })
+          : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getIssueData();
+  }, [history, id]);
 
   const handleChange = (event) => {
     setIssueData({
@@ -55,13 +91,15 @@ function CreateIssue() {
     formData.append("year", year);
     formData.append("engine_size", engine_size);
     formData.append("description", description);
-    formData.append("image", imageInput.current.files[0]);
+    if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput.current.files[0]);
+    }
 
     try {
-      const { data } = await axios.post("/issue/", formData, {
+      await axios.put(`/issue/${id}/`, formData, {
         headers: { Authorization: "Bearer " + Cookies.get("access") },
       });
-      history.push(`/issue/${data.id}`);
+      history.push(`/issue/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -131,8 +169,8 @@ function CreateIssue() {
         />
       </Form.Group>
 
-      <Button onClick={() => history.goBack()}>cancel</Button>
-      <Button type="submit">create</Button>
+      <Button onClick={() => history.goBack()}>Cancel</Button>
+      <Button type="submit">Save Changes</Button>
     </div>
   );
 
@@ -142,26 +180,12 @@ function CreateIssue() {
         className={`${styles.Container} d-flex flex-column justify-content-center`}
       >
         <Form.Group className="text-center">
-          {image ? (
-            <>
-              <figure>
-                <Image src={image} />
-              </figure>
-              <div>
-                <Form.Label htmlFor="image-upload">Change Image</Form.Label>
-              </div>
-            </>
-          ) : (
-            <Form.Label
-              className="d-flex justify-content-center"
-              htmlFor="image-upload"
-            >
-              <Asset
-                src={UploadIssue}
-                message="Tap the tired man, to upload your own picture"
-              />
-            </Form.Label>
-          )}
+          <figure>
+            <Image src={image} />
+          </figure>
+          <div>
+            <Form.Label htmlFor="image-upload">Change Image</Form.Label>
+          </div>
 
           <Form.File
             id="image-upload"
@@ -177,4 +201,4 @@ function CreateIssue() {
   );
 }
 
-export default CreateIssue;
+export default EditForm;
