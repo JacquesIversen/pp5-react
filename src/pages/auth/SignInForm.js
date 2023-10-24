@@ -5,7 +5,7 @@ import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { useAuth } from "../../contexts/CurrentUserContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SignInForm() {
   const [signInData, setSignInData] = useState({
@@ -18,13 +18,8 @@ function SignInForm() {
 
   const [errors /* setErrors */] = useState({});
 
-  const history = useHistory();
-
   const handleSubmit = async (event) => {
     await login(event, signInData);
-    console.log(currentUser);
-    console.log("logged in");
-    history.push("/");
   };
 
   const handleChange = (event) => {

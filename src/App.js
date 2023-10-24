@@ -10,7 +10,6 @@ import CreateIssue from "./pages/issues/CreateIssue";
 
 import IssuePage from "./pages/issues/IssuePage";
 import Feed from "./pages/issues/Feed";
-import { useAuth } from "./contexts/CurrentUserContext";
 import EditForm from "./pages/issues/Edit";
 
 function App() {

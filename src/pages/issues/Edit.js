@@ -31,32 +31,11 @@ function EditForm() {
   useEffect(() => {
     const getIssueData = async () => {
       try {
-        const { data } = await axios.get(`/issue/${id}/`);
-        const {
-          title,
-          content,
-          image,
-          is_owner,
-          car,
-          model,
-          year,
-          engine_size,
-          description,
-        } = data;
-        console.log(is_owner);
-
-        is_owner
-          ? issueData({
-              title,
-              content,
-              image,
-              car,
-              model,
-              year,
-              engine_size,
-              description,
-            })
-          : history.push("/");
+        const { data } = await axios.get(`/issue/${id}/`, {
+          headers: { Authorization: "Bearer " + Cookies.get("access") },
+        });
+        console.log(data);
+        setIssueData(data);
       } catch (err) {
         console.log(err);
       }
@@ -115,7 +94,7 @@ function EditForm() {
         <Form.Control
           type="text"
           name="title"
-          value={title}
+          value={issueData.title}
           onChange={handleChange}
         />
       </Form.Group>
@@ -124,7 +103,7 @@ function EditForm() {
         <Form.Control
           type="text"
           name="car"
-          value={car}
+          value={issueData.car}
           onChange={handleChange}
         />
       </Form.Group>
@@ -133,7 +112,7 @@ function EditForm() {
         <Form.Control
           type="text"
           name="model"
-          value={model}
+          value={issueData.model}
           onChange={handleChange}
         />
       </Form.Group>
@@ -142,7 +121,7 @@ function EditForm() {
         <Form.Control
           type="text"
           name="year"
-          value={year}
+          value={issueData.year}
           placeholder="State the production year of your vehicle."
           onChange={handleChange}
         />
@@ -152,7 +131,7 @@ function EditForm() {
         <Form.Control
           type="text"
           name="engine_size"
-          value={engine_size}
+          value={issueData.engine_size}
           placeholder="ex. 2.0"
           onChange={handleChange}
         />
@@ -163,7 +142,7 @@ function EditForm() {
           as="textarea"
           rows={12}
           name="description"
-          value={description}
+          value={issueData.description}
           placeholder="Be as precise when stating your problem, and be sure to include any solutions you might have tried already"
           onChange={handleChange}
         />

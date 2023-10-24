@@ -20,9 +20,9 @@ const Comment = (props) => {
   } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
-  /*   const currentUser = useAuth();
-    const is_owner = currentUser?.pk === owner; */
-  const is_owner = true;
+  const { currentUser } = useAuth();
+
+  const is_owner = currentUser?.pk === owner;
 
   const handleDelete = async () => {
     try {
@@ -43,8 +43,7 @@ const Comment = (props) => {
     } catch (err) {}
   };
 
-  console.log(owner);
-  console.log(is_owner);
+  console.log(currentUser);
 
   return (
     <div className={styles.issueCard}>

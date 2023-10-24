@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom";
 import styles from "../../styles/Issue.module.css";
 import { DropdownComponent } from "../../components/Dropdown";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Issue = (props) => {
   const {
@@ -25,9 +26,8 @@ const Issue = (props) => {
     issuePage,
   } = props;
 
-  const currentUser = useAuth();
-  const is_owner = true; /* currentUser?.username === owner; */
-  console.log(currentUser, is_owner);
+  const { currentUser } = useAuth();
+  const is_owner = currentUser?.username === owner;
 
   const history = useHistory();
 
@@ -37,7 +37,9 @@ const Issue = (props) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`issue/${id}/`);
+      await axios.delete(`issue/${id}/`, {
+        headers: { Authorization: "Bearer " + Cookies.get("access") },
+      });
       /*  Not working 401. error */
       history.goBack();
     } catch (err) {
@@ -64,7 +66,8 @@ const Issue = (props) => {
           />
         </div>
         <div className={styles.issueMeta}>
-          {/*           {is_owner && issuePage && <DropdownComponent />} not working cause of currentUser===False */}
+          {is_owner && issuePage && <DropdownComponent />} not working cause of
+          currentUser===False
           <span>Listed at {created_at}</span>
           <span>Total comments: {comments_count}</span>
         </div>

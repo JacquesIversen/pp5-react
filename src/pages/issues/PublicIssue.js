@@ -27,7 +27,7 @@ const Issue = (props) => {
 
   const currentUser = useAuth();
   const is_owner = true; /* currentUser?.username === owner; */
-  console.log(currentUser, is_owner);
+  /*   console.log(currentUser, is_owner); */
 
   const history = useHistory();
 

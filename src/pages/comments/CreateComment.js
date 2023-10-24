@@ -15,11 +15,12 @@ function CommentCreateForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("/comments/", {
-        comment_area,
-        issue,
-        headers: { Authorization: "Bearer " + Cookies.get("access") },
-      });
+      const { data } = await axios.post(
+        "/comments/",
+        { comment_area, issue },
+        { headers: { Authorization: "Bearer " + Cookies.get("access") } }
+      );
+      console.log(data);
       setComments((prevComments) => ({
         ...prevComments,
         results: [data, ...prevComments.results],
@@ -33,6 +34,7 @@ function CommentCreateForm(props) {
         ],
       }));
       setComment_area("");
+      
     } catch (err) {
       console.log(err);
     }

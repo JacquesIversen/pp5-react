@@ -54,7 +54,7 @@ function IssuePage() {
               <CommentCreateForm
                 profile_id={currentUser.profile_id}
                 profileImage={profile_image}
-                post={id}
+                issue={id}
                 setIssue={setIssue}
                 setComments={setComments}
               />
