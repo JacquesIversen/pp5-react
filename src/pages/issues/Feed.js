@@ -3,7 +3,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import styles from "../../styles/Feed.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
-import Issue from "./Issue";
+import Issue from "./PublicIssue";
 import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -39,16 +39,9 @@ function Feed(message) {
 
   return (
     <Container>
+      <br />
       <Row>
-        <Col sm={8}>
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <Form onSubmit={(event) => event.preventDefault()}>
-            <Form.Control
-              type="text"
-              placeholder="Search Issues, Cars, or Models"
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </Form>
+        <Col sm={12} md={8}>
           {hasLoaded ? (
             <>
               {issue.results.length ? (
@@ -73,7 +66,19 @@ function Feed(message) {
             </Container>
           )}
         </Col>
-        <Col sm={4}>POST 1.</Col>
+        <Col sm={12} md={4} >
+          <Form onSubmit={(event) => event.preventDefault()}>
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              onChange={(event) => setQuery(event.target.value)}
+            />
+          </Form>
+          <br />
+          <h2>Here goes solved issues</h2>
+          <br />
+          <h2>Here goes pupolar post</h2>
+        </Col>
       </Row>
     </Container>
   );

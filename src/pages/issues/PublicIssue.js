@@ -57,6 +57,13 @@ const Issue = (props) => {
       </Link>
       <Card.Body className={styles.issueContent}>
         <Card.Title className={styles.issueTitle}>{title}</Card.Title>
+        <Card.Title className={styles.issueTitle}>
+          {year}&nbsp;
+          {car}&nbsp;
+          {model}&nbsp;
+          {engine_size}
+        </Card.Title>
+        <h3>Total comments: {comments_count}</h3>
         <DropdownComponent
           handleEdit={handleEdit}
           handleDelete={handleDelete}
@@ -64,7 +71,6 @@ const Issue = (props) => {
         <div className={styles.issueMeta}>
           {/*           {is_owner && issuePage && <DropdownComponent />} not working cause of currentUser===False */}
           <span>Listed at {created_at}</span>
-          <span>Total comments: {comments_count}</span>
         </div>
         {description && (
           <Card.Text className={styles.issueDescription}>
