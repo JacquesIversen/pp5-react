@@ -4,13 +4,14 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { DropdownComponent } from "../../components/Dropdown";
 import axios from "axios";
+import styles from "../../styles/Comment.module.css";
 
 const Comment = (props) => {
   const {
     profile_id,
     profile_image,
     owner,
-    updated_at,
+    created_at,
     comment_area,
     id,
     setIssue,
@@ -44,7 +45,7 @@ const Comment = (props) => {
   console.log(is_owner);
 
   return (
-    <div>
+    <div className={styles.issueCard}>
       <hr />
       <Media>
         <Link to={`/profiles/${profile_id}`}>
@@ -52,7 +53,8 @@ const Comment = (props) => {
         </Link>
         <Media.Body className="align-self-center ml-2">
           <span>{owner}</span>
-          <span>{updated_at}</span>
+          <br />
+          <span>{created_at}</span>
           <p>{comment_area}</p>
         </Media.Body>
         {is_owner && (
