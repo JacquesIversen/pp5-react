@@ -18,9 +18,9 @@ export const AuthProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${Cookies.get("access")}` },
       });
       setCurrentUser(data);
-      console.log("user data from get user", data);
     } catch (err) {
       console.log(err);
+      setCurrentUser(null);
     }
   };
 
@@ -39,13 +39,14 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       /* setErrors(err.response?.data); */
       setCurrentUser(null);
+      console.log("error from login");
     }
   };
 
   const logout = async () => {
     Cookies.remove("access");
     setCurrentUser(null);
-    console.log("loggedout");
+    console.log("user logged out");
     history.push("/");
   };
 

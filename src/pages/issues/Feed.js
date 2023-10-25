@@ -10,8 +10,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
 import RecentIssues from "./RecentIssues";
 import SolvedIssues from "./SolvedIssues";
+import { useAuth } from "../../contexts/CurrentUserContext";
 
 function Feed(message) {
+  const { currentUser } = useAuth();
   const [issue, setIssue] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
