@@ -1,57 +1,115 @@
-.Form {
-max-width: 400px;
-margin: 0 auto;
-padding: 20px;
-border: 1px solid #ccc;
+/* styles.module.css */
+.formContainer {
+background: rgba(255, 255, 255, 0.8);
 border-radius: 10px;
-}
-
-.FormGroup {
+box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
 margin-bottom: 20px;
-}
-
-
-
-.Label {
-display: block;
-font-size: 1.2rem;
-margin-bottom: 10px;
-color: #333;
-}
-
-.Input {
-width: 100%;
 padding: 10px;
+max-width: 90%;
+margin: 0 auto;
+}
+
+.formLabel {
 font-size: 1rem;
-border: 1px solid #ccc;
+font-weight: bold;
+color: #ff7e5f;
+margin-bottom: 5px;
+}
+
+.formInput,
+.formTextarea {
+  width: calc(100%);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.formElement {
+width: calc(100% - 20px);
+margin-bottom: 10px;
+padding: 10px;
 border-radius: 5px;
+border: 1px solid #ccc;
 }
 
-.ButtonGroup {
-display: flex;
-justify-content: space-between;
-}
-
-.Button {
-padding: 10px 20px;
+.formButton {
+background-color: #ff7e5f;
+color: #fff;
 border: none;
 border-radius: 5px;
+padding: 10px 20px;
 cursor: pointer;
-font-size: 1rem;
+transition: background-color 0.3s ease;
+width: calc(50%);
+}
+
+.formButton:hover {
+background-color: #ff5e40;
+}
+
+.textFields {
+    margin-bottom: 10px;
+  }
+
+.assetUploadSection {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-top: 20px;
+font-weight: bold;
+color: #ff7e5f;
+width: calc(50% - 15px);
+}
+
+.imageUploadSection {
+display: flex;
+width: 90%;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 10px;
+
+}
+
+.imageUploadSection label {
+cursor: pointer;
+margin-top: 10px;
+text-align: center;
+font-weight: bold;
+color: #ff7e5f;
+}
+
+.cancelButton {
+background-color: #ccc;
+width: calc(50% - 15px);
+color: #fff;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+margin-right: 10px;
+cursor: pointer;
 transition: background-color 0.3s ease;
 }
 
-.CancelButton {
-background-color: #ff4f4f;
-color: #fff;
+.cancelButton:hover {
+background-color: #999;
 }
 
-.CreateButton {
-background-color: #4caf50;
-color: #fff;
-}
-
-.Button:hover {
-background-color: #333;
-color: #fff;
-}
+@media (max-width: 767px) {
+    .formContainer {
+      padding: 10px;
+      max-width: 90%; /* Adjusted width for smaller devices */
+    }
+  
+    .formButton,
+    .cancelButton {
+      width: 100%; /* Full width for smaller devices */
+      margin-right: 0; /* Remove right margin for smaller devices */
+      margin-bottom: 10px; /* Add bottom margin for smaller devices */
+    }
+  
+    .textFields {
+      margin-bottom: 10px;
+    }
+  }
