@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
-import styles from "../../styles/Feed.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
 import Issue from "./Issue";
@@ -8,16 +7,14 @@ import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
-import { useAuth } from "../../contexts/CurrentUserContext";
 
 function Feed(message) {
-  const { currentUser } = useAuth();
   const [issue, setIssue] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
 
   const { pathname } = useLocation();
-/* 
+
   useEffect(() => {
     const fetchIssue = async () => {
       try {
@@ -37,7 +34,7 @@ function Feed(message) {
     return () => {
       clearTimeout(timer);
     };
-  }, [pathname, query]); */
+  }, [pathname, query]);
 
   return (
     <Container>

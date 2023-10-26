@@ -33,7 +33,7 @@ const Issue = (props) => {
         headers: { Authorization: "Bearer " + Cookies.get("access") },
       });
       /*  Not working 401. error */
-      history.goBack();
+      history.push(`/`);
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +54,12 @@ const Issue = (props) => {
           <Card.Title className={styles.issueTitle}>{title}</Card.Title>
         </div>
         <div className={styles.issueMeta}>
-          {is_owner && issuePage && <DropdownComponent />}
+          {is_owner && issuePage && (
+            <DropdownComponent
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
+          )}
           <span>Listed at {created_at}</span>
           <span>
             <Link className={styles.Link} to={`/issue/${id}`}>

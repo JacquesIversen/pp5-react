@@ -7,7 +7,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom";
 import styles from "../../styles/Comment.module.css";
 
 function CommentCreateForm(props) {
-  const { issue, setIssue, setComments, profileImage, profile_id } = props;
+  const { issue, setIssue, setComments } = props;
   const [comment_area, setComment_area] = useState("");
   const { currentUser } = useAuth();
 

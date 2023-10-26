@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Issue from "./Issue";

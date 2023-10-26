@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import styles from "../../styles/CreateIssue.module.css";
 import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
-import { Alert, Col, Image, Row } from "react-bootstrap";
+import { Alert, Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Cookies from "js-cookie";

@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 
 function EditForm() {
-  const [errors, setErrors] = useState({});
+  const [, /* errors */ setErrors] = useState({});
 
   const [issueData, setIssueData] = useState({
     title: "",
@@ -28,7 +28,6 @@ function EditForm() {
   const history = useHistory();
   const { id } = useParams();
 
-  console.log(id);
   useEffect(() => {
     const getIssueData = async () => {
       try {
