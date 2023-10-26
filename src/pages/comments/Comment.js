@@ -22,7 +22,7 @@ const Comment = (props) => {
     like_id,
     likes_count,
     dislike_id,
-    dislike_count,
+    dislikes_count,
   } = props;
 
   const [showEditForm, setShowEditForm] = useState(false);
@@ -101,7 +101,9 @@ const Comment = (props) => {
 
   const handleUnlike = async () => {
     try {
-      await axios.delete(`/likes/${like_id}/`);
+      await axios.delete(`/likes/${like_id}/`, {
+        headers: { Authorization: "Bearer " + Cookies.get("access") },
+      });
       setComments((prevComments) => ({
         ...prevComments,
         results: prevComments.results.map((comment) => {
@@ -216,7 +218,7 @@ const Comment = (props) => {
             </>
           )}
           <h3>Here should likescount apear{likes_count}</h3>
-          <h3>Here should likescount apear{dislike_count}</h3>
+          <h3>Here should likescount apear{dislikes_count}</h3>
         </div>
         {is_owner && !showEditForm && (
           <DropdownComponent
