@@ -17,12 +17,13 @@ function ProfilePage() {
   const is_owner = currentUser?.username === profile?.is_owner;
 
   useEffect(() => {
+    console.log(currentUser);
     const fetchProfileData = async () => {
       try {
         const [{ data: pageProfile }, { data: profilePosts }] =
           await Promise.all([
-            axios.get(`/profiles/${id}/`),
-            axios.get(`/issues/?owner__profile=${id}`),
+            axios.get(`/profiles/${currentUser.pk}/`),
+            axios.get(`/issue/?owner__profile=${currentUser.pk}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
