@@ -66,8 +66,7 @@ const Issue = (props) => {
           />
         </div>
         <div className={styles.issueMeta}>
-          {is_owner && issuePage && <DropdownComponent />} not working cause of
-          currentUser===False
+          {is_owner && issuePage && <DropdownComponent />}
           <span>Listed at {created_at}</span>
           <span>Total comments: {comments_count}</span>
         </div>

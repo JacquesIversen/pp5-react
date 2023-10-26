@@ -8,9 +8,9 @@ import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
-import RecentIssues from "./RecentIssues";
 import SolvedIssues from "./SolvedIssues";
 import { useAuth } from "../../contexts/CurrentUserContext";
+import PopularComments from "../comments/PopularComments";
 
 function Feed(message) {
   const { currentUser } = useAuth();
@@ -79,7 +79,7 @@ function Feed(message) {
             />
           </Form>
           <br />
-          <RecentIssues />
+          <PopularComments />
           <br />
           <SolvedIssues />
         </Col>

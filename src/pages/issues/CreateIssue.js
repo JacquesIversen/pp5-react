@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import styles from "../../styles/CreateIssue.module.css";
 import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
-import { Col, Image, Row } from "react-bootstrap";
+import { Alert, Col, Image, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -80,6 +80,11 @@ function CreateIssue() {
         onChange={handleChange}
         className={styles.formInput}
       />
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <div className={styles.formLabel}>Car</div>
       <input
@@ -90,6 +95,11 @@ function CreateIssue() {
         onChange={handleChange}
         className={styles.formInput}
       />
+      {errors?.car?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <div className={styles.formLabel}>Model</div>
       <input
@@ -100,6 +110,11 @@ function CreateIssue() {
         onChange={handleChange}
         className={styles.formInput}
       />
+      {errors?.model?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <div className={styles.formLabel}>Year</div>
       <input
@@ -110,6 +125,11 @@ function CreateIssue() {
         onChange={handleChange}
         className={styles.formInput}
       />
+      {errors?.year?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <div className={styles.formLabel}>Engine Size</div>
       <input
@@ -120,6 +140,11 @@ function CreateIssue() {
         onChange={handleChange}
         className={styles.formInput}
       />
+      {errors?.engine_size?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <div className={styles.formLabel}>Description</div>
       <textarea
@@ -130,6 +155,11 @@ function CreateIssue() {
         onChange={handleChange}
         className={styles.formTextarea}
       />
+      {errors?.description?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <button onClick={() => history.goBack()} className={styles.cancelButton}>
         cancel
@@ -145,36 +175,46 @@ function CreateIssue() {
       <Container
         className={`${styles.formContainer} ${styles.imageUploadSection} `}
       >
-        {image ? (
-          <>
-            <figure>
-              <Image src={image} className={styles.formElement} />
-            </figure>
-            <div>
-              <Form.Label htmlFor="image-upload" className={styles.formElement}>
-                Change Image
-              </Form.Label>
-            </div>
-          </>
-        ) : (
-          <Form.Label
-            htmlFor="image-upload"
-            className={styles.assetUploadSection}
-          >
-            <Asset
-              src={UploadIssue}
-              message="Tap the tired man, to upload your own picture"
-            />
-          </Form.Label>
-        )}
+        <Form.Group className="text-center">
+          {image ? (
+            <>
+              <figure>
+                <Image src={image} className={styles.formElement} rounded />
+              </figure>
+              <div>
+                <Form.Label
+                  htmlFor="image-upload"
+                  className={styles.formElement}
+                >
+                  Change Image
+                </Form.Label>
+              </div>
+            </>
+          ) : (
+            <Form.Label
+              htmlFor="image-upload"
+              className={styles.assetUploadSection}
+            >
+              <Asset
+                src={UploadIssue}
+                message="Tap the tired man, to upload your own picture"
+              />
+            </Form.Label>
+          )}
 
-        <Form.File
-          id="image-upload"
-          accept="image/*"
-          onChange={handleChangeImage}
-          ref={imageInput}
-          className={styles.formElement}
-        />
+          <Form.File
+            id="image-upload"
+            accept="image/*"
+            onChange={handleChangeImage}
+            ref={imageInput}
+            className={styles.formElement}
+          />
+        </Form.Group>
+        {errors?.image?.map((message, idx) => (
+          <Alert variant="warning" key={idx}>
+            {message}
+          </Alert>
+        ))}
         <div>{textFields}</div>
       </Container>
     </Form>
