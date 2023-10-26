@@ -7,10 +7,9 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import Profile from "./pages/profiles/Profile";
 import CreateIssue from "./pages/issues/CreateIssue";
-
+import EditForm from "./pages/issues/Edit";
 import IssuePage from "./pages/issues/IssuePage";
 import Feed from "./pages/issues/Feed";
-import EditForm from "./pages/issues/Edit";
 
 function App() {
   return (
@@ -22,13 +21,6 @@ function App() {
             exact
             path="/"
             render={() => <Feed message="No results found:" />}
-          />
-          <Route
-            exact
-            path="/feed"
-            render={() => (
-              <Feed message="No results found. Adjust the search keyword." />
-            )}
           />
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />

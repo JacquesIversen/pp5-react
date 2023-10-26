@@ -28,7 +28,6 @@ const Issue = (props) => {
 
   const { currentUser } = useAuth();
   const is_owner = currentUser?.username === owner;
-
   const history = useHistory();
 
   const handleEdit = () => {
@@ -60,15 +59,15 @@ const Issue = (props) => {
       <Card.Body className={styles.issueContent}>
         <div className={styles.header}>
           <Card.Title className={styles.issueTitle}>{title}</Card.Title>
-          <DropdownComponent
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-          />
         </div>
         <div className={styles.issueMeta}>
           {is_owner && issuePage && <DropdownComponent />}
           <span>Listed at {created_at}</span>
-          <span>Total comments: {comments_count}</span>
+          <span>
+            <Link className={styles.Link} to={`/issue/${id}`}>
+              Total comments: {comments_count}
+            </Link>
+          </span>
         </div>
         {description && (
           <Card.Text className={styles.issueDescription}>

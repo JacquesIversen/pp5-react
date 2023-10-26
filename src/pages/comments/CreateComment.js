@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-import { Form, InputGroup } from "react-bootstrap";
-import { Link } from "react-router-dom/cjs/react-router-dom";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import Cookies from "js-cookie";
+import { useAuth } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 function CommentCreateForm(props) {
   const { issue, setIssue, setComments, profileImage, profile_id } = props;
   const [comment_area, setComment_area] = useState("");
+  const { currentUser } = useAuth();
 
   const handleChange = (event) => {
     setComment_area(event.target.value);
@@ -34,7 +36,6 @@ function CommentCreateForm(props) {
         ],
       }));
       setComment_area("");
-      
     } catch (err) {
       console.log(err);
     }
@@ -44,21 +45,34 @@ function CommentCreateForm(props) {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
-            {/*          <Avatar src={profileImage} /> */}
-          </Link>
-          <Form.Control
-            placeholder="my comment..."
-            as="textarea"
-            value={comment_area}
-            onChange={handleChange}
-            rows={2}
-          />
+          {currentUser ? (
+            <Form.Control
+              placeholder="Think you might have a solution? Share it here:"
+              as="textarea"
+              value={comment_area}
+              onChange={handleChange}
+              rows={3}
+            />
+          ) : (
+            <Form.Control
+              placeholder="You need to be logged in to make a comment"
+              as="textarea"
+              value={comment_area}
+              onChange={handleChange}
+              rows={3}
+            />
+          )}
         </InputGroup>
+        {currentUser ? (
+          <button disabled={!comment_area.trim()} type="submit">
+            Share
+          </button>
+        ) : (
+          <Link exact to="/signin">
+            <Button>Login in now</Button>
+          </Link>
+        )}
       </Form.Group>
-      <button disabled={!comment_area.trim()} type="submit">
-        Post
-      </button>
     </Form>
   );
 }

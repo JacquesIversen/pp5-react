@@ -43,3 +43,7 @@ color: #333;
 margin-bottom: 20px;
 }
 
+.Link {
+    text-decoration: none;
+    color: #777;
+}

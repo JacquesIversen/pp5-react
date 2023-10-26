@@ -34,6 +34,7 @@ function IssuePage() {
     };
     getIssue();
   }, [id]);
+
   return (
     <Container>
       <Row className={styles.Row}>

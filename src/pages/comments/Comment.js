@@ -18,11 +18,9 @@ const Comment = (props) => {
     comment_area,
     id,
     setIssue,
-    comment,
     setComments,
     like_id,
-    setLike,
-    like_count,
+    likes_count,
     dislike_id,
     dislike_count,
   } = props;
@@ -53,28 +51,89 @@ const Comment = (props) => {
     }
   };
 
-  const handleLike = async (event) => {
-    event.preventDefault();
+  const handleLike = async () => {
     try {
       const { data } = await axios.post(
         "/likes/",
-        { comment, id },
+        { comment: id },
         { headers: { Authorization: "Bearer " + Cookies.get("access") } }
       );
-      console.log(data);
-      setLike((prevLike) => ({
-        ...prevLike,
-        results: [data, ...prevLike.results],
-      }));
       setComments((prevComments) => ({
-        results: [
-          {
-            ...prevComments.results[0],
-            like_count: prevComments.results[0].like_count + 1,
-          },
-        ],
+        ...prevComments,
+        results: prevComments.results.map((comment) => {
+          return comment.id === id
+            ? {
+                ...comment,
+                likes_count: comment.likes_count + 1,
+                like_id: data.id,
+              }
+            : comment;
+        }),
       }));
-      setLike("");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDisLike = async () => {
+    try {
+      const { data } = await axios.post(
+        "/dislikes/",
+        { comment: id },
+        { headers: { Authorization: "Bearer " + Cookies.get("access") } }
+      );
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.map((comment) => {
+          return comment.id === id
+            ? {
+                ...comment,
+                dislikes_count: comment.dislikes_count + 1,
+                dislike_id: data.id,
+              }
+            : comment;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnlike = async () => {
+    try {
+      await axios.delete(`/likes/${like_id}/`);
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.map((comment) => {
+          return comment.id === id
+            ? {
+                ...comment,
+                likes_count: comment.likes_count - 1,
+                like_id: null,
+              }
+            : comment;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleUnDislike = async () => {
+    try {
+      await axios.delete(`/dislikes/${like_id}/`);
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.map((comment) => {
+          return comment.id === id
+            ? {
+                ...comment,
+                dislikes_count: comment.dislikes_count - 1,
+                dislike_id: null,
+              }
+            : comment;
+        }),
+      }));
     } catch (err) {
       console.log(err);
     }
@@ -125,7 +184,7 @@ const Comment = (props) => {
             </>
           ) : like_id ? (
             <>
-              <span onClick={() => {}}>
+              <span onClick={handleUnlike}>
                 <i className="fa-solid fa-thumbs-up" />
               </span>
               <span onClick={() => {}}>
@@ -137,7 +196,7 @@ const Comment = (props) => {
               <span onClick={handleLike}>
                 <i className="fa-solid fa-thumbs-up" />
               </span>
-              <span onClick={() => {}}>
+              <span onClick={handleDisLike}>
                 <i className="fa-solid fa-thumbs-up fa-rotate-180" />
               </span>
             </>
@@ -157,7 +216,8 @@ const Comment = (props) => {
               </OverlayTrigger>
             </>
           )}
-          <h1> Here should likecount apear{like_count}</h1>
+          <h3>Here should likescount apear{likes_count}</h3>
+          <h3>Here should likescount apear{dislike_count}</h3>
         </div>
         {is_owner && !showEditForm && (
           <DropdownComponent

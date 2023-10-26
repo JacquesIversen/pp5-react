@@ -3,14 +3,13 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import styles from "../../styles/Feed.module.css";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
-import Issue from "./PublicIssue";
+import Issue from "./Issue";
 import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
-import SolvedIssues from "./SolvedIssues";
 import { useAuth } from "../../contexts/CurrentUserContext";
-import PopularComments from "../comments/PopularComments";
+import Comment from "../comments/Comment";
 
 function Feed(message) {
   const { currentUser } = useAuth();
@@ -51,7 +50,9 @@ function Feed(message) {
               {issue.results.length ? (
                 <InfiniteScroll
                   children={issue.results.map((issue) => (
-                    <Issue key={issue.id} {...issue} setIssue={setIssue} />
+                    <>
+                      <Issue key={issue.id} {...issue} setIssue={setIssue} />
+                    </>
                   ))}
                   dataLength={issue.results.length}
                   loader={<Asset spinner />}
@@ -79,9 +80,9 @@ function Feed(message) {
             />
           </Form>
           <br />
-          <PopularComments />
+          <h1>Here can like go</h1>
           <br />
-          <SolvedIssues />
+          <h1>Here goes liked issues</h1>
         </Col>
       </Row>
     </Container>
