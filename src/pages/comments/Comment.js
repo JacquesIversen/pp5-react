@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { DropdownComponent } from "../../components/Dropdown";
@@ -140,11 +140,10 @@ const Comment = (props) => {
   };
 
   return (
-    <div className={styles.issueCard}>
-      <hr />
+    <Card className={styles.commentCard}>
       <Media>
         <Media.Body className="align-self-center ml-2">
-          <div className={styles.issueMeta}>
+          <div className={styles.commentMeta}>
             <span>
               <Link to={`/profiles/${profile_id}`}>
                 <Avatar src={profile_image} height={25} />
@@ -226,7 +225,8 @@ const Comment = (props) => {
           />
         )}
       </Media>
-    </div>
+      <hr />
+    </Card>
   );
 };
 

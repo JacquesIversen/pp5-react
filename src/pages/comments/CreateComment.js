@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Card, Container, Form, InputGroup } from "react-bootstrap";
 import Cookies from "js-cookie";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom/cjs/react-router-dom";
+import styles from "../../styles/Comment.module.css";
 
 function CommentCreateForm(props) {
   const { issue, setIssue, setComments, profileImage, profile_id } = props;
@@ -42,38 +43,46 @@ function CommentCreateForm(props) {
   };
 
   return (
-    <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group>
-        <InputGroup>
+    <Card className={styles.commentCard}>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <InputGroup>
+            {currentUser ? (
+              <Form.Control
+                placeholder="Think you might have a solution? Share it here:"
+                as="textarea"
+                value={comment_area}
+                onChange={handleChange}
+                rows={3}
+              />
+            ) : (
+              <Form.Control
+                placeholder="You need to be logged in to make a comment"
+                as="textarea"
+                value={comment_area}
+                onChange={handleChange}
+                rows={3}
+              />
+            )}
+          </InputGroup>
+        </Form.Group>
+        <Container>
           {currentUser ? (
-            <Form.Control
-              placeholder="Think you might have a solution? Share it here:"
-              as="textarea"
-              value={comment_area}
-              onChange={handleChange}
-              rows={3}
-            />
+            <button
+              className={styles.Button}
+              disabled={!comment_area.trim()}
+              type="submit"
+            >
+              Share
+            </button>
           ) : (
-            <Form.Control
-              placeholder="You need to be logged in to make a comment"
-              as="textarea"
-              value={comment_area}
-              onChange={handleChange}
-              rows={3}
-            />
+            <Link exact to="/signin">
+              <Button className={styles.Button}>Login now</Button>
+            </Link>
           )}
-        </InputGroup>
-        {currentUser ? (
-          <button disabled={!comment_area.trim()} type="submit">
-            Share
-          </button>
-        ) : (
-          <Link exact to="/signin">
-            <Button>Login in now</Button>
-          </Link>
-        )}
-      </Form.Group>
-    </Form>
+        </Container>
+      </Form>
+    </Card>
   );
 }
 
