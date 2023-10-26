@@ -10,8 +10,12 @@ import CreateIssue from "./pages/issues/CreateIssue";
 import EditForm from "./pages/issues/Edit";
 import IssuePage from "./pages/issues/IssuePage";
 import Feed from "./pages/issues/Feed";
+import { useAuth } from "./contexts/CurrentUserContext";
 
 function App() {
+  const { currentUser } = useAuth();
+  const profile_id = currentUser?.profile_id || "";
+
   return (
     <div className={styles.App}>
       <NavBar />

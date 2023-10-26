@@ -1,49 +1,42 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useAuth } from "../../contexts/CurrentUserContext";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
+import {
+  useProfileData,
+  useSetProfileData,
+} from "../../contexts/ProfileDataContext";
+import axios from "axios";
 
-const Profile = () => {
-  /*     useEffect(() => {})
-  const fuckdig = async () => {
-    try {
-      const [{ data: pageProfile }] = await Promise.all([
-        axios.get(`/profiles/${id}/`),
-      ]);
-      useSetProfileData((prevState) => ({
-        ...prevState,
-        pageProfile: { results: [pageProfile] },
-      }));
-    } catch (err) {
-      console.log(err);
-    }
-    fuckdig()
-  }; */
-
-  /*   const [profileIssue, setProfileIssue] = useState({ results: [] });
+function ProfilePage() {
+  const [profilePosts, setProfilePosts] = useState({ results: [] });
+  const { currentUser } = useAuth();
   const { id } = useParams();
-  const currentUser = useAuth();
   const { setProfileData } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const [profile] = pageProfile.results;
-  const is_owner = currentUser?.username === profile?.owner;
+  const is_owner = currentUser?.username === profile?.is_owner;
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProfileData = async () => {
       try {
-        const [{ data: pageProfile }, { data: profileIssue }] =
+        const [{ data: pageProfile }, { data: profilePosts }] =
           await Promise.all([
             axios.get(`/profiles/${id}/`),
-            axios.get(`/issue/?owner__profile=${id}`),
+            axios.get(`/issues/?owner__profile=${id}`),
           ]);
         setProfileData((prevState) => ({
           ...prevState,
-          pageProfile: { results: [pageProfile] },
+          pageProfile: {
+            results: [pageProfile],
+          },
         }));
-        setProfileIssue(profileIssue);
+        setProfilePosts(profilePosts);
       } catch (err) {
         console.log(err);
       }
     };
-    fetchData();
-  }, [id, setProfileData]); */
+    fetchProfileData();
+  }, [id, setProfileData]);
 
   return (
     <div className="container mt-4">
@@ -78,30 +71,6 @@ const Profile = () => {
       </div>
     </div>
   );
-};
+}
 
-const UserPosts = ({ posts }) => {
-  return (
-    <ul className="list-unstyled">
-      {posts.map((post, index) => (
-        <li key={index} className="mb-2">
-          {post.title}
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-const UserComments = ({ comments }) => {
-  return (
-    <ul className="list-unstyled">
-      {comments.map((comment, index) => (
-        <li key={index} className="mb-2">
-          {comment.text}
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-export default Profile;
+export default ProfilePage;
