@@ -1,6 +1,5 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import React from "react";
-import styles from "../../src/styles/IssueDropdown.module.css";
 
 const TribleDots = React.forwardRef(({ onClick }, ref) => (
   <i

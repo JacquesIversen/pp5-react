@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import Profile from "./pages/profiles/Profile";
+import ProfilePage from "./pages/profiles/Profilepage";
 import CreateIssue from "./pages/issues/CreateIssue";
 import EditForm from "./pages/issues/Edit";
 import IssuePage from "./pages/issues/IssuePage";
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/signin" render={() => <SignInForm />} />
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/issue/create" render={() => <CreateIssue />} />
-          <Route exact path="/myprofile" render={() => <Profile />} />
+          <Route exact path="/myprofile" render={() => <ProfilePage />} />
           <Route exact path="/issue/:id" render={() => <IssuePage />} />
           <Route exact path="/issue/:id/edit" render={() => <EditForm />} />
           <Route render={() => <h1>Ooops, this page does not exist</h1>} />

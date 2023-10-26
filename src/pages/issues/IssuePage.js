@@ -9,6 +9,7 @@ import CommentCreateForm from "../comments/CreateComment";
 import Comment from "../comments/Comment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
+import Asset from "../../components/Asset";
 
 function IssuePage() {
   const { id } = useParams();
@@ -70,7 +71,7 @@ function IssuePage() {
                 />
               ))}
               dataLength={comments.results.length}
-              loader={Spinner}
+              loader={<Asset spinner />}
               hasMore={!!comments.next}
               next={() => fetchMoreData(comments, setComments)}
             />

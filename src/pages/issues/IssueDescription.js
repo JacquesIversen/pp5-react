@@ -5,23 +5,7 @@ import styles from "../../styles/Issue.module.css";
 import Avatar from "../../components/Avatar";
 
 const Issue = (props) => {
-  const {
-    id,
-    owner,
-    profile_id,
-    profile_image,
-    created_at,
-    title,
-    car,
-    model,
-    year,
-    engine_size,
-    description,
-    is_solved,
-    image,
-    comments_count,
-    issuePage,
-  } = props;
+  const { profile_id, profile_image, car, model, year, engine_size } = props;
 
   return (
     <Card className={styles.issueCard}>
@@ -30,7 +14,7 @@ const Issue = (props) => {
           <Link to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={50} />
           </Link>
-          <h4>Here follows info on the user:</h4>
+          <h4>Here follows info on the</h4>
         </Row>
         <ListGroup variant="flush">
           <ListGroup.Item>Car: {car}</ListGroup.Item>

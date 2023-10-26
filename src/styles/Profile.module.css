@@ -1,64 +1,15 @@
-/* Profile.module.css */
-
-.ProfileContainer {
-display: flex;
-flex-direction: row;
-background-color: #f9f9f9;
+.user-profile {
+max-width: 800px;
+margin: 0 auto;
 padding: 20px;
-border-radius: 10px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-margin: 20px;
 }
 
-.LeftColumn {
-flex: 1;
-padding-right: 20px;
-}
-
-.RightColumn {
-flex: 1;
-padding-left: 20px;
-border-left: 1px solid #ccc;
-}
-
-.ProfileHeader {
+.profile-section {
 text-align: center;
 margin-bottom: 20px;
 }
 
-.ProfileHeader h2 {
-font-size: 1.8rem;
-margin-bottom: 10px;
-}
-
-.ProfileHeader p {
-font-size: 1.2rem;
-color: #555;
-margin-bottom: 20px;
-}
-
-.RecentPosts h3 {
-font-size: 1.5rem;
-margin-bottom: 10px;
-}
-
-.RecentPosts ul {
-list-style: none;
-padding: 0;
-}
-
-.RecentPosts li {
-font-size: 1.1rem;
-margin-bottom: 10px;
-}
-
-.PostDate {
-color: #888;
-margin-right: 10px;
-}
-
-/* Add styles for your Avatar component */
-.Avatar {
+.profile-picture {
 width: 150px;
 height: 150px;
 border-radius: 50%;
@@ -66,46 +17,29 @@ object-fit: cover;
 margin-bottom: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-.ProfileContainer {
-    flex-direction: column;
+.user-info {
+text-align: center;
+margin-bottom: 30px;
 }
 
-.RightColumn {
-    border-left: none;
-    padding-left: 0;
-    margin-top: 20px; /* Add some space between columns in mobile view */
+.user-posts,
+.user-comments {
+margin-bottom: 40px;
 }
 
-.LeftColumn,
-.RightColumn {
-    flex: none;
-    width: 100%;
-    text-align: center;
+ul {
+list-style: none;
+padding: 0;
 }
 
-.ProfileHeader {
-    margin-bottom: 10px;
+li {
+margin-bottom: 10px;
+border-bottom: 1px solid #ccc;
+padding: 10px 0;
 }
 
-.ProfileHeader h2 {
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-}
-
-.ProfileHeader p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
-
-.RecentPosts h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
-
-.RecentPosts li {
-    font-size: 1rem;
-    margin-bottom: 5px;
-}
+h1,
+h2 {
+text-align: center;
+margin-bottom: 20px;
 }

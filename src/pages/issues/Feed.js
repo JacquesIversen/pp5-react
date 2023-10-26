@@ -9,7 +9,6 @@ import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
 import { useAuth } from "../../contexts/CurrentUserContext";
-import Comment from "../comments/Comment";
 
 function Feed(message) {
   const { currentUser } = useAuth();
@@ -18,7 +17,7 @@ function Feed(message) {
   const [query, setQuery] = useState("");
 
   const { pathname } = useLocation();
-
+/* 
   useEffect(() => {
     const fetchIssue = async () => {
       try {
@@ -38,7 +37,7 @@ function Feed(message) {
     return () => {
       clearTimeout(timer);
     };
-  }, [pathname, query]);
+  }, [pathname, query]); */
 
   return (
     <Container>

@@ -28,6 +28,7 @@ function EditForm() {
   const history = useHistory();
   const { id } = useParams();
 
+  console.log(id);
   useEffect(() => {
     const getIssueData = async () => {
       try {

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../../styles/Comment.module.css";
 import { Container } from "react-bootstrap";
 
 const PopularComments = () => {
-  /* const [commentData, setCommentData] = useState({
-    
-  } */
+  /*  const [commentData, setCommentData] = useSt */
 
   return (
     <Container>
