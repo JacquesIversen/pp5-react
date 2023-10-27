@@ -72,12 +72,8 @@ The platform not only fulfills the existing demand for learning and interactive 
 
 - **Profile Page:**
   - As a user, I can view other users’ profiles to learn more about their car-related posts and experiences, fostering a sense of community.
-- **Most Followed Profiles:**
-  - As a user, I can see a list of the most followed profiles, enabling me to discover popular contributors and their valuable insights.
 - **View User Data:**
-  - As a user, I can access information about other users, including the number of posts, followers, and users followed, allowing me to better understand their contributions.
-- **Follow/Unfollow a User:**
-  - As a logged-in user, I can follow and unfollow other users, enabling me to curate my feed and engage with specific individuals.
+  - As a user, I can access information about other users, including the number of posts, allowing me to better understand their contributions.
 - **View All Posts by a Specific User:**
   - As a user, I can view all posts by a specific user, helping me catch up on their latest contributions and decide whether to follow them.
 - **Update Username and Password:**
@@ -89,18 +85,18 @@ The platform not only fulfills the existing demand for learning and interactive 
   - As a logged-in user, I can create posts with images, sharing my car-related experiences, issues, and solutions with the community.
 - **View a Post:**
   - As a user, I can view the details of a single post to learn more about specific car-related topics or discussions.
-- **Like a Post:**
-  - As a logged-in user, I can like a post to express my support for content that resonates with me, encouraging valuable contributions.
-- **Post Page:**
-  - As a user, I can view the posts page, allowing me to read comments and engage in discussions about the post's topic.
-- **Edit Post:**
-  - As a post owner, I can edit my post title and description, enabling me to make corrections or updates to my content after it was created.
+- **Topic Page:**
+  - As a user, I can view the Topic page, allowing me to read comments and engage in discussions about the topic/issue.
+- **Edit Issue:**
+  - As a post owner, I can edit my full issue, and all details within. Enabling me to make corrections or updates to my content after it was created.
 - **Create a Comment:**
-  - As a logged-in user, I can add comments to a post, sharing my thoughts, insights, or solutions related to the post's content.
+  - As a logged-in user, I can add comments to a issue, sharing my thoughts, insights, or solutions related to the content.
 - **Comment Date:**
   - As a user, I can see the timestamp of comments, providing context about the comment's recency and relevance.
 - **View Comments:**
   - As a user, I can read comments on posts, gaining insights into other users' perspectives and solutions related to the post's topic.
+    **Like and dislike Comments:**
+  - As a user, I can up- and downvote comments, related on their effect the issueowner might have.
 - **Delete Comments:**
   - As a comment owner, I can delete my comments, allowing me to control the removal of my contributions from the platform.
 - **Edit a Comment:**
