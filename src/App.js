@@ -1,5 +1,6 @@
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
+import NotFound from "./components/NotFound";
 import { Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "./api/axiosDefaults";
@@ -28,7 +29,7 @@ function App() {
           <Route exact path="/myprofile" render={() => <ProfilePage />} />
           <Route exact path="/issue/:id" render={() => <IssuePage />} />
           <Route exact path="/issue/:id/edit" render={() => <EditForm />} />
-          <Route render={() => <h1>Ooops, this page does not exist</h1>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>
