@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import {
+  Card,
+  Col,
+  Media,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { DropdownComponent } from "../../components/Dropdown";
@@ -32,7 +39,9 @@ const Comment = (props) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/comments/${id}/`);
+      await axios.delete(`/comments/${id}/`, {
+        headers: { Authorization: "Bearer " + Cookies.get("access") },
+      });
       setIssue((prevIssue) => ({
         results: [
           {
@@ -123,7 +132,9 @@ const Comment = (props) => {
 
   const handleUnDislike = async () => {
     try {
-      await axios.delete(`/dislikes/${like_id}/`);
+      await axios.delete(`/dislikes/${dislike_id}/`, {
+        headers: { Authorization: "Bearer " + Cookies.get("access") },
+      });
       setComments((prevComments) => ({
         ...prevComments,
         results: prevComments.results.map((comment) => {
@@ -153,6 +164,12 @@ const Comment = (props) => {
               {owner}
             </span>
             <span>{created_at}</span>
+            {is_owner && !showEditForm && (
+              <DropdownComponent
+                handleEdit={() => setShowEditForm(true)}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
           {showEditForm ? (
             <CommentEditForm
@@ -167,65 +184,67 @@ const Comment = (props) => {
             <p>{comment_area}</p>
           )}
         </Media.Body>
-        <div>
-          {is_owner ? (
-            <>
+        <Row className="text-center">
+          <Col>
+            {likes_count}
+            &emsp;
+            {is_owner ? (
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip>You can't like your own comment!</Tooltip>}
               >
-                <i className="fa-solid fa-thumbs-up" />
+                <i className="fa-solid fa-hands" />
               </OverlayTrigger>
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>You can't dislike your comment!</Tooltip>}
-              >
-                <i className="fa-solid fa-thumbs-up fa-rotate-180" />
-              </OverlayTrigger>
-            </>
-          ) : like_id ? (
-            <>
+            ) : like_id ? (
               <span onClick={handleUnlike}>
-                <i className="fa-solid fa-thumbs-up" />
+                <i className={`fa-solid fa-thumbs-up ${styles.like}`} />
               </span>
-              <span onClick={() => {}}>
-                <i className="fa-solid fa-thumbs-up fa-rotate-180" />
-              </span>
-            </>
-          ) : currentUser ? (
-            <>
+            ) : currentUser ? (
               <span onClick={handleLike}>
-                <i className="fa-solid fa-thumbs-up" />
+                <i className={`fa-regular fa-thumbs-up ${styles.like}`} />
               </span>
-              <span onClick={handleDisLike}>
-                <i className="fa-solid fa-thumbs-up fa-rotate-180" />
-              </span>
-            </>
-          ) : (
-            <>
+            ) : (
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip>Log in to like comments!</Tooltip>}
               >
-                <i className="fa-solid fa-thumbs-up" />
+                <i className={`fa-regular fa-thumbs-up ${styles.like}`} />
               </OverlayTrigger>
+            )}
+          </Col>
+          <Col>
+            {is_owner ? (
+              <OverlayTrigger
+                placement="top"
+                overlay={<Tooltip>You can't dislike your comment!</Tooltip>}
+              >
+                <i className="fa-solid fa-hands" />
+              </OverlayTrigger>
+            ) : dislike_id ? (
+              <span onClick={handleUnDislike}>
+                <i
+                  className={`fa-solid fa-thumbs-up fa-rotate-180 ${styles.dislike}`}
+                />
+              </span>
+            ) : currentUser ? (
+              <span onClick={handleDisLike}>
+                <i
+                  className={`fa-regular fa-thumbs-up fa-rotate-180 ${styles.dislike}`}
+                />
+              </span>
+            ) : (
               <OverlayTrigger
                 placement="top"
                 overlay={<Tooltip>Log in to dislike comments!</Tooltip>}
               >
-                <i className="fa-solid fa-thumbs-up fa-rotate-180" />
+                className=
+                {`fa-regular fa-thumbs-up fa-rotate-180 ${styles.dislike}`}
               </OverlayTrigger>
-            </>
-          )}
-          <h3>Here should likescount apear{likes_count}</h3>
-          <h3>Here should likescount apear{dislikes_count}</h3>
-        </div>
-        {is_owner && !showEditForm && (
-          <DropdownComponent
-            handleEdit={() => setShowEditForm(true)}
-            handleDelete={handleDelete}
-          />
-        )}
+            )}
+            &emsp;
+            {dislikes_count}
+          </Col>
+        </Row>
       </Media>
       <hr />
     </Card>

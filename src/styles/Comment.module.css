@@ -2,6 +2,13 @@
 border: none;
 border-radius: 10px;
 margin-bottom: 20px;
+padding: 15px; 
+background-color: #f7f7f7; 
+transition: background-color 0.3s ease; 
+}
+
+.commentCard:hover {
+background-color: #e0e0e0;
 }
 
 .commentMeta {
@@ -10,6 +17,31 @@ justify-content: space-between;
 font-size: 0.8rem;
 color: #777;
 margin-bottom: 10px;
+}
+
+.commentMeta span {
+margin-right:
+}
+
+.commentContent {
+font-size: 1rem;
+color: #333; 
+margin-bottom: 10px;
+}
+
+.like,
+.dislike {
+margin-right: 5px;
+cursor: pointer;
+transition: color 0.3s ease; 
+}
+
+.like:hover {
+color: blue;
+}
+
+.dislike:hover {
+color: red;
 }
 
 .Button {
@@ -26,4 +58,6 @@ margin: 5px auto;
 font-weight: bold;
 }
 
-
+.Button:hover {
+    background-color: #c9302c; 
+    }

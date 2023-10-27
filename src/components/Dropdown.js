@@ -20,9 +20,11 @@ export const DropdownComponent = ({ handleEdit, handleDelete }) => {
       <Dropdown.Menu>
         <Dropdown.Item onClick={handleEdit} aria-label="edit">
           <i className="fa-sharp fa-regular fa-pen-to-square" />
+          &nbsp;Edit
         </Dropdown.Item>
         <Dropdown.Item onClick={handleDelete} aria-label="delete">
           <i className="fa-sharp fa-solid fa-trash" />
+          &nbsp;Delete
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
