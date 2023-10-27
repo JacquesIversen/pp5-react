@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
       });
       setCurrentUser(data);
     } catch (err) {
-      console.log(err);
       setCurrentUser(null);
     }
   };
@@ -36,16 +35,13 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(data.user);
       history.push("/");
     } catch (err) {
-      /* setErrors(err.response?.data); */
       setCurrentUser(null);
-      console.log("error from login");
     }
   };
 
   const logout = async () => {
     Cookies.remove("access");
     setCurrentUser(null);
-    console.log("user logged out");
     history.push("/");
   };
 

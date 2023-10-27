@@ -13,9 +13,7 @@ function ProfilePage() {
         headers: { Authorization: `Bearer ${Cookies.get("access")}` },
       });
       setProfileDataState(data);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
   useEffect(() => {
     fetchProfileData();
@@ -40,18 +38,20 @@ function ProfilePage() {
             <h1 className="mb-4">{profileData.name || "No name added"}</h1>
             <p>Email: user@example.com</p>
             <p>Joined: January 1, 2023</p>
+
+            <p>Some sort of box, to edit user/profile details:</p>
           </div>
         </div>
         <div className="col-lg-9">
           <div className="user-posts bg-light p-4 mt-4 shadow">
-            <h2 className="mb-4">Issues</h2>
+            <h2 className="mb-4">Here goes all Issues made by this user:</h2>
             {/* go over profile data issues */}
             {profileData?.issues?.map((issue) => {
               return <p>{issue.title}</p>;
             })}
           </div>
           <div className="user-comments bg-light p-4 mt-4 shadow">
-            <h2 className="mb-4">Comments</h2>
+            <h2 className="mb-4">Here goes all comments made by this user: </h2>
             {/*     <UserComments comments={comments} /> */}
             {profileData?.comments?.map((comment) => {
               return <p>{comment.comment_area}</p>;

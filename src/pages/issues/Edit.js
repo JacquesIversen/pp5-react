@@ -34,11 +34,8 @@ function EditForm() {
         const { data } = await axios.get(`/issue/${id}/`, {
           headers: { Authorization: "Bearer " + Cookies.get("access") },
         });
-        console.log(data);
         setIssueData(data);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     getIssueData();
   }, [history, id]);
@@ -80,7 +77,6 @@ function EditForm() {
       });
       history.push(`/issue/${id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

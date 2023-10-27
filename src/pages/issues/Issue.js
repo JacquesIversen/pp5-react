@@ -34,9 +34,7 @@ const Issue = (props) => {
       });
       /*  Not working 401. error */
       history.push(`/`);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

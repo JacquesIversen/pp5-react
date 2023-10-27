@@ -19,28 +19,12 @@ function SignInForm() {
   const [errors, setErrors] = useState({});
   const history = useHistory();
 
-  /*   const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
-      setCurrentUser(data.user);
-      history.push("/");
-      console.log("logged in");
-    } catch (err) {
-      console.log("not logged in");
-      setErrors(err.response?.data);
-    }
-  }; */
-
   const userLogIn = async (event) => {
     event.preventDefault();
     try {
       const { data } = await axios.post("dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      console.log("success logging in");
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const handleChange = (event) => {

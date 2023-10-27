@@ -55,9 +55,7 @@ const Comment = (props) => {
         ...prevComments,
         results: prevComments.results.filter((comment) => comment.id !== id),
       }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const handleLike = async () => {
@@ -79,9 +77,7 @@ const Comment = (props) => {
             : comment;
         }),
       }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const handleDisLike = async () => {
@@ -103,9 +99,7 @@ const Comment = (props) => {
             : comment;
         }),
       }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const handleUnlike = async () => {
@@ -125,9 +119,7 @@ const Comment = (props) => {
             : comment;
         }),
       }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   const handleUnDislike = async () => {
@@ -147,9 +139,7 @@ const Comment = (props) => {
             : comment;
         }),
       }));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

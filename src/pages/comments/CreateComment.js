@@ -23,7 +23,6 @@ function CommentCreateForm(props) {
         { comment_area, issue },
         { headers: { Authorization: "Bearer " + Cookies.get("access") } }
       );
-      console.log(data);
       setComments((prevComments) => ({
         ...prevComments,
         results: [data, ...prevComments.results],
@@ -37,9 +36,7 @@ function CommentCreateForm(props) {
         ],
       }));
       setComment_area("");
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

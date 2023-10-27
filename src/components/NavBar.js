@@ -8,6 +8,7 @@ import { useAuth } from "../contexts/CurrentUserContext";
 const NavBar = () => {
   const { currentUser, logout } = useAuth();
 
+  console.log(currentUser);
   return (
     <Navbar className={`${styles.navbar} `} expand="lg">
       <Container className="">
@@ -38,7 +39,6 @@ const NavBar = () => {
                 >
                   <i className="fa-solid fa-plus"></i> Post an Issue now
                 </NavLink>
-
                 <NavLink
                   exact
                   className={styles.NavLink}
@@ -54,6 +54,10 @@ const NavBar = () => {
                   onClick={logout}
                 >
                   <i className="fa-solid fa-right-to-bracket"></i>Sign out
+                </NavLink>
+                <NavLink className={styles.NavLink} to={`/myprofile/`}>
+                  <i className="fa-solid fa-hands" />
+                  Hello {currentUser?.username}
                 </NavLink>
               </>
             ) : (

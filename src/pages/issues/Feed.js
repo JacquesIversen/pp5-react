@@ -21,9 +21,7 @@ function Feed(message) {
         const { data } = await axios.get(`/issue/?search=${query}`);
         setIssue(data);
         setHasLoaded(true);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
 
     setHasLoaded(false);

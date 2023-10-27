@@ -27,10 +27,7 @@ function IssuePage() {
         ]);
         setIssue({ results: [issue] });
         setComments(comments);
-        console.log(issue);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
     getIssue();
   }, [id]);
