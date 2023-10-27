@@ -76,7 +76,7 @@ function IssuePage() {
               next={() => fetchMoreData(comments, setComments)}
             />
           ) : currentUser ? (
-            <span>No comments yet. be the first</span>
+            <span>No comments yet, be the first!</span>
           ) : (
             <span>No comments, yet</span>
           )}

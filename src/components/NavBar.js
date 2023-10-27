@@ -25,7 +25,7 @@ const NavBar = () => {
               activeClassName={styles.Active}
               to="/"
             >
-              <i className="fa-solid fa-house"></i> Home
+              <i className="fa-solid fa-newspaper"></i> Feed
             </NavLink>
 
             {currentUser ? (
@@ -36,8 +36,7 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/issue/create"
                 >
-                  <i className="fa-solid fa-right-from-bracket"></i> Post an
-                  Issue now
+                  <i className="fa-solid fa-plus"></i> Post an Issue now
                 </NavLink>
 
                 <NavLink
@@ -46,9 +45,16 @@ const NavBar = () => {
                   activeClassName={styles.Active}
                   to="/myprofile"
                 >
-                  <i className="fa-solid fa-user"></i> My Profile
+                  <i className="fa-solid fa-id-card"></i> My Profile
                 </NavLink>
-                <button onClick={logout}>Logout</button>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  to="/"
+                  onClick={logout}
+                >
+                  <i className="fa-solid fa-right-to-bracket"></i>Sign out
+                </NavLink>
               </>
             ) : (
               <>
@@ -59,6 +65,14 @@ const NavBar = () => {
                   to="/signin"
                 >
                   <i className="fa-solid fa-user"></i> Sign In
+                </NavLink>
+                <NavLink
+                  exact
+                  className={styles.NavLink}
+                  activeClassName={styles.Active}
+                  to="/signup"
+                >
+                  <i className="fa-solid fa-user-plus"></i> Sign Up
                 </NavLink>
               </>
             )}

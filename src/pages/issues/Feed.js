@@ -39,6 +39,14 @@ function Feed(message) {
   return (
     <Container>
       <br />
+      <Form onSubmit={(event) => event.preventDefault()}>
+        <Form.Control
+          type="text"
+          placeholder="Search"
+          onChange={(event) => setQuery(event.target.value)}
+        />
+      </Form>
+      <br />
       {hasLoaded ? (
         <>
           {issue.results.length ? (
@@ -64,13 +72,6 @@ function Feed(message) {
           <Asset spinner />
         </Container>
       )}
-      <Form onSubmit={(event) => event.preventDefault()}>
-        <Form.Control
-          type="text"
-          placeholder="Search"
-          onChange={(event) => setQuery(event.target.value)}
-        />
-      </Form>
       <br />
     </Container>
   );
