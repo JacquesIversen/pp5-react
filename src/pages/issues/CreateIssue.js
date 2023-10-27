@@ -161,29 +161,27 @@ function CreateIssue() {
       ))}
 
       <button onClick={() => history.goBack()} className={styles.cancelButton}>
-        cancel
+        Cancel
       </button>
       <button type="submit" className={styles.formButton}>
-        create
+        Share
       </button>
     </div>
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Container
-        className={`${styles.formContainer} ${styles.imageUploadSection} `}
-      >
+    <Form onSubmit={handleSubmit} className={styles.form}>
+      <Container fluid className={`${styles.container}`}>
         <Form.Group className="text-center">
           {image ? (
             <>
               <figure>
-                <Image src={image} className={styles.formElement} rounded />
+                <Image className={styles.Image} src={image} rounded />
               </figure>
               <div>
                 <Form.Label
+                  className={`${styles.formButton} btn`}
                   htmlFor="image-upload"
-                  className={styles.formElement}
                 >
                   Change Image
                 </Form.Label>
@@ -191,8 +189,8 @@ function CreateIssue() {
             </>
           ) : (
             <Form.Label
+              className="d-flex justify-content-center"
               htmlFor="image-upload"
-              className={styles.assetUploadSection}
             >
               <Asset
                 src={UploadIssue}
@@ -206,7 +204,6 @@ function CreateIssue() {
             accept="image/*"
             onChange={handleChangeImage}
             ref={imageInput}
-            className={styles.formElement}
           />
         </Form.Group>
         {errors?.image?.map((message, idx) => (

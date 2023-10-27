@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
 import Issue from "./Issue";
@@ -39,48 +39,39 @@ function Feed(message) {
   return (
     <Container>
       <br />
-      <Row>
-        <Col sm={12} md={8}>
-          {hasLoaded ? (
-            <>
-              {issue.results.length ? (
-                <InfiniteScroll
-                  children={issue.results.map((issue) => (
-                    <>
-                      <Issue key={issue.id} {...issue} setIssue={setIssue} />
-                    </>
-                  ))}
-                  dataLength={issue.results.length}
-                  loader={<Asset spinner />}
-                  hasMore={!!issue.next}
-                  next={() => fetchMoreData(issue, setIssue)}
-                />
-              ) : (
-                <Container>
-                  <Asset src={NoResultsYet} message={message} />
-                </Container>
-              )}
-            </>
+      {hasLoaded ? (
+        <>
+          {issue.results.length ? (
+            <InfiniteScroll
+              children={issue.results.map((issue) => (
+                <>
+                  <Issue key={issue.id} {...issue} setIssue={setIssue} />
+                </>
+              ))}
+              dataLength={issue.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!issue.next}
+              next={() => fetchMoreData(issue, setIssue)}
+            />
           ) : (
             <Container>
-              <Asset spinner />
+              <Asset src={NoResultsYet} message={message} />
             </Container>
           )}
-        </Col>
-        <Col sm={12} md={4}>
-          <Form onSubmit={(event) => event.preventDefault()}>
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              onChange={(event) => setQuery(event.target.value)}
-            />
-          </Form>
-          <br />
-          <h1>Here can like go</h1>
-          <br />
-          <h1>Here goes liked issues</h1>
-        </Col>
-      </Row>
+        </>
+      ) : (
+        <Container>
+          <Asset spinner />
+        </Container>
+      )}
+      <Form onSubmit={(event) => event.preventDefault()}>
+        <Form.Control
+          type="text"
+          placeholder="Search"
+          onChange={(event) => setQuery(event.target.value)}
+        />
+      </Form>
+      <br />
     </Container>
   );
 }

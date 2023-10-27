@@ -81,9 +81,6 @@ function IssuePage() {
             <span>No comments, yet</span>
           )}
           <br />
-          <h1>Here goes Solutions if any</h1>
-          <br />
-          <h1>Here goes upvoted comments</h1>
         </Col>
       </Row>
     </Container>

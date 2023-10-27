@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import styles from "../../styles/CreateIssue.module.css";
+import styles from "../../styles/EditIssue.module.css";
 import { Image } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
@@ -154,10 +154,8 @@ function EditForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Container
-        className={`${styles.Container} d-flex flex-column justify-content-center`}
-      >
+    <Form onSubmit={handleSubmit} className={styles.form}>
+      <Container fluid className={styles.container}>
         <Form.Group className="text-center">
           <figure>
             <Image src={image} />

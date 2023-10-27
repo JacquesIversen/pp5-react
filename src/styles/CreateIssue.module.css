@@ -1,12 +1,19 @@
-/* styles.module.css */
-.formContainer {
-background: rgba(255, 255, 255, 0.8);
+.form {
+margin: 20px auto;
+max-width: 800px;
+}
+
+.container {
+background-color: #f8f9fa;
 border-radius: 10px;
-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-margin-bottom: 20px;
-padding: 10px;
-max-width: 90%;
-margin: 0 auto;
+padding: 20px;
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .formLabel {
@@ -18,11 +25,11 @@ margin-bottom: 5px;
 
 .formInput,
 .formTextarea {
-  width: calc(100%);
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
+width: calc(100%);
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #ccc;
+margin-bottom: 10px;
 }
 
 .formElement {
@@ -49,8 +56,8 @@ background-color: #ff5e40;
 }
 
 .textFields {
-    margin-bottom: 10px;
-  }
+margin-bottom: 10px;
+}
 
 .assetUploadSection {
 display: flex;
@@ -69,7 +76,6 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 margin-bottom: 10px;
-
 }
 
 .imageUploadSection label {
@@ -97,19 +103,19 @@ background-color: #999;
 }
 
 @media (max-width: 767px) {
-    .formContainer {
-      padding: 10px;
-      max-width: 90%; /* Adjusted width for smaller devices */
-    }
-  
-    .formButton,
-    .cancelButton {
-      width: 100%; /* Full width for smaller devices */
-      margin-right: 0; /* Remove right margin for smaller devices */
-      margin-bottom: 10px; /* Add bottom margin for smaller devices */
-    }
-  
-    .textFields {
-      margin-bottom: 10px;
-    }
-  }
+.formContainer {
+padding: 10px;
+max-width: 90%;
+}
+
+.formButton,
+.cancelButton {
+width: 100%;
+margin-right: 0;
+margin-bottom: 10px;
+}
+
+.textFields {
+margin-bottom: 10px;
+}
+}
