@@ -74,17 +74,17 @@ The platform not only fulfills the existing demand for learning and interactive 
   - As a user, I can view other users’ profiles to learn more about their car-related posts and experiences, fostering a sense of community.
 - **View User Data:**
   - As a user, I can access information about other users, including the number of posts, allowing me to better understand their contributions.
-- **View All Posts by a Specific User:**
+- **View All issues posted by a Specific User:**
   - As a user, I can view all posts by a specific user, helping me catch up on their latest contributions and decide whether to follow them.
 - **Update Username and Password:**
   - As a logged-in user, I can update my username and password, ensuring my profile remains secure and reflecting any desired changes in my display name.
 
 #### **Sharing Car-related Content:**
 
-- **Create Posts:**
-  - As a logged-in user, I can create posts with images, sharing my car-related experiences, issues, and solutions with the community.
-- **View a Post:**
-  - As a user, I can view the details of a single post to learn more about specific car-related topics or discussions.
+- **Create Issue:**
+  - As a logged-in user, I can create issues with images, sharing my car-related experiences, issues, and solutions with the community.
+- **View an issue:**
+  - As a user, I can view the details of a single issue to learn more about specific car-related topics or discussions.
 - **Topic Page:**
   - As a user, I can view the Topic page, allowing me to read comments and engage in discussions about the topic/issue.
 - **Edit Issue:**
@@ -95,7 +95,7 @@ The platform not only fulfills the existing demand for learning and interactive 
   - As a user, I can see the timestamp of comments, providing context about the comment's recency and relevance.
 - **View Comments:**
   - As a user, I can read comments on posts, gaining insights into other users' perspectives and solutions related to the post's topic.
-    **Like and dislike Comments:**
+- **Like and dislike Comments:**
   - As a user, I can up- and downvote comments, related on their effect the issueowner might have.
 - **Delete Comments:**
   - As a comment owner, I can delete my comments, allowing me to control the removal of my contributions from the platform.
@@ -118,23 +118,12 @@ The platform not only fulfills the existing demand for learning and interactive 
 - **Create and Edit Repair Details:**
   - As a logged-in user, I can create and edit repair details about my car, sharing my DIY experiences and solutions with the community.
 - **View Other User's Repair Details:**
-  - As a logged-in user, I can view repair details of other users' cars if I am following them, allowing me to learn from their experiences and solutions.
+  - As a non Logged in user, I can view repair details of other users' cars, allowing me to learn from their experiences and solutions.
 - **Search Repair Details:**
   - As a user, I can search for car repair details using keywords, helping me find specific DIY solutions or techniques shared by other community members.
 - **Infinite Scroll:**
+
   - As a user, I can keep scrolling through repair details, with content loading automatically, ensuring a seamless browsing experience without the need to navigate to the next page.
-
-#### **Car Modification and Upgrade Details:**
-
-- **Create and Edit Modification Details:**
-  - As a logged-in user, I can create and edit modification details about my car, showcasing my customizations and upgrades to inspire others in the community.
-- **View Other User's Modification Details:**
-  - As a logged-in user, I can view modification details of other users' cars if I am following them, allowing me to explore innovative car modifications and upgrades.
-- **Search Modification Details:**
-  - As a user, I can search for car modification details using keywords, helping me find specific customization ideas or upgrade solutions shared by fellow enthusiasts.
-- **Infinite Scroll:**
-
-  - As a user, I can keep scrolling through modification details, with content loading automatically, ensuring a seamless browsing experience without the need to navigate to the next page
 
   ### Agile Project Planning Process:
 
@@ -212,3 +201,55 @@ The platform not only fulfills the existing demand for learning and interactive 
 - Implement process improvements and adopt best practices to enhance team productivity and product quality.
 
 To provide real-time feedback to users notifying them of any changes they make to their data I used React's ['NotificationContainer' component](https://www.npmjs.com/package/react-notifications).
+
+#### 10. ** Process:**
+
+Jira kanban board was used for structure.
+
+To achieve the site goals outlined in the User Stories section above, the development process was divided into sprints with three categories using the MoSCoW method. This helped prioritize the implementation of features based on their importance.
+
+- Must have:
+
+  - User Authentication: Users can create an account, sign in, and sign out.
+  - User Profiles: CRUD functionality for users to personalize their presence on the website through profile pages.
+  - Feed/Landing Page: Users can view a list of issues.
+  - Users can create and update issues as they like.
+  - Comments: Users can view & comment to a specific issue, without compromising the simplicity of the feed.
+  - Searchbar: Users can search for specific types of issues, to allow them to find a solution to their problem.
+  - Alert messages when users are creating/making critical actions
+  - Readme
+  - Test-cases
+
+- Should Have:
+
+  - Solved/NotSolved: Issue owner can mark the issue as solved, and hence drop the importance of the issue.
+  - Infinite scroll.
+
+- Could Have:
+
+  - Bumps/Likes to the Issue element: Give the User an opportunity to track issues they might have interest in.
+  - List-Filter method: Provide users a neat headline overlook.
+  - Media library/gallery in the issue module: Allow users to add multiple pictures, to better provide a understanding of problems.
+  - Comment
+
+- Wont Have
+  - Seperate API containing a VIN-Number Library
+  - Mediafiles, videoupload: Provide users an opportunity to upload videos and
+
+### Features:
+
+- Alot of thought about features had to be cut due to an excessive amount of trouble fetching API information. This caused the timespan of the project to really slip, and therefore compromise the functionality of the site.
+
+- React Library’s provided a list of reusable components. Functionality was provided by CI - Moments tutorial .
+
+  - Asset.js
+  - Avatar.js
+  - MoreDropDown.js
+  - Navbar.js
+  - NotFound.js
+
+### Future Features: 
+
+ - This project would love a wider functionality. Perhaps this would be in the kind of a seperate model, allowing users to add their online vehicle inventory. This inventory giving the user a credential part of the troubleshooting in the feed. 
+ 
+ - 
