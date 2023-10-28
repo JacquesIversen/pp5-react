@@ -238,16 +238,31 @@ To achieve the site goals outlined in the User Stories section above, the develo
   - Seperate API containing a VIN-Number Library
   - Mediafiles, videoupload: Provide users an opportunity to upload videos and
 
-## Design: 
-The purpose of the design was to create a totally independent layout than teached in the CI-Moments module. All new files are therefore not containing any boilerplate code: 
+## Design:
 
-Its thought for the project to follow same structure backend as the moments project, but a more interesting color scheme in the design. 
+The purpose of the design was to create a totally independent layout than teached in the CI-Moments module. All new files are therefore not containing any boilerplate code:
 
-Using React Bootstrap classes as the main functionality to provide reponsiveness, if not entirely achievable. mediascreen is added in a linked .module.css file. 
+Its thought for the project to follow same structure backend as the moments project, but a more interesting color scheme in the design.
 
-**UI Design** 
-Giving this project follows a facebook/twitter principle its important for the 
+Using React Bootstrap classes as the main functionality to provide reponsiveness, if not entirely achievable. mediascreen is added in a linked .module.css file.
 
+**UI Design**
+Giving this project follows a facebook/twitter principle its important for the design to not wander away from the landingpage simplicity.
+
+- Interactiveness: Providing icons, buttons and hovering effects to the interface.
+
+**Colorscheme:**
+
+Background-colors:
+
+- #f8f8f8
+- #ff7e5f
+- #30e0e0
+- #f8f9fa
+
+Text colors will differ in contrast to background and buttons, between white and black. 
+
+Containers/boxes uses somewhat similar shadow and border/radius principles with very few differences. 
 
 ### Features:
 
