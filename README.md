@@ -219,11 +219,13 @@ To achieve the site goals outlined in the User Stories section above, the develo
   - Alert messages when users are creating/making critical actions
   - Readme
   - Test-cases
+  - Provide feed with realistic userissues, comments and likes:
 
 - Should Have:
 
   - Solved/NotSolved: Issue owner can mark the issue as solved, and hence drop the importance of the issue.
   - Infinite scroll.
+  - Interactiveness: Give the user an impression of an avtive (living site)
 
 - Could Have:
 
@@ -235,6 +237,17 @@ To achieve the site goals outlined in the User Stories section above, the develo
 - Wont Have
   - Seperate API containing a VIN-Number Library
   - Mediafiles, videoupload: Provide users an opportunity to upload videos and
+
+## Design: 
+The purpose of the design was to create a totally independent layout than teached in the CI-Moments module. All new files are therefore not containing any boilerplate code: 
+
+Its thought for the project to follow same structure backend as the moments project, but a more interesting color scheme in the design. 
+
+Using React Bootstrap classes as the main functionality to provide reponsiveness, if not entirely achievable. mediascreen is added in a linked .module.css file. 
+
+**UI Design** 
+Giving this project follows a facebook/twitter principle its important for the 
+
 
 ### Features:
 
@@ -248,8 +261,95 @@ To achieve the site goals outlined in the User Stories section above, the develo
   - Navbar.js
   - NotFound.js
 
-### Future Features: 
+### Future Features:
 
- - This project would love a wider functionality. Perhaps this would be in the kind of a seperate model, allowing users to add their online vehicle inventory. This inventory giving the user a credential part of the troubleshooting in the feed. 
- 
- - 
+- This project would love a wider functionality. Perhaps this would be in the kind of a seperate model, allowing users to add their online vehicle inventory. This inventory giving the user a credential part of the troubleshooting in the feed.
+
+- Adding a spareparts API/Shop, to allow users to provide insite links to parts who've helped their issue:
+
+- Implement all Could haves:
+
+## Testing
+
+- Manual Testing:
+
+  Manual testing of every feature, component and page was conducted on an ongoing basis throughout development. All test cases performed as intended and passed. The most important of these, regarding users being able to Create, Read, Update and Delete data, included:
+
+  Overlays
+  Tooltips
+  forms
+  search bars
+  links
+  dropdown menus
+  redirects
+  authentication
+  ownership
+  toggles
+  buttons
+  uploading images
+
+Test file here: (LInk)
+
+Tools for testing:
+
+- Chrome Devtools:
+- Blackbox
+
+## Deployment
+
+Heroku was used to deploy this project by the following these steps:
+
+- Create or log in to your account on Heroku.com
+- Click "New" and select "Create new app", then add a unique app name and choose your region
+- Click on create app
+- Push your changes to GitHub
+- Push the code to Heroku using the command git push Heroku main
+- Log in to heroku.com and open the dashboard for your React application (this is separate from the Django Rest Framework application that runs the API). In settings, make sure that the 'Config Vars' match the env.py file and that DEBUG and DEVELOPMENT are set correctly.
+- Before Selecting the “Deploy” tab in the dashboard, add 'Python' to the 'buildpack' if not already present.
+- Connect to Github, the relevant repository and choose the correct branch before clicking on “Deploy Branch”
+- When you see the message “deployed to Heroku” in the build log, click the “open app” button at the top of the page.
+
+## Technologies used
+
+#### Languages
+
+- HTML/JSX
+- CSS
+- JavaScript
+- Libraries, frameworks and dependencies
+
+- React was the core library used for building this website.
+
+- React Router handled the navigation between views and components.
+
+- React Infinite Scroll was used for to load content as the user scrolls down the page.
+
+- Axios is used here to make the HTTP requests and handle data fetching.
+
+- React Bootstrap provided the pre-built UI components described above.
+
+- Font Awesome allowed me to use scalable vector icons which add value to the UX.
+
+- Cloudinary is the cloud-based image and video management platform used.
+
+- VS-Code / GitPod
+
+- Github
+
+- ElephantSql
+
+- Heroku
+
+Credits:
+
+- CI, Moments and drf-api walkthrough projects
+- W3School
+- Youtube Creators:
+
+  - Adrian Twarog:
+  - Keep Coding
+  - UIBrains Technoligies
+  - Programming with Mosh
+  - WebDevSimplefied
+
+- My girlfriend for providing me a sharp and informative practical Agile process understanding. And for helping me setting up, using and trusting a Jira-Board.
