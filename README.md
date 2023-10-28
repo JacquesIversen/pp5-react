@@ -1,8 +1,6 @@
-# **Car Solution Army**
+# **[Car Solution Army](https://pp5-react-3a1a7789b87e.herokuapp.com/)**
 
-**[CSA](https://pp5-react-3a1a7789b87e.herokuapp.com/)** was developed and submitted as the fifth and final Portfolio Project as part of the Advanced Frontend specialization for Code Institute's Diploma in full-stack software development.
-
-# **Car Solution Army**
+**CSA** was developed and submitted as the fifth and final Portfolio Project as part of the Advanced Frontend specialization for Code Institute's Diploma in full-stack software development.
 
 This project marks the introduction of a diverse range of features and functionalities designed to enrich the experience of users passionate about DIY car maintenance, inspired by my previous work with similar blogs, sites and tutorials. CSA is a virtual hub tailored for a vibrant community of DIY car enthusiasts, specifically those dedicated to resolving issues and sharing knowledge about various car models and repair techniques.
 
@@ -15,6 +13,8 @@ The platform not only fulfills the existing demand for learning and interactive 
 - View the backend repository on Github **[Here](https://github.com/JacquesIversen/api-rest-for-final-pp5)**.
 
 ## Contents
+
+-
 
 - **[User Stories](#user-stories)**
 
@@ -35,6 +35,75 @@ The platform not only fulfills the existing demand for learning and interactive 
 - **[Credits](#credits)**
 
 ### User Stories for Car Community Sharing Platform:
+
+### [Epics](#epics)
+
+- Epic 1: Basic Setup
+  - Make sure react is installed landing page is successfull.
+  - Mapping directory, and creating folders, files etc.
+  - Installing Packages to withhold thought design.
+
+---
+
+- Epic 2: Creating users and Admin.
+  - Reacing DrfAuth installation
+  - Reaching Superuser
+  - Testing Api is responding
+  - Creating MockUsers
+
+---
+
+- Epic 3: Creating Content/Issues
+  - Displaying admin created content
+  - Displaying User created content
+  - CRUD functionality on Content.
+  - Bug solvering
+
+---
+
+- Epic 4: Creating Comments
+  - Displaying admin created Comments
+  - Displaying User created Comments
+  - Creating front-end design for the user
+  - Creating User content
+  - CRUD functions
+
+---
+
+- Epic 5: Creating Likes/unlike for Comments
+  - Display admin created likes and unlikes
+  - Display user created likes and unlikes
+  - Bug solvering
+  - CRUD Functions
+
+---
+
+- Epic 6: Designing user profile:
+  - Fetching, and displaying user profile
+  - CRUD Functions
+  - Avatar reassuring in used placements
+
+---
+
+- Epic 7: Testing:
+  - Manual Testing
+  - Testing Documentation
+  - Readme
+
+---
+
+- Epic 8: Deployment and Documentation
+  - Deployment
+  - Documentation
+
+---
+
+- Epic 9: Testing:
+  - Manual Testing
+  - Testing Documentation
+  - Bug fixes
+
+---
 
 #### **Navigation:**
 
@@ -125,89 +194,6 @@ The platform not only fulfills the existing demand for learning and interactive 
 
   - As a user, I can keep scrolling through repair details, with content loading automatically, ensuring a seamless browsing experience without the need to navigate to the next page.
 
-  ### Agile Project Planning Process:
-
-#### 1. **Project Vision and Scope:**
-
-- Define the project vision, objectives, and scope.
-- Identify key stakeholders and gather their input.
-
-#### 2. **Create a Product Backlog:**
-
-- Develop a prioritized list of features, enhancements, and tasks.
-- Prioritize items based on business value, customer needs, and dependencies.
-
-#### 3. **Sprint Planning:**
-
-- **Backlog Refinement:**
-  - Review and refine the items in the product backlog.
-  - Break down large tasks into smaller, manageable user stories.
-- **Sprint Planning Meeting:**
-  - Select a subset of high-priority items from the product backlog for the upcoming sprint.
-  - Define the sprint goal and success criteria.
-  - Team collaboratively estimates the effort required for each user story (using story points or other estimation techniques).
-  - Commit to the sprint backlog (items to be completed during the sprint).
-
-#### 4. **Sprint Execution:**
-
-- **Daily Stand-up Meetings:**
-  - Team members share progress, challenges, and plans for the day.
-  - Discuss impediments and work together to resolve them.
-- **Development and Testing:**
-  - Developers work on implementing user stories.
-  - Testers perform continuous testing, including unit tests, integration tests, and user acceptance tests.
-  - Apply Test-Driven Development (TDD) practices if applicable.
-- **Collaboration and Communication:**
-  - Regular communication within the team and with stakeholders.
-  - Foster a collaborative environment to encourage problem-solving and knowledge sharing.
-
-#### 5. **Incremental Development:**
-
-- Deliver incremental, potentially shippable product increments at the end of each sprint.
-- Gather feedback from stakeholders and end-users after each sprint review.
-- Iterate and make necessary adjustments based on feedback received.
-
-#### 6. **Sprint Review and Retrospective:**
-
-- **Sprint Review:**
-  - Demo the completed user stories to stakeholders.
-  - Collect feedback and review the sprint goals.
-- **Sprint Retrospective:**
-  - Reflect on the sprint process and team dynamics.
-  - Identify what went well and areas for improvement.
-  - Discuss actionable items to enhance team performance in the next sprint.
-
-#### 7. **Repeat:**
-
-- Conduct subsequent sprints, each typically lasting 1-4 weeks.
-- Continuously refine the product backlog based on changing priorities and customer feedback.
-- Adapt plans and strategies based on lessons learned from previous sprints.
-
-#### 8. **Release Planning (Optional):**
-
-- Plan releases based on the completed increments and overall project goals.
-- Determine release dates, feature sets, and any necessary preparations for deployment.
-
-#### 9. **Monitoring and Metrics:**
-
-- Track key metrics such as velocity, sprint burndown, and customer satisfaction.
-- Use metrics to analyze team performance and project progress.
-- Make data-driven decisions to optimize the team's workflow and delivery process.
-
-#### 10. **Continuous Improvement:**
-
-- Foster a culture of continuous improvement.
-- Encourage open communication, knowledge sharing, and cross-functional collaboration.
-- Implement process improvements and adopt best practices to enhance team productivity and product quality.
-
-To provide real-time feedback to users notifying them of any changes they make to their data I used React's ['NotificationContainer' component](https://www.npmjs.com/package/react-notifications).
-
-#### 10. ** Process:**
-
-Jira kanban board was used for structure.
-
-To achieve the site goals outlined in the User Stories section above, the development process was divided into sprints with three categories using the MoSCoW method. This helped prioritize the implementation of features based on their importance.
-
 - Must have:
 
   - User Authentication: Users can create an account, sign in, and sign out.
@@ -251,7 +237,11 @@ Giving this project follows a facebook/twitter principle its important for the d
 
 - Interactiveness: Providing icons, buttons and hovering effects to the interface.
 
-**Colorscheme:**
+### [Typography](#typography)
+This project utilizes the following fonts:
+ - Days One: This font is used across the application for general text. It can be found at 
+ - Google Fonts.
+Kdam Thmor Pro: This font is also used across the application. It can be found at Google Fonts.
 
 Background-colors:
 
@@ -260,9 +250,11 @@ Background-colors:
 - #30e0e0
 - #f8f9fa
 
-Text colors will differ in contrast to background and buttons, between white and black. 
+Text colors will differ in contrast to background and buttons, between white and black.
 
-Containers/boxes uses somewhat similar shadow and border/radius principles with very few differences. 
+Containers/boxes uses somewhat similar shadow and border/radius principles with very few differences.
+
+
 
 ### Features:
 
