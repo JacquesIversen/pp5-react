@@ -20,26 +20,12 @@
 6. Navbar is responsive == pass
 7. BurgerMenu should contain all links, all working (not logged in) == pass
 8. BurgerMenu should contain all links, all working (logged in) == pass
-9. Burger should close when clicked outside, moredropdown.js == Fail
+9. Burger should close when clicked outside, UseClickOutside == pass
 
 **Expected Result:**
 The `NavBar` component should render with a visible navbar logo.
 Links should take you to designated destination.
 Dropdown functionality linked from moreDropdown.js appied.
-
-**Result:** Passed
-
-## NotFound Component Test Cases
-
-**Test Case Description:** Verify that the `NotFound` component renders correctly.
-
-**Test Steps:**
-
-1. Render the `NotFound` component.
-2. Check if the "Not Found" image and message are displayed.
-
-**Expected Result:**
-The `NotFound` component should render with a visible "Not Found" image and message.
 
 **Result:** Passed
 

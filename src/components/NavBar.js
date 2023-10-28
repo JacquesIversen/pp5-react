@@ -4,20 +4,26 @@ import styles from "../styles/NavBar.module.css";
 import logo from "../Assets/logo.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useAuth } from "../contexts/CurrentUserContext";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
   const { currentUser, logout } = useAuth();
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   console.log(currentUser);
   return (
-    <Navbar className={`${styles.navbar} `} expand="lg">
+    <Navbar className={`${styles.navbar} `} expand="lg" expanded={expanded}>
       <Container className="">
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             <NavLink

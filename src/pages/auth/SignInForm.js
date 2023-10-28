@@ -16,10 +16,19 @@ function SignInForm() {
   const { login } = useAuth();
   const { username, password } = signInData;
 
-  const [errors /* setErrors */] = useState({});
+  const [errors, setErrors] = useState({});
+
+  /*   const handleSubmit = async (event) => {
+    await login(event, signInData);
+  }; */
 
   const handleSubmit = async (event) => {
-    await login(event, signInData);
+    event.preventDefault();
+    try {
+      await login(event, signInData);
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
   };
 
   const handleChange = (event) => {
@@ -44,12 +53,13 @@ function SignInForm() {
             onChange={handleChange}
             className={`${styles.Input} mb-2`}
           />
-          {errors.username?.map((message, idx) => (
-            <Alert key={idx} variant="warning">
-              {message}
-            </Alert>
-          ))}
         </Form.Group>
+        {errors.username?.map((message, idx) => (
+          <Alert key={idx} variant="warning">
+            {message}
+          </Alert>
+        ))}
+
         <Form.Group controlId="password">
           <Form.Control
             type="password"
@@ -59,12 +69,13 @@ function SignInForm() {
             onChange={handleChange}
             className={`${styles.Input} mb-2`}
           />
-          {errors.password?.map((message, idx) => (
-            <Alert key={idx} variant="warning">
-              {message}
-            </Alert>
-          ))}
         </Form.Group>
+        {errors.password?.map((message, idx) => (
+          <Alert key={idx} variant="warning">
+            {message}
+          </Alert>
+        ))}
+
         <Button type="submit" className={`${styles.Button} mb-3`}>
           Sign in
         </Button>
