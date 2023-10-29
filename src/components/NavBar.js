@@ -10,7 +10,6 @@ const NavBar = () => {
   const { currentUser, logout } = useAuth();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
-  console.log(currentUser);
   return (
     <Navbar className={`${styles.navbar} `} expand="lg" expanded={expanded}>
       <Container className="">

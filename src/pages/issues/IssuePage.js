@@ -17,6 +17,7 @@ function IssuePage() {
   const currentUser = useAuth();
   const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
+  const [commentKey, setCommentKey] = useState(0);
 
   useEffect(() => {
     const getIssue = async () => {
@@ -30,7 +31,11 @@ function IssuePage() {
       } catch (err) {}
     };
     getIssue();
-  }, [id]);
+  }, [id, commentKey]);
+
+  useEffect(() => {
+    setCommentKey((prevKey) => prevKey + 1);
+  }, [comments]);
 
   return (
     <Container>

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import styles from "../../styles/AuthForm.module.css";
-import Form from "react-bootstrap/Form";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
+import { Alert, Button, Container, Form } from "react-bootstrap";
 
 function SignInForm() {
   const [signInData, setSignInData] = useState({

@@ -25,6 +25,13 @@ width: 100%;
 transition: border-color 0.3s ease;
 }
 
+.image {
+max-height: 40vh;
+max-width: 100%;
+object-fit: cover;
+}
+
+
 .form-group input:focus,
 .form-group textarea:focus {
 border-color: #007bff;

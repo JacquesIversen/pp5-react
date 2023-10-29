@@ -43,12 +43,13 @@ Dropdown functionality linked from moreDropdown.js appied.
   3.  Click the "Sign In" button, user is signed in. == pass
   4.  Enter a valid username and password. == pass
   5.  Click the "Sign In" button, user is not signed in. == pass
-  6.  Sending empty data in form, should return an error message == Fail
-  7.  Giving wrongfull information should cause error == Fail
+  6.  Sending empty data in form, should return an error message == Fail // Alert not functioning.
+  7.  Giving wrongfull information should cause error == Fail // Alert not functioning.
   8.  Link for signup working == pass
   9.  Navbar is rendered correctly == pass
   10. Page is responsive == pass
   11. When signed in, user is sent to feed page == pass
+  12. NotificationMessages not functioning on either page:
 
 - **Expected Results:**
   - User is successfully signed in and redirected to the expected page.
@@ -76,6 +77,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   9.  Promting an existing username will result in error == pass
   10. Typing a password less than 8 characters results in error == pass
   11. Typing different password in form will cause an error == pass
+  12. NotificationMessages not functioning on either page:
 
 - **Expected Results:**
   - User is successfully created and redirected to the signin page.
@@ -98,9 +100,9 @@ Dropdown functionality linked from moreDropdown.js appied.
   4.  All form inputs are able to be prompted == pass
   5.  When uploading picture, picture appear == pass
   6.  Availability to change issue picture == pass
-  7.  Share button will immediately give feedback to the user == fail
+  7.  Share button will immediately give feedback to the user == fail // Alert not working
   8.  When shared, issue is posted and user directed to issuepage == pass
-  9.  Sending empty form will cause error, and not post content == fail
+  9.  Sending empty form will cause error, and not post content == fail // Alert not working
   10. Sending default picture will cause error, and not post content == pass
   11. Input placeholder text is displayed == pass
   12. Navbar is rendered correctly == pass
@@ -131,7 +133,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   7.  Cancel redirects to earlier page == pass
   8.  Save changes put/post new information/picture to the Issue == pass
   9.  Navbar is rendered correctly == pass
-  10. Page is responsive == fail Form will appear twice in small screen, img is not centered.
+  10. Page is responsive == pass
 
 - **Expected Results:**
   - User has successfully edited an issue, which is posted to the API.
@@ -152,8 +154,8 @@ Dropdown functionality linked from moreDropdown.js appied.
   2.  Issues are displaeyd in a single column design == pass
   3.  Date, and total amount of comments are displayed == pass
   4.  Searchbar displayed in top == pass
-  5.  Searchbar following user placement in feed == fail stays at top.
-  6.  Searchbar not found results in notfound message == fail
+  5.  Searchbar following user placement in feed == pass
+  6.  Searchbar not found results in notfound message == fail // Not found crashes site:
   7.  Navbar is rendered correctly == pass
   8.  Page is responsive == pass
 
@@ -174,13 +176,13 @@ Dropdown functionality linked from moreDropdown.js appied.
 - **Test Steps:**
 
   1.  Navigate to the IssuePage as a logged in user == pass
-  2.  Navigate to the IssuePage as a static user == fail
+  2.  Navigate to the IssuePage as a static user == fail // Important!
   3.  Issue is displayed in card format, with listing date and (functional)commentcounter == pass
   4.  Issue has describtion in the bottom in full length == pass
   5.  3 Dots shows only if owner of issue == pass
   6.  3 Dots edit link takes you to EditIssue == pass
   7.  3 Dots Delete, deletes issue == pass
-  8.  3 Dots Delete, confirmation alert apearing == Fail
+  8.  3 Dots Delete, confirmation alert apearing == Fail // Alert error
   9.  IssueDescription: Vehicle description is displayed in right side == pass
   10. IssueDescription: Owner Biography and Avatar is displayed in right side == Fail
   11. CreateComment: Create comment module is Rendered == Pass
@@ -189,7 +191,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   14. CreateComment: created with blank should result in displayed error == fail
   15. CreateComment: create a comment (not logged in) should guide you to login == fail
   16. Comment: Comments should appear stacked, and GET all comments realted to issue == pass
-  17. Comment: Comments should filter with newest ascending == fail
+  17. Comment: Comments should filter with newest ascending == fail // Change in PP5_api
   18. Comment: Comments should contain avatar, creation datetime == pass
   19. Comment: Comments should contain message/content == pass
   20. Comment/Like: Should display 2 waving hands on own comments == pass
@@ -233,7 +235,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   12. EditComment: User can retrieve current comment and edit == fail
   13. EditComment: When edit is submitted, comment content is changed and rerendered == fail
   14. Comments should appear stacked, and GET all comments realted to issue == pass
-  15. Comments should filter with newest ascending == fail
+  15. Comments should filter with newest ascending == fail // pp5 API issue (-created at)
   16. Comments should contain avatar, creation datetime == pass
   17. Comments should contain message/content == pass
   18. Comment/Like: Should display 2 waving hands on own comments == pass

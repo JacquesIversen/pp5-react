@@ -1,10 +1,8 @@
 import React, { useState, useRef } from "react";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
 import styles from "../../styles/CreateIssue.module.css";
 import Asset from "../../components/Asset";
 import UploadIssue from "../../Assets/TiredAsIAm.png";
-import { Alert, Image } from "react-bootstrap";
+import { Alert, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -84,7 +82,7 @@ function CreateIssue() {
         </Alert>
       ))}
 
-      <div className={styles.formLabel}>Car</div>
+      <div className={styles.formLabel}>Manufacture</div>
       <input
         type="text"
         name="car"
@@ -170,48 +168,56 @@ function CreateIssue() {
 
   return (
     <Form onSubmit={handleSubmit} className={styles.form}>
-      <Container fluid className={`${styles.container}`}>
-        <Form.Group className="text-center">
-          {image ? (
-            <>
-              <figure>
-                <Image className={styles.Image} src={image} rounded />
-              </figure>
-              <div>
+      <Row>
+        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+          <Container className={`${styles.container}`}>
+            <Form.Group className="text-center">
+              {image ? (
+                <>
+                  <figure>
+                    <Image className={styles.image} src={image} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${styles.formButton} btn`}
+                      htmlFor="image-upload"
+                    >
+                      Change Image
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
                 <Form.Label
-                  className={`${styles.formButton} btn`}
+                  className="d-flex justify-content-center"
                   htmlFor="image-upload"
                 >
-                  Change Image
+                  <Asset
+                    src={UploadIssue}
+                    message="Tap the tired man, to upload your own picture"
+                  />
                 </Form.Label>
-              </div>
-            </>
-          ) : (
-            <Form.Label
-              className="d-flex justify-content-center"
-              htmlFor="image-upload"
-            >
-              <Asset
-                src={UploadIssue}
-                message="Tap the tired man, to upload your own picture"
-              />
-            </Form.Label>
-          )}
+              )}
 
-          <Form.File
-            id="image-upload"
-            accept="image/*"
-            onChange={handleChangeImage}
-            ref={imageInput}
-          />
-        </Form.Group>
-        {errors?.image?.map((message, idx) => (
-          <Alert variant="warning" key={idx}>
-            {message}
-          </Alert>
-        ))}
-        <div>{textFields}</div>
-      </Container>
+              <Form.File
+                id="image-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+                ref={imageInput}
+              />
+            </Form.Group>
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+          </Container>
+        </Col>
+        <Col>
+          <Container>
+            <div>{textFields}</div>
+          </Container>
+        </Col>
+      </Row>
     </Form>
   );
 }

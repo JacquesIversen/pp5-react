@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import styles from "../../styles/EditIssue.module.css";
-import { Image } from "react-bootstrap";
+import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -151,25 +148,30 @@ function EditForm() {
 
   return (
     <Form onSubmit={handleSubmit} className={styles.form}>
-      <Container fluid className={styles.container}>
-        <Form.Group className="text-center">
-          <figure>
-            <Image src={image} />
-          </figure>
-          <div>
-            <Form.Label htmlFor="image-upload">Change Image</Form.Label>
-          </div>
+      <Row>
+        <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+          <Container className={styles.container}>
+            <Form.Group className="text-center">
+              <figure>
+                <Image src={image} className={styles.image} rounded />
+              </figure>
+              <div>
+                <Form.Label htmlFor="image-upload">Change Image</Form.Label>
+              </div>
 
-          <Form.File
-            id="image-upload"
-            accept="image/*"
-            onChange={handleChangeImage}
-            ref={imageInput}
-          />
-        </Form.Group>
-        <div className="d-md-none">{textFields}</div>
-      </Container>
-      <Container>{textFields}</Container>
+              <Form.File
+                id="image-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+                ref={imageInput}
+              />
+            </Form.Group>
+          </Container>
+        </Col>
+        <Col>
+          <Container>{textFields}</Container>
+        </Col>
+      </Row>
     </Form>
   );
 }

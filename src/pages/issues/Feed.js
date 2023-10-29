@@ -7,6 +7,7 @@ import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
+import styles from "../../styles/Feed.module.css";
 
 function Feed(message) {
   const [issue, setIssue] = useState({ results: [] });
@@ -27,7 +28,7 @@ function Feed(message) {
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchIssue();
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearTimeout(timer);
@@ -37,13 +38,16 @@ function Feed(message) {
   return (
     <Container>
       <br />
-      <Form onSubmit={(event) => event.preventDefault()}>
-        <Form.Control
-          type="text"
-          placeholder="Search"
-          onChange={(event) => setQuery(event.target.value)}
-        />
-      </Form>
+      <Container className={styles.searchContainer}>
+        <Form onSubmit={(event) => event.preventDefault()}>
+          <Form.Control
+            type="text"
+            placeholder="Search"
+            onChange={(event) => setQuery(event.target.value)}
+            value={query}
+          />
+        </Form>
+      </Container>
       <br />
       {hasLoaded ? (
         <>

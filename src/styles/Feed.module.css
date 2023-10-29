@@ -1,0 +1,8 @@
+.searchContainer {
+position: sticky;
+top: 0;
+background-color: transparent;
+z-index: 100; 
+padding-bottom: 15px;
+padding-top: 15px;
+}
