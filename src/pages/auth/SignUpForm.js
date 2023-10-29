@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import axios from "axios";
@@ -30,6 +30,7 @@ const SignUpForm = () => {
       history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data);
+      console.log("From error signup");
     }
   };
 

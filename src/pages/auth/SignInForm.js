@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import styles from "../../styles/AuthForm.module.css";
+import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
-import { Alert, Button, Container, Form } from "react-bootstrap";
 
 function SignInForm() {
   const [signInData, setSignInData] = useState({
@@ -13,18 +16,14 @@ function SignInForm() {
   const { login } = useAuth();
   const { username, password } = signInData;
 
-  const [errors, setErrors] = useState({});
-
-  /*   const handleSubmit = async (event) => {
-    await login(event, signInData);
-  }; */
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      await login(event, signInData);
-    } catch (err) {
-      setErrors(err.response?.data);
+    //await login(event, signInData);x
+
+    const data = await login(event, signInData);
+    if (data.response.status === 400) {
+      setError("Login error");
     }
   };
 
@@ -50,13 +49,12 @@ function SignInForm() {
             onChange={handleChange}
             className={`${styles.Input} mb-2`}
           />
+          {/* {errors.username?.map((message, idx) => (
+            <Alert key={idx} variant="warning">
+              {message}
+            </Alert>
+          ))} */}
         </Form.Group>
-        {errors.username?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
-
         <Form.Group controlId="password">
           <Form.Control
             type="password"
@@ -66,21 +64,21 @@ function SignInForm() {
             onChange={handleChange}
             className={`${styles.Input} mb-2`}
           />
+          {/* {errors.password?.map((message, idx) => (
+            <Alert key={idx} variant="warning">
+              {message}
+            </Alert>
+          ))} */}
         </Form.Group>
-        {errors.password?.map((message, idx) => (
-          <Alert key={idx} variant="warning">
-            {message}
-          </Alert>
-        ))}
-
         <Button type="submit" className={`${styles.Button} mb-3`}>
           Sign in
         </Button>
-        {errors.non_field_errors?.map((message, idx) => (
+        {/* {errors.non_field_errors?.map((message, idx) => (
           <Alert key={idx} variant="warning">
             {message}
           </Alert>
-        ))}
+        ))} */}
+        {error && <Alert variant="warning">{error}</Alert>}
         <Link to="/signup" className={styles.Link}>
           Don't have an account? <span>Sign up now!</span>
         </Link>

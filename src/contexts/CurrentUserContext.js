@@ -35,9 +35,10 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(data.user);
       console.log("from context");
       history.push("/");
+      return data;
     } catch (err) {
       setCurrentUser(null);
-      console.log("error from context");
+      return err;
     }
   };
 

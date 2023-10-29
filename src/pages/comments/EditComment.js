@@ -5,14 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 function CommentEditForm(props) {
-  const {
-    id,
-    content,
-    setShowEditForm,
-    setComments,
-    profileImage,
-    profile_id,
-  } = props;
+  const { id, content, setShowEditForm, setComments } = props;
   const [formContent, setFormContent] = useState(content);
 
   const handleChange = (event) => {

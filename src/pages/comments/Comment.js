@@ -17,9 +17,7 @@ const Comment = ({
   created_at,
   comment_area,
   id,
-  like_id,
   likes_count,
-  dislike_id,
   dislikes_count,
   likes,
   dislikes,
@@ -28,17 +26,15 @@ const Comment = ({
 }) => {
   const history = useHistory();
 
-  // console.log(comment_area)
-
   const [showEditForm, setShowEditForm] = useState(false);
   const { currentUser } = useAuth();
 
   const [commentError, setCommentError] = useState(null);
-  // check if user has liked this comment
+
   const [like, setLiked] = useState(
     likes?.find((like) => like.owner === currentUser?.username) ? true : false
   );
-  // check if user has disliked this comment
+
   const [dislike, setDisliked] = useState(
     dislikes?.find((dislike) => dislike.owner === currentUser?.username)
       ? true
@@ -46,9 +42,6 @@ const Comment = ({
   );
 
   const [is_owner, setIsOwner] = useState(owner === currentUser?.username);
-
-  //const is_owner = currentUser?.username === owner;
-  // const is_owner = false;
 
   const handleDelete = async () => {
     try {
