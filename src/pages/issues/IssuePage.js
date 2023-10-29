@@ -14,28 +14,23 @@ import Asset from "../../components/Asset";
 function IssuePage() {
   const { id } = useParams();
   const [issue, setIssue] = useState({ results: [] });
-  const currentUser = useAuth();
-  const profile_image = currentUser?.profile_image;
+  const { currentUser } = useAuth();
   const [comments, setComments] = useState({ results: [] });
-  const [commentKey, setCommentKey] = useState(0);
 
   useEffect(() => {
     const getIssue = async () => {
       try {
-        const [{ data: issue }, { data: comments }] = await Promise.all([
+        const [{ data: issue }, { data: cm }] = await Promise.all([
           axios.get(`/issue/${id}`),
           axios.get(`/comments/?issue=${id}`),
         ]);
         setIssue({ results: [issue] });
-        setComments(comments);
+        console.log(cm.results);
+        setComments({ results: cm.results });
       } catch (err) {}
     };
     getIssue();
-  }, [id, commentKey]);
-
-  useEffect(() => {
-    setCommentKey((prevKey) => prevKey + 1);
-  }, [comments]);
+  }, [id]);
 
   return (
     <Container>
@@ -54,7 +49,7 @@ function IssuePage() {
           {currentUser ? (
             <CommentCreateForm
               profile_id={currentUser.profile_id}
-              profileImage={profile_image}
+              profileImage={null}
               issue={id}
               setIssue={setIssue}
               setComments={setComments}
@@ -67,7 +62,18 @@ function IssuePage() {
               children={comments.results.map((comment) => (
                 <Comment
                   key={comment.id}
-                  {...comment}
+                  profile_id={comment.profile_id}
+                  profile_image={comment.profile_image}
+                  owner={comment.owner}
+                  created_at={comment.created_at}
+                  comment_area={comment.comment_area}
+                  id={comment.id}
+                  like_id={comment.like_id}
+                  likes_count={comment.likes_count}
+                  dislike_id={comment.dislike_id}
+                  dislikes_count={comment.dislikes_count}
+                  likes={comment.likes}
+                  dislikes={comment.dislikes}
                   setIssue={setIssue}
                   setComments={setComments}
                 />

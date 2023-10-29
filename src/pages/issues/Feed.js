@@ -24,15 +24,7 @@ function Feed(message) {
         setHasLoaded(true);
       } catch (err) {}
     };
-
-    setHasLoaded(false);
-    const timer = setTimeout(() => {
-      fetchIssue();
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    fetchIssue();
   }, [pathname, query]);
 
   return (
