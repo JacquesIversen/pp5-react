@@ -5,8 +5,15 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 function CommentEditForm(props) {
-  const { id, comment_area, setShowEditForm, setComments } = props;
-  const [formContent, setFormContent] = useState(comment_area);
+  const {
+    id,
+    content,
+    setShowEditForm,
+    setComments,
+    profileImage,
+    profile_id,
+  } = props;
+  const [formContent, setFormContent] = useState(content);
 
   const handleChange = (event) => {
     setFormContent(event.target.value);
@@ -15,17 +22,20 @@ function CommentEditForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`/comments/${id}/`, {
-        comment_area: formContent.trim(),
-        headers: { Authorization: "Bearer " + Cookies.get("access") },
-      });
+      await axios.put(
+        `/comments/${id}/`,
+        { comment_area: formContent.trim() },
+        {
+          headers: { Authorization: "Bearer " + Cookies.get("access") },
+        }
+      );
       setComments((prevComments) => ({
         ...prevComments,
         results: prevComments.results.map((comment) => {
           return comment.id === id
             ? {
                 ...comment,
-                content: formContent.trim(),
+                comment_area: formContent.trim(),
               }
             : comment;
         }),
@@ -49,7 +59,7 @@ function CommentEditForm(props) {
         <button onClick={() => setShowEditForm(false)} type="button">
           cancel
         </button>
-        <button disabled={!comment_area.trim()} type="submit">
+        <button disabled={!formContent.trim()} type="submit">
           save
         </button>
       </div>

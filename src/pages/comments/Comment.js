@@ -1,12 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  Card,
-  Col,
-  Media,
-  OverlayTrigger,
-  Row,
-  Tooltip,
-} from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Col, Media, Row } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import { useAuth } from "../../contexts/CurrentUserContext";
 import { DropdownComponent } from "../../components/Dropdown";
@@ -52,6 +45,8 @@ const Comment = ({
       : false
   );
 
+  const [is_owner, setIsOwner] = useState(owner === currentUser?.username);
+
   //const is_owner = currentUser?.username === owner;
   // const is_owner = false;
 
@@ -60,19 +55,19 @@ const Comment = ({
       await axios.delete(`/comments/${id}/`, {
         headers: { Authorization: "Bearer " + Cookies.get("access") },
       });
-      // setIssue((prevIssue) => ({
-      //   results: [
-      //     {
-      //       ...prevIssue.results[0],
-      //       comments_count: prevIssue.results[0].comments_count - 1,
-      //     },
-      //   ],
-      // }));
+      setIssue((prevIssue) => ({
+        results: [
+          {
+            ...prevIssue.results[0],
+            comments_count: prevIssue.results[0].comments_count - 1,
+          },
+        ],
+      }));
 
-      // setComments((prevComments) => ({
-      //   ...prevComments,
-      //   results: prevComments.results.filter((comment) => comment.id !== id),
-      // }));
+      setComments((prevComments) => ({
+        ...prevComments,
+        results: prevComments.results.filter((comment) => comment.id !== id),
+      }));
     } catch (err) {}
   };
 
@@ -261,12 +256,12 @@ const Comment = ({
               {owner}
             </span>
             <span>{created_at}</span>
-            {/* {is_owner && !showEditForm && (
+            {is_owner && (
               <DropdownComponent
                 handleEdit={() => setShowEditForm(true)}
                 handleDelete={handleDelete}
               />
-            )} */}
+            )}
           </div>
           {showEditForm ? (
             <CommentEditForm

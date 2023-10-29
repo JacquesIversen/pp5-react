@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
-import logo from "../Assets/logo.png";
+import logo from "../Assets/newweeer.png";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useAuth } from "../contexts/CurrentUserContext";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
@@ -15,7 +15,7 @@ const NavBar = () => {
       <Container className="">
         <NavLink to="/">
           <Navbar.Brand>
-            <img src={logo} alt="logo" height="45" />
+            <img src={logo} alt="logo" height="50" />
           </Navbar.Brand>
         </NavLink>
         <Navbar.Toggle
