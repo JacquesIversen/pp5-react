@@ -315,3 +315,15 @@ Dropdown functionality linked from moreDropdown.js appied.
   - Non logged in can only view content, but not post/delete any information inside the API.
   - Design responsive.
 - **Result:** Fail
+
+## W3C CSS Validator:
+
+# ![**CSS**](src/Assets/ReadMeFiles/Screen%20Shot%202023-10-30%20at%207.12.26%20PM.png)
+
+All .module.css files run without errors in Validator.
+
+## Testing react components:
+
+- Blackbox AI code optimizer.
+- Code runned through Blackbox to detect linter mistakes and unused hooks/params.
+- Prettier and NPM manager to detect faults & errors.

@@ -29,9 +29,6 @@ The platform not only fulfills the existing demand for learning and interactive 
 
 - **[Features](#features)**
 
-  - **[Main Features](#mainfeatures)**
-  - **[Features for the future](#features-for-the-future)**
-
 - **[Testing](#testing)**
 
 - **[Deployment](#deployment)**
@@ -204,6 +201,10 @@ The platform not only fulfills the existing demand for learning and interactive 
 
   - As a user, I can keep scrolling through repair details, with content loading automatically, ensuring a seamless browsing experience without the need to navigate to the next page.
 
+# ![**CSS**](src/Assets/ReadMeFiles/Jira.png)
+
+# ![**CSS**](src/Assets/ReadMeFiles/Jire.png)
+
 ### [MoSCoW](#moscow)
 
 - Must have:
@@ -307,6 +308,8 @@ This project utilizes the following fonts:
 - Google Fonts.
   Kdam Thmor Pro: This font is also used across the application. It can be found at Google Fonts.
 
+### [ColorScheme](#colorscheme)
+
 Background-colors:
 
 - #f8f8f8
@@ -318,7 +321,7 @@ Text colors will differ in contrast to background and buttons, between white and
 
 Containers/boxes uses somewhat similar shadow and border/radius principles with very few differences.
 
-### Features:
+### [Features](#features)
 
 - Alot of thought about features had to be cut due to an excessive amount of timeconsuming efforts. Alot of the couldhaves have been edited from shouldhaves due to the lack of hours left.
 
@@ -330,15 +333,13 @@ Containers/boxes uses somewhat similar shadow and border/radius principles with 
   - Navbar.js
   - NotFound.js
 
-### Future Features:
-
 - This project would love a wider functionality. Perhaps this would be in the kind of a seperate model, allowing users to add their online vehicle inventory. This inventory giving the user a credential part of the troubleshooting in the feed.
 
 - Adding a spareparts API/Shop, to allow users to provide insite links to parts who've helped their issue:
 
-- Implement all Could haves:
+- Implement all Could & should haves:
 
-## Testing
+## [Testing](#testing)
 
 - Manual Testing:
   The manuel testing has been excessive and part of both the 7th and 9th epic. With a total of 158 testcases, filtering fails and solving them 1/1 resulted in a better usability and a stronger testing foundation.
@@ -351,9 +352,11 @@ Tools for testing:
 - Chrome Devtools:
 - Blackbox
 - CHATGPT
+- Validate Javascript
+- CSS Validator
 -
 
-## Deployment
+## [Deployment](#deployment)
 
 Heroku was used to deploy this project by the following these steps:
 
@@ -367,7 +370,7 @@ Heroku was used to deploy this project by the following these steps:
 - Connect to Github, the relevant repository and choose the correct branch before clicking on “Deploy Branch”
 - When you see the message “deployed to Heroku” in the build log, click the “open app” button at the top of the page.
 
-## Technologies used
+## [Technologies used](#technologies-used)
 
 #### Languages
 
@@ -398,7 +401,7 @@ Heroku was used to deploy this project by the following these steps:
 
 - Heroku
 
-Credits:
+## [Credits](#credits)
 
 - CI, Moments and drf-api walkthrough projects
 - W3School
