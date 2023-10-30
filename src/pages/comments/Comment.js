@@ -107,7 +107,6 @@ const Comment = ({
         setLiked(true);
         setDisliked(false);
       } else {
-        console.log("dunno what to do");
       }
     } catch (error) {
       if (error.response.status === 401) {
@@ -127,7 +126,6 @@ const Comment = ({
         { comment: id },
         { headers: { Authorization: "Bearer " + Cookies.get("access") } }
       );
-      console.log(data);
       if (data.comment === null) {
         setComments((prevComments) => ({
           ...prevComments,
@@ -162,7 +160,6 @@ const Comment = ({
         setDisliked(true);
         setLiked(false);
       } else {
-        console.log("dunno what to do");
       }
     } catch (error) {
       if (error.response.status === 401) {
@@ -173,7 +170,6 @@ const Comment = ({
       ) {
         setCommentError("You cannot dislike your own comment.");
       }
-      console.log(error.response.data.detail);
     }
   };
 

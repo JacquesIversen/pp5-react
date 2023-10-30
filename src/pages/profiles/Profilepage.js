@@ -24,7 +24,6 @@ function ProfilePage() {
         });
         setProfileDataState(data);
       } catch (err) {
-        console.log(err.response.status);
         if (err.response.status === 401) {
           history.push("/signin");
         }
@@ -36,7 +35,6 @@ function ProfilePage() {
   }, [history]);
 
   const handleUpdateProfile = ({ name, image, biography }) => {
-    console.log(name, image, biography);
     const formData = new FormData();
     formData.append("name", name);
     formData.append("image", image);
@@ -46,13 +44,10 @@ function ProfilePage() {
         headers: { Authorization: `Bearer ${Cookies.get("access")}` },
       })
       .then((res) => {
-        console.log(res);
         setProfileDataState(res.data);
         setUpdateProfileM(false);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   return (

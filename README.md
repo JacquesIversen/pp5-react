@@ -2,7 +2,7 @@
 
 **CSA** was developed and submitted as the fifth and final Portfolio Project as part of the Advanced Frontend specialization for Code Institute's Diploma in full-stack software development.
 
-# ![**CSA**](src/Assets/ReadMeFiles/readmeamIResponsive.png)
+# ![**CSA**](src/Assets/ReadMeFiles/newreadme.png)
 
 This project marks the introduction of a diverse range of features and functionalities designed to enrich the experience of users passionate about DIY car maintenance, inspired by my previous work with similar blogs, sites and tutorials. CSA is a virtual hub tailored for a vibrant community of DIY car enthusiasts, specifically those dedicated to resolving issues and sharing knowledge about various car models and repair techniques.
 
@@ -350,11 +350,9 @@ Test file here: (LInk)
 Tools for testing:
 
 - Chrome Devtools:
-- Blackbox
-- CHATGPT
+- AI for validation
 - Validate Javascript
 - CSS Validator
--
 
 ## [Deployment](#deployment)
 

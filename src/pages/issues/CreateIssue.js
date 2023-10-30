@@ -214,10 +214,7 @@ function CreateIssue() {
                   className="d-flex justify-content-center"
                   htmlFor="image-upload"
                 >
-                  <Asset
-                    src={UploadIssue}
-                    message="Tap the tired man, to upload your own picture"
-                  />
+                  <Asset src={UploadIssue} message="Upload picture" />
                 </Form.Label>
               )}
 

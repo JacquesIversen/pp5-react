@@ -25,7 +25,7 @@ function IssuePage() {
           axios.get(`/comments/?issue=${id}`),
         ]);
         setIssue({ results: [issue] });
-        console.log(cm.results);
+
         setComments({ results: cm.results });
       } catch (err) {}
     };
