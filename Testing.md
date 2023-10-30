@@ -83,7 +83,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User is successfully created and redirected to the signin page.
   - Links all functioning and giving right endpoint.
   - Design responsive.
-- **Result:** Pass
+- **Result:** Fail
 
 ## Test Cases for `CreateIssue`
 
@@ -102,7 +102,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   6.  Availability to change issue picture == pass
   7.  Share button will immediately give feedback to the user == fail // Alert not working
   8.  When shared, issue is posted and user directed to issuepage == pass
-  9.  Sending empty form will cause error, and not post content == fail // Alert not working
+  9.  Sending empty form will cause error, and not post content == pass
   10. Sending default picture will cause error, and not post content == pass
   11. Input placeholder text is displayed == pass
   12. Navbar is rendered correctly == pass
@@ -125,21 +125,20 @@ Dropdown functionality linked from moreDropdown.js appied.
 - **Test Steps:**
 
   1.  Navigate to the Edit page from IssuePage == pass
-  2.  Only Owner can access Edit/id == fail
-  3.  Only Owner can change/put infomation Issue == pass
-  4.  Data and picture from current Issue appear == pass
-  5.  Picture can be changed, but not replaced with null == pass
-  6.  All form content will accept change == pass
-  7.  Cancel redirects to earlier page == pass
-  8.  Save changes put/post new information/picture to the Issue == pass
-  9.  Navbar is rendered correctly == pass
-  10. Page is responsive == pass
+  2.  Only Owner can change/put infomation Issue == pass
+  3.  Data and picture from current Issue appear == pass
+  4.  Picture can be changed, but not replaced with null == pass
+  5.  All form content will accept change == pass
+  6.  Cancel redirects to earlier page == pass
+  7.  Save changes put/post new information/picture to the Issue == pass
+  8.  Navbar is rendered correctly == pass
+  9.  Page is responsive == pass
 
 - **Expected Results:**
   - User has successfully edited an issue, which is posted to the API.
   - User cant erase and send empty data.
   - Design responsive.
-- **Result:** Fail
+- **Result:** Pass
 
 ## Test Cases for `Feed`
 
@@ -184,14 +183,14 @@ Dropdown functionality linked from moreDropdown.js appied.
   7.  3 Dots Delete, deletes issue == pass
   8.  3 Dots Delete, confirmation alert apearing == Fail // Alert error
   9.  IssueDescription: Vehicle description is displayed in right side == pass
-  10. IssueDescription: Owner Biography and Avatar is displayed in right side == Fail
+  10. IssueDescription: Owner Biography and Avatar is displayed in right side == Pass
   11. CreateComment: Create comment module is Rendered == Pass
   12. CreateComment: Create comment module creates comments when promted data == Pass
   13. CreateComment: When comment created, user is verified with alert == Fail
-  14. CreateComment: created with blank should result in displayed error == fail
-  15. CreateComment: create a comment (not logged in) should guide you to login == fail
+  14. CreateComment: created with blank should result in displayed error == Fail
+  15. CreateComment: create a comment (not logged in) not visible == Pass
   16. Comment: Comments should appear stacked, and GET all comments realted to issue == pass
-  17. Comment: Comments should filter with newest ascending == fail // Change in PP5_api
+  17. Comment: Comments should filter with newest ascending == pass
   18. Comment: Comments should contain avatar, creation datetime == pass
   19. Comment: Comments should contain message/content == pass
   20. Comment/Like: Should display 2 waving hands on own comments == pass
@@ -224,31 +223,30 @@ Dropdown functionality linked from moreDropdown.js appied.
   1. CreateComment: Create comment module is Rendered == Pass
   2. CreateComment: Create comment module creates comments when promted data == Pass
   3. CreateComment: When comment created, user is verified with alert == Fail
-  4. CreateComment: created with blank should result in displayed error == fail
-  5. CreateComment: created with blank should not post anything to the API == pass
-  6. CreateComment: (not logged in) share button should be a login link == fail
-  7. CreateComment: Provide user with feedback when posting a comment == fail
-  8. CreateComment: When shared, page is rendered to display posted comment == fail
-  9. Dropdown: Display only if owner of comment == pass
-  10. Dropdown: Edit start edit process == fail
-  11. Dropdown: Delete, deletes comment and renders page == pass
-  12. EditComment: User can retrieve current comment and edit == fail
-  13. EditComment: When edit is submitted, comment content is changed and rerendered == fail
-  14. Comments should appear stacked, and GET all comments realted to issue == pass
-  15. Comments should filter with newest ascending == fail // pp5 API issue (-created at)
-  16. Comments should contain avatar, creation datetime == pass
-  17. Comments should contain message/content == pass
-  18. Comment/Like: Should display 2 waving hands on own comments == pass
-  19. Comment/Like: Should display thumps up for like, and thumps down for dislikes == pass
-  20. Comment/Like: Not able to like, og dislike own comments == pass
-  21. Comment/Like: User able to like, og dislike others comments == pass
-  22. Comment/Like: (not logged in) NOT able to like, og dislike others comments == pass
-  23. Comment/Like: Alertmessage on icons to guide users == pass
-  24. Comment/Like: Cant like/unlike same post twice == pass
-  25. Comment/Like: User feedback when like/dislike pressed == fail - Refresh not rendering solid icon.
-  26. Comment/Like: Like- dislike counter functioning on-line with icons == pass
-  27. Navbar is rendered correctly == pass
-  28. Page is responsive == pass
+  4. CreateComment: created with blank should not post anything to the API == pass
+  5. CreateComment: (not logged in) create not visible. == pass
+  6. CreateComment: Provide user with feedback when posting a comment == fail
+  7. CreateComment: When shared, page is rendered to display posted comment == pass
+  8. Dropdown: Display only if owner of comment == pass
+  9. Dropdown: Edit start edit process == pass
+  10. Dropdown: Delete, deletes comment and renders page == pass
+  11. EditComment: User can retrieve current comment and edit == pass
+  12. EditComment: When edit is submitted, comment content is changed and rerendered == pass
+  13. Comments should appear stacked, and GET all comments realted to issue == pass
+  14. Comments should filter with newest ascending == pass
+  15. Comments should contain avatar, creation datetime == pass
+  16. Comments should contain message/content == pass
+  17. Comment/Like: Should display 2 waving hands on own comments == pass
+  18. Comment/Like: Should display thumps up for like, and thumps down for dislikes == pass
+  19. Comment/Like: Not able to like, og dislike own comments == pass
+  20. Comment/Like: User able to like, og dislike others comments == pass
+  21. Comment/Like: (not logged in) NOT able to like, og dislike others comments == pass
+  22. Comment/Like: Alertmessage on icons to guide users == pass
+  23. Comment/Like: Cant like/unlike same post twice == pass
+  24. Comment/Like: User feedback when like/dislike pressed == pass
+  25. Comment/Like: Like- dislike counter functioning on-line with icons == pass
+  26. Navbar is rendered correctly == pass
+  27. Page is responsive == pass
 
 - **Expected Results:**
   - Comment should be posted, put and deleted from API
@@ -269,17 +267,17 @@ Dropdown functionality linked from moreDropdown.js appied.
   2. (Owner) Message stating uable to like/dislike own comment == pass
   3. (Owner) Not able to like/dislike own comment == pass
   4. (Owner) Liking/disliking same like/dislike will result in a deletion == pass
-  5. (Owner) Liking/disliking same like/dislike will result in a deletion (refreshed page) == fail
+  5. (Owner) Liking/disliking same like/dislike will result in a deletion (refreshed page) == pass
   6. (User) Should display thumps up for like == pass
   7. (User) Should display thumps down for dislike == pass
   8. (User) Should be able to like, og dislike others comments == pass
   9. (User) Interactive icons upon hovering == pass
   10. (User) Interactive icons upon liking/disliking == pass
-  11. (User) Interactive icons upon liking/disliking (refresh) == fail
-  12. (NotLoggedIn) Should display thumps up for like == fail
-  13. (NotLoggedIn) Should display thumps down for dislike == fail
+  11. (User) Interactive icons upon liking/disliking (refresh) == pass
+  12. (NotLoggedIn) Should display thumps up for like == pass
+  13. (NotLoggedIn) Should display thumps down for dislike == pass
   14. (NotLoggedIn) NOT able to like, og dislike others comments == pass
-  15. Display amount of likes and dislikes, no matter what userstatus == fail
+  15. Display amount of likes and dislikes, no matter what userstatus == pass
   16. Navbar is rendered correctly == pass
   17. Page is responsive == pass
 
@@ -288,7 +286,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - All can view amount of like/unlikes
   - Non logged in can only view content, but not post/delete any information inside the API.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `Profile`
 
@@ -300,17 +298,16 @@ Dropdown functionality linked from moreDropdown.js appied.
 
 - **Test Steps:**
 
-  1. (Owner) Should display Comments & issues made by owner == fail
-  2. (Owner) Should display profile information provided by owner == fail
-  3. (Owner) Should display profile Avatar == fail
-  4. (Owner) Edit Links only visible to owner == fail
-  5. (Owner) Links are working to Comments, Issues and edit profile == fail
-  6. (User/NotLoggedIn) Should display Comments & issues made by profileowner == fail
-  7. (User/NotLoggedIn) Should display profile information provided by profileowner == fail
-  8. (User/NotLoggedIn) Should display profileowner Avatar == fail
-  9. (User/NotLoggedIn) direct links for Issues and comments made by profileowner == fail
-  10. Navbar is rendered correctly == pass
-  11. Page is responsive == pass
+  1. (Owner) Should display Comments & issues made by owner == pass
+  2. (Owner) Should display profile information provided by owner == pass
+  3. (Owner) Should display profile Avatar == pass
+  4. (Owner) Links are working to Comments, Issues and edit profile == fail
+  5. (User/NotLoggedIn) Should display Comments & issues made by profileowner == fail
+  6. (User/NotLoggedIn) Should display profile information provided by profileowner == fail
+  7. (User/NotLoggedIn) Should display profileowner Avatar == fail
+  8. (User/NotLoggedIn) direct links for Issues and comments made by profileowner == fail
+  9. Navbar is rendered correctly == pass
+  10. Page is responsive == pass
 
 - **Expected Results:**
   - Likes and Dislikes should be posted & deleted from API

@@ -75,6 +75,7 @@ function CreateIssue() {
         value={title}
         onChange={handleChange}
         className={styles.formInput}
+        required
       />
       {errors?.title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -82,7 +83,7 @@ function CreateIssue() {
         </Alert>
       ))}
 
-      <div className={styles.formLabel}>Manufacture</div>
+      <div className={styles.formLabel}>Manufacturer</div>
       <input
         type="text"
         name="car"
@@ -90,6 +91,7 @@ function CreateIssue() {
         value={car}
         onChange={handleChange}
         className={styles.formInput}
+        required
       />
       {errors?.car?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -105,6 +107,7 @@ function CreateIssue() {
         placeholder="ex. Astra"
         onChange={handleChange}
         className={styles.formInput}
+        required
       />
       {errors?.model?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -119,6 +122,7 @@ function CreateIssue() {
         value={year}
         placeholder="Production Year"
         onChange={handleChange}
+        required
         className={styles.formInput}
       />
       {errors?.year?.map((message, idx) => (
@@ -149,6 +153,7 @@ function CreateIssue() {
         value={description}
         placeholder="Be as precise when stating your problem, and be sure to include any solutions you might have tried already"
         onChange={handleChange}
+        required
         className={styles.formTextarea}
       />
       {errors?.description?.map((message, idx) => (

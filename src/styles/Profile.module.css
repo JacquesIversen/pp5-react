@@ -1,45 +1,49 @@
-.user-profile {
-max-width: 800px;
-margin: 0 auto;
-padding: 20px;
-}
 
-.profile-section {
-text-align: center;
-margin-bottom: 20px;
+.user-info {
+background-color: #f8f9fa;
+border-radius: 10px;
+padding: 20px;
+box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .profile-picture {
 width: 150px;
 height: 150px;
-border-radius: 50%;
 object-fit: cover;
-margin-bottom: 10px;
-}
-
-.user-info {
-text-align: center;
-margin-bottom: 30px;
-}
-
-.user-posts,
-.user-comments {
-margin-bottom: 40px;
-}
-
-ul {
-list-style: none;
-padding: 0;
-}
-
-li {
-margin-bottom: 10px;
-border-bottom: 1px solid #ccc;
-padding: 10px 0;
-}
-
-h1,
-h2 {
-text-align: center;
+border-radius: 50%;
 margin-bottom: 20px;
+}
+
+.update-profile-btn {
+background-color: #007bff;
+color: #fff;
+border: none;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.update-profile-btn:hover {
+background-color: #0056b3;
+}
+
+.issue-container {
+background-color: #f1f1f1;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 10px;
+}
+
+.issue-title {
+font-size: 18px;
+font-weight: bold;
+}
+
+.issue-date {
+font-size: 14px;
+color: #6c757d;
+}
+
+.linkStyle {
+    text-decoration: none;
+    color: #6c757d;
 }
