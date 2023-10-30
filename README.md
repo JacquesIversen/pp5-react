@@ -251,6 +251,8 @@ Giving this project follows a facebook/twitter principle its important for the d
 
 On the Landing page, users are met with a very simple objective, who need no explanation. Its very easy to understand the purpose of the site, when the content provided by the users are correct. A very simple Navbar gives you only 3 options, to either sign in, sign up or check the feed. Its decided to not have the navbar present with the user at all time.
 
+Logo was created to suit the theme of the page also:
+
 Logged In the Navbar will give you following options:
 
 - Feed
@@ -272,6 +274,7 @@ In the feed a searchbar will stay at the top, for users to use when needed. The 
 # ![**AuthForm**](src/Assets/ReadMeFiles/signup.png)
 
 Sign in & Sign Up forms follow same structure to present users a very simple experience. An enginebay background set the mood for how this site is supposed to be.
+Using the Signout option in the navbar when logged in will result in a redirect to the feedpage:
 
 ### My Profile
 
@@ -290,6 +293,11 @@ In this part of the site, users are required to furfill image, title, manufactur
 ### Issue Page
 
 # ![**AuthForm**](src/Assets/ReadMeFiles/IssuePost.png)
+
+Here Users will find all neccessary information regarding this post. They'll have the option to post a comment, like, or dislike a comment created by another user or access the posted owners profile.
+They will however not be able to like/dislike or comment, if they are not signed in.
+
+Should a user choose to dislike a comment they have already liked, the like will disappear and a dislike is added, avoiding the possibility for user to put both likes and dislikes to a comment.
 
 ### [Typography](#typography)
 
@@ -312,7 +320,7 @@ Containers/boxes uses somewhat similar shadow and border/radius principles with 
 
 ### Features:
 
-- Alot of thought about features had to be cut due to an excessive amount of trouble fetching API information. This caused the timespan of the project to really slip, and therefore compromise the functionality of the site.
+- Alot of thought about features had to be cut due to an excessive amount of timeconsuming efforts. Alot of the couldhaves have been edited from shouldhaves due to the lack of hours left.
 
 - React Library’s provided a list of reusable components. Functionality was provided by CI - Moments tutorial .
 
@@ -333,21 +341,8 @@ Containers/boxes uses somewhat similar shadow and border/radius principles with 
 ## Testing
 
 - Manual Testing:
-
-  Manual testing of every feature, component and page was conducted on an ongoing basis throughout development. All test cases performed as intended and passed. The most important of these, regarding users being able to Create, Read, Update and Delete data, included:
-
-  Overlays
-  Tooltips
-  forms
-  search bars
-  links
-  dropdown menus
-  redirects
-  authentication
-  ownership
-  toggles
-  buttons
-  uploading images
+  The manuel testing has been excessive and part of both the 7th and 9th epic. With a total of 158 testcases, filtering fails and solving them 1/1 resulted in a better usability and a stronger testing foundation.
+- Automated testing was only conducted in the backend of this project.
 
 Test file here: (LInk)
 
@@ -355,6 +350,8 @@ Tools for testing:
 
 - Chrome Devtools:
 - Blackbox
+- CHATGPT
+-
 
 ## Deployment
 
