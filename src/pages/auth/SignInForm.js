@@ -22,7 +22,7 @@ function SignInForm() {
     //await login(event, signInData);x
 
     const data = await login(event, signInData);
-    if (data.response.status === 400) {
+    if (!data.user) {
       setError("Login error");
     }
   };

@@ -86,9 +86,13 @@ function ProfilePage() {
               className={`user-posts bg-light p-4 mt-4 shadow ${styles.issueContainer}`}
             >
               <h2 className="mb-4">Find your latest issues posted:</h2>
-              {profileData?.issues?.map((issue) => {
+              {profileData?.issues?.map((issue, index) => {
                 return (
-                  <Link to={`/issue/${issue?.id}`} className={styles.linkStyle}>
+                  <Link
+                    to={`/issue/${issue?.id}`}
+                    className={styles.linkStyle}
+                    key={`issue-${index}`}
+                  >
                     <div
                       style={{
                         backgroundColor: "#f1f1f1",
@@ -110,11 +114,12 @@ function ProfilePage() {
               className={`user-comments bg-light p-4 mt-4 shadow ${styles.issueContainer}`}
             >
               <h2 className="mb-4">Comments you made recently:</h2>
-              {profileData?.comments?.map((comment) => {
+              {profileData?.comments?.map((comment, index) => {
                 return (
                   <Link
                     to={`/issue/${comment?.id}`}
                     className={styles.linkStyle}
+                    key={`comment-${index}`}
                   >
                     <div
                       style={{

@@ -3,13 +3,12 @@ import { Container, Form } from "react-bootstrap";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import axios from "axios";
 import Issue from "./Issue";
-import NoResultsYet from "../../Assets/NoPostBackground.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/Utils";
 import styles from "../../styles/Feed.module.css";
 
-function Feed(message) {
+function Feed() {
   const [issue, setIssue] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const [query, setQuery] = useState("");
@@ -20,6 +19,7 @@ function Feed(message) {
     const fetchIssue = async () => {
       try {
         const { data } = await axios.get(`/issue/?search=${query}`);
+        console.log(data);
         setIssue(data);
         setHasLoaded(true);
       } catch (err) {}
@@ -43,7 +43,7 @@ function Feed(message) {
       <br />
       {hasLoaded ? (
         <>
-          {issue.results.length ? (
+          {issue.count > 0 ? (
             <InfiniteScroll
               children={issue.results.map((issue) => (
                 <Issue key={issue.id} {...issue} setIssue={setIssue} />
@@ -55,7 +55,7 @@ function Feed(message) {
             />
           ) : (
             <Container>
-              <Asset src={NoResultsYet} message={message} />
+              <h3>No results try searching for something else:</h3>
             </Container>
           )}
         </>

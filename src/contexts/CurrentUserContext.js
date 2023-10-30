@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }) => {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       Cookies.set("access", data.access);
       setCurrentUser(data.user);
-      console.log("from context");
       history.push("/myprofile");
       return data;
     } catch (err) {

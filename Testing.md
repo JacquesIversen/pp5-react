@@ -43,8 +43,8 @@ Dropdown functionality linked from moreDropdown.js appied.
   3.  Click the "Sign In" button, user is signed in. == pass
   4.  Enter a valid username and password. == pass
   5.  Click the "Sign In" button, user is not signed in. == pass
-  6.  Sending empty data in form, should return an error message == Fail // Alert not functioning.
-  7.  Giving wrongfull information should cause error == Fail // Alert not functioning.
+  6.  Sending empty data in form, should return an error message == pass
+  7.  Giving wrongfull information should cause error == pass
   8.  Link for signup working == pass
   9.  Navbar is rendered correctly == pass
   10. Page is responsive == pass
@@ -55,7 +55,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User is successfully signed in and redirected to the expected page.
   - Links all functioning and giving right endpoint.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `SignUpForm`
 
@@ -83,7 +83,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User is successfully created and redirected to the signin page.
   - Links all functioning and giving right endpoint.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `CreateIssue`
 
@@ -100,7 +100,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   4.  All form inputs are able to be prompted == pass
   5.  When uploading picture, picture appear == pass
   6.  Availability to change issue picture == pass
-  7.  Share button will immediately give feedback to the user == fail // Alert not working
+  7.  Share button will immediately give feedback to the user == pass
   8.  When shared, issue is posted and user directed to issuepage == pass
   9.  Sending empty form will cause error, and not post content == pass
   10. Sending default picture will cause error, and not post content == pass
@@ -112,7 +112,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User has successfully created an issue, which is posted to the API.
   - User cant send empty data.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `EditIssue`
 
@@ -154,7 +154,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   3.  Date, and total amount of comments are displayed == pass
   4.  Searchbar displayed in top == pass
   5.  Searchbar following user placement in feed == pass
-  6.  Searchbar not found results in notfound message == fail // Not found crashes site:
+  6.  Searchbar not found results in notfound message == pass
   7.  Navbar is rendered correctly == pass
   8.  Page is responsive == pass
 
@@ -162,7 +162,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User has successfully created an issue, which is posted to the API.
   - User cant send empty data.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `IssuePage`
 
@@ -175,7 +175,7 @@ Dropdown functionality linked from moreDropdown.js appied.
 - **Test Steps:**
 
   1.  Navigate to the IssuePage as a logged in user == pass
-  2.  Navigate to the IssuePage as a static user == fail // Important!
+  2.  Navigate to the IssuePage as a static user == pass
   3.  Issue is displayed in card format, with listing date and (functional)commentcounter == pass
   4.  Issue has describtion in the bottom in full length == pass
   5.  3 Dots shows only if owner of issue == pass

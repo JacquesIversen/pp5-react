@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 
 function CreateIssue() {
   const [errors, setErrors] = useState({});
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   const [issueData, setIssueData] = useState({
     title: "",
@@ -54,12 +55,15 @@ function CreateIssue() {
     formData.append("description", description);
     formData.append("image", imageInput.current.files[0]);
 
+    setIsSubmitDisabled(true);
+
     try {
       const { data } = await axios.post("/issue/", formData, {
         headers: { Authorization: "Bearer " + Cookies.get("access") },
       });
       history.push(`/issue/${data.id}`);
     } catch (err) {
+      setIsSubmitDisabled(false);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
@@ -165,7 +169,11 @@ function CreateIssue() {
       <button onClick={() => history.goBack()} className={styles.cancelButton}>
         Cancel
       </button>
-      <button type="submit" className={styles.formButton}>
+      <button
+        disabled={isSubmitDisabled}
+        type="submit"
+        className={styles.formButton}
+      >
         Share
       </button>
     </div>
