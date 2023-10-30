@@ -2,6 +2,8 @@
 
 **CSA** was developed and submitted as the fifth and final Portfolio Project as part of the Advanced Frontend specialization for Code Institute's Diploma in full-stack software development.
 
+# ![**CSA**](src/Assets/ReadMeFiles/readmeamIResponsive.png)
+
 This project marks the introduction of a diverse range of features and functionalities designed to enrich the experience of users passionate about DIY car maintenance, inspired by my previous work with similar blogs, sites and tutorials. CSA is a virtual hub tailored for a vibrant community of DIY car enthusiasts, specifically those dedicated to resolving issues and sharing knowledge about various car models and repair techniques.
 
 In contrast to its earlier iterations, this platform now offers a more immersive and interactive experience, aiming to serve as the ultimate social media platform exclusively crafted for individuals interested in DIY car repairs. It stands as a unique offering, as it appears to be the sole online space dedicated to empowering DIY car enthusiasts to collaborate and learn from one another's experiences.
@@ -14,17 +16,21 @@ The platform not only fulfills the existing demand for learning and interactive 
 
 ## Contents
 
--
-
-- **[User Stories](#user-stories)**
-
 - **[Agile Development Process](#agile-development-process)**
 
-- **[Typography](#typography)**
+  - **_[Epics](#epics)_**
+  - **_[User Stories](#user-stories)_**
+  - **_[MoSCoW](#moscow)_**
 
-- **[Main Features](#main-features)**
+- **[Design](#design)**
 
-- **[Features for the future](#features-for-the-future)**
+  - **[Typography](#typography)**
+  - **[ColorScheme](#colorscheme)**
+
+- **[Features](#features)**
+
+  - **[Main Features](#mainfeatures)**
+  - **[Features for the future](#features-for-the-future)**
 
 - **[Testing](#testing)**
 
@@ -35,6 +41,8 @@ The platform not only fulfills the existing demand for learning and interactive 
 - **[Credits](#credits)**
 
 ### User Stories for Car Community Sharing Platform:
+
+## [Agile Development Process](#agile-development-process)
 
 ### [Epics](#epics)
 
@@ -104,6 +112,8 @@ The platform not only fulfills the existing demand for learning and interactive 
   - Bug fixes
 
 ---
+
+## [**User Stories**](#user-stories)
 
 #### **Navigation:**
 
@@ -194,6 +204,8 @@ The platform not only fulfills the existing demand for learning and interactive 
 
   - As a user, I can keep scrolling through repair details, with content loading automatically, ensuring a seamless browsing experience without the need to navigate to the next page.
 
+### [MoSCoW](#moscow)
+
 - Must have:
 
   - User Authentication: Users can create an account, sign in, and sign out.
@@ -212,36 +224,80 @@ The platform not only fulfills the existing demand for learning and interactive 
   - Solved/NotSolved: Issue owner can mark the issue as solved, and hence drop the importance of the issue.
   - Infinite scroll.
   - Interactiveness: Give the user an impression of an avtive (living site)
+  - Notifications when user action is deployed, or nulled
 
 - Could Have:
 
   - Bumps/Likes to the Issue element: Give the User an opportunity to track issues they might have interest in.
   - List-Filter method: Provide users a neat headline overlook.
   - Media library/gallery in the issue module: Allow users to add multiple pictures, to better provide a understanding of problems.
-  - Comment
+  - Comments answering comments
 
 - Wont Have
   - Seperate API containing a VIN-Number Library
   - Mediafiles, videoupload: Provide users an opportunity to upload videos and
 
-## Design:
+## [Design](#design)
 
 The purpose of the design was to create a totally independent layout than teached in the CI-Moments module. All new files are therefore not containing any boilerplate code:
-
 Its thought for the project to follow same structure backend as the moments project, but a more interesting color scheme in the design.
-
 Using React Bootstrap classes as the main functionality to provide reponsiveness, if not entirely achievable. mediascreen is added in a linked .module.css file.
 
-**UI Design**
 Giving this project follows a facebook/twitter principle its important for the design to not wander away from the landingpage simplicity.
 
-- Interactiveness: Providing icons, buttons and hovering effects to the interface.
+### Landing Page
+
+# ![**Landing**](src/Assets/ReadMeFiles/landing.png)
+
+On the Landing page, users are met with a very simple objective, who need no explanation. Its very easy to understand the purpose of the site, when the content provided by the users are correct. A very simple Navbar gives you only 3 options, to either sign in, sign up or check the feed. Its decided to not have the navbar present with the user at all time.
+
+Logged In the Navbar will give you following options:
+
+- Feed
+- Post an Issue Now
+- My profile
+- Sign out
+- Greeting
+
+### Feed
+
+# ![**Feed**](src/Assets/ReadMeFiles/feed.png)
+
+In the feed a searchbar will stay at the top, for users to use when needed. The feed do not contain any user info, brand/model infomation, but only a date, providing a recent feel to the user and a comment counter to help users understand the activity’s this issue might have had. The description of the issue is displayed in full length, so users wont have to enter the Issue to understand the problem displayed. A infinity scroll feature is added to keep rendering posts. The only filter method added is sorted from newest post.
+
+### SignIn/SignUp
+
+# ![**AuthForm**](src/Assets/ReadMeFiles/signin.png)
+
+# ![**AuthForm**](src/Assets/ReadMeFiles/signup.png)
+
+Sign in & Sign Up forms follow same structure to present users a very simple experience. An enginebay background set the mood for how this site is supposed to be.
+
+### My Profile
+
+# ![**MyProfile**](src/Assets/ReadMeFiles/MyProfile.png)
+
+When Signed in, users are takes straight to their Profile Page. Here they will have the option to edit their name, write a small biography and change/add a profilepicture. All users will have a default picture, when a new user is created.
+
+They will too have all issues they might have posted displayed, along with comments they might have written/posted
+
+### Create an Issue
+
+# ![**AuthForm**](src/Assets/ReadMeFiles/createform.png)
+
+In this part of the site, users are required to furfill image, title, manufacturer, model, year & description. when posted, users are taken straight towards the issuepage of their newly posted issue. Placeholdertext encourage the user to actually be accurate when posting an issue.
+
+### Issue Page
+
+# ![**AuthForm**](src/Assets/ReadMeFiles/IssuePost.png)
 
 ### [Typography](#typography)
+
 This project utilizes the following fonts:
- - Days One: This font is used across the application for general text. It can be found at 
- - Google Fonts.
-Kdam Thmor Pro: This font is also used across the application. It can be found at Google Fonts.
+
+- Days One: This font is used across the application for general text. It can be found at
+- Google Fonts.
+  Kdam Thmor Pro: This font is also used across the application. It can be found at Google Fonts.
 
 Background-colors:
 
@@ -253,8 +309,6 @@ Background-colors:
 Text colors will differ in contrast to background and buttons, between white and black.
 
 Containers/boxes uses somewhat similar shadow and border/radius principles with very few differences.
-
-
 
 ### Features:
 
