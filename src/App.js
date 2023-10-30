@@ -11,7 +11,6 @@ import CreateIssue from "./pages/issues/CreateIssue";
 import EditForm from "./pages/issues/Edit";
 import IssuePage from "./pages/issues/IssuePage";
 import Feed from "./pages/issues/Feed";
-import DisplayProfile from "./pages/profiles/DisplayProfile";
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/issue/create" render={() => <CreateIssue />} />
           <Route exact path="/myprofile" render={() => <ProfilePage />} />
-          <Route exact path="/profile/:id" render={() => <DisplayProfile />} />
           <Route exact path="/issue/:id" render={() => <IssuePage />} />
           <Route exact path="/issue/:id/edit" render={() => <EditForm />} />
           <Route render={() => <NotFound />} />

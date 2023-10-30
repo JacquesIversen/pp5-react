@@ -19,7 +19,6 @@ function Feed() {
     const fetchIssue = async () => {
       try {
         const { data } = await axios.get(`/issue/?search=${query}`);
-        console.log(data);
         setIssue(data);
         setHasLoaded(true);
       } catch (err) {}

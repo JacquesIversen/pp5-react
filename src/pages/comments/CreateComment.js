@@ -10,6 +10,7 @@ function CommentCreateForm(props) {
   const { issue, setIssue, setComments } = props;
   const [comment_area, setComment_area] = useState("");
   const { currentUser } = useAuth();
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
   const handleChange = (event) => {
     setComment_area(event.target.value);
@@ -17,6 +18,8 @@ function CommentCreateForm(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitDisabled(true);
+
     try {
       const { data } = await axios.post(
         "/comments/",
@@ -37,6 +40,7 @@ function CommentCreateForm(props) {
       }));
       setComment_area("");
     } catch (err) {}
+    setIsSubmitDisabled(false);
   };
 
   return (
@@ -67,7 +71,7 @@ function CommentCreateForm(props) {
           {currentUser ? (
             <button
               className={styles.Button}
-              disabled={!comment_area.trim()}
+              disabled={!comment_area.trim() || isSubmitDisabled}
               type="submit"
             >
               Share

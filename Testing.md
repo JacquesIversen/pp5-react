@@ -181,13 +181,13 @@ Dropdown functionality linked from moreDropdown.js appied.
   5.  3 Dots shows only if owner of issue == pass
   6.  3 Dots edit link takes you to EditIssue == pass
   7.  3 Dots Delete, deletes issue == pass
-  8.  3 Dots Delete, confirmation alert apearing == Fail // Alert error
+  8.  3 Dots Delete, confirmation alert apearing == pass
   9.  IssueDescription: Vehicle description is displayed in right side == pass
   10. IssueDescription: Owner Biography and Avatar is displayed in right side == Pass
   11. CreateComment: Create comment module is Rendered == Pass
   12. CreateComment: Create comment module creates comments when promted data == Pass
-  13. CreateComment: When comment created, user is verified with alert == Fail
-  14. CreateComment: created with blank should result in displayed error == Fail
+  13. CreateComment: When comment created, user is verified with alert == pass
+  14. CreateComment: created with blank should result in displayed error == pass
   15. CreateComment: create a comment (not logged in) not visible == Pass
   16. Comment: Comments should appear stacked, and GET all comments realted to issue == pass
   17. Comment: Comments should filter with newest ascending == pass
@@ -208,7 +208,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User can view and interact with content.
   - Non logged in can only view content, but not post/put any information inside the API.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `Comment`
 
@@ -222,10 +222,10 @@ Dropdown functionality linked from moreDropdown.js appied.
 
   1. CreateComment: Create comment module is Rendered == Pass
   2. CreateComment: Create comment module creates comments when promted data == Pass
-  3. CreateComment: When comment created, user is verified with alert == Fail
+  3. CreateComment: When comment created, user is verified with alert == pass
   4. CreateComment: created with blank should not post anything to the API == pass
   5. CreateComment: (not logged in) create not visible. == pass
-  6. CreateComment: Provide user with feedback when posting a comment == fail
+  6. CreateComment: Provide user with feedback when posting a comment == pass
   7. CreateComment: When shared, page is rendered to display posted comment == pass
   8. Dropdown: Display only if owner of comment == pass
   9. Dropdown: Edit start edit process == pass
@@ -253,7 +253,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - User can view and interact with content.
   - Non logged in can only view content, but not post/put any information inside the API.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## Test Cases for `Likes and Dislikes`
 
@@ -301,11 +301,11 @@ Dropdown functionality linked from moreDropdown.js appied.
   1. (Owner) Should display Comments & issues made by owner == pass
   2. (Owner) Should display profile information provided by owner == pass
   3. (Owner) Should display profile Avatar == pass
-  4. (Owner) Links are working to Comments, Issues and edit profile == fail
-  5. (User/NotLoggedIn) Should display Comments & issues made by profileowner == fail
-  6. (User/NotLoggedIn) Should display profile information provided by profileowner == fail
-  7. (User/NotLoggedIn) Should display profileowner Avatar == fail
-  8. (User/NotLoggedIn) direct links for Issues and comments made by profileowner == fail
+  4. (Owner) Links are working to Comments, Issues and edit profile == pass
+  5. (User/NotLoggedIn) Should display Comments & issues made by profileowner == WillNotImplement
+  6. (User/NotLoggedIn) Should display profile information provided by profileowner == WillNotImplement
+  7. (User/NotLoggedIn) Should display profileowner Avatar == WillNotImplement
+  8. (User/NotLoggedIn) direct links for Issues and comments made by profileowner == WillNotImplement
   9. Navbar is rendered correctly == pass
   10. Page is responsive == pass
 
@@ -314,7 +314,7 @@ Dropdown functionality linked from moreDropdown.js appied.
   - All can view amount of like/unlikes
   - Non logged in can only view content, but not post/delete any information inside the API.
   - Design responsive.
-- **Result:** Fail
+- **Result:** pass
 
 ## W3C CSS Validator:
 

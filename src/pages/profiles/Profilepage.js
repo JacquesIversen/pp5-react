@@ -5,14 +5,19 @@ import UpdateProfile from "./UpdateProfile";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "../../styles/Profile.module.css";
+import Asset from "../../components/Asset";
 
 function ProfilePage() {
   const [profileData, setProfileDataState] = useState({});
   const [updateProfileM, setUpdateProfileM] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const history = useHistory();
 
   useEffect(() => {
     const fetchProfileData = async () => {
+      setIsLoading(true);
+
       try {
         const { data } = await axios.get(`/me/`, {
           headers: { Authorization: `Bearer ${Cookies.get("access")}` },
@@ -24,6 +29,7 @@ function ProfilePage() {
           history.push("/signin");
         }
       }
+      setIsLoading(false);
     };
 
     fetchProfileData();
@@ -51,6 +57,7 @@ function ProfilePage() {
 
   return (
     <>
+      {isLoading && <Asset spinner />}
       {updateProfileM && (
         <UpdateProfile
           handleUpdateProfile={handleUpdateProfile}
@@ -117,7 +124,7 @@ function ProfilePage() {
               {profileData?.comments?.map((comment, index) => {
                 return (
                   <Link
-                    to={`/issue/${comment?.id}`}
+                    to={`/issue/${comment?.issue}`}
                     className={styles.linkStyle}
                     key={`comment-${index}`}
                   >

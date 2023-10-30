@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 function CreateIssue() {
   const [errors, setErrors] = useState({});
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [issueData, setIssueData] = useState({
     title: "",
@@ -44,6 +45,7 @@ function CreateIssue() {
   };
 
   const handleSubmit = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     const formData = new FormData();
 
@@ -68,6 +70,7 @@ function CreateIssue() {
         setErrors(err.response?.data);
       }
     }
+    setIsLoading(false);
   };
 
   const textFields = (
@@ -181,6 +184,13 @@ function CreateIssue() {
 
   return (
     <Form onSubmit={handleSubmit} className={styles.form}>
+      {isLoading && (
+        <div className={styles.loadingSpinnerOverlay}>
+          <div className={styles.loadingSpinner}>
+            <Asset spinner />
+          </div>
+        </div>
+      )}
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container className={`${styles.container}`}>
