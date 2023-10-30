@@ -46,9 +46,7 @@ function Feed(message) {
           {issue.results.length ? (
             <InfiniteScroll
               children={issue.results.map((issue) => (
-                <>
-                  <Issue key={issue.id} {...issue} setIssue={setIssue} />
-                </>
+                <Issue key={issue.id} {...issue} setIssue={setIssue} />
               ))}
               dataLength={issue.results.length}
               loader={<Asset spinner />}

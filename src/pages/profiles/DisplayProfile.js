@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import UpdateProfile from "./UpdateProfile";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-function ProfilePage() {
+function DisplayProfile() {
   const [profileData, setProfileDataState] = useState({});
-  const [updateProfileM, setUpdateProfileM] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -28,34 +26,8 @@ function ProfilePage() {
     fetchProfileData();
   }, [history]);
 
-  const handleUpdateProfile = ({ name, image, biography }) => {
-    console.log(name, image, biography);
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("image", image);
-    formData.append("biography", biography);
-    axios
-      .patch(`/me/`, formData, {
-        headers: { Authorization: `Bearer ${Cookies.get("access")}` },
-      })
-      .then((res) => {
-        console.log(res);
-        setProfileDataState(res.data);
-        setUpdateProfileM(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <>
-      {updateProfileM && (
-        <UpdateProfile
-          handleUpdateProfile={handleUpdateProfile}
-          setUpdateProfileM={setUpdateProfileM}
-        />
-      )}
       <div className="container mt-4">
         <div className="row">
           <div className="col-lg-3 ">
@@ -65,15 +37,10 @@ function ProfilePage() {
                 alt="Profile"
                 className="profile-picture img-fluid mb-3 rounded-circle"
               />
-              <h3 className="mb-4 font-weight-bold">
-                {profileData.name || ""}
-              </h3>
+              <h1 className="mb-4">{profileData.name || ""}</h1>
               <p>{profileData.biography || ""}</p>
               <p>Joined: {profileData.date_joined || "No date"}</p>
-              <button
-                onClick={() => setUpdateProfileM(true)}
-                className="btn btn-primary btn-block mt-2 shadow"
-              >
+              <button className="btn btn-primary btn-block mt-2 shadow">
                 Update Profile
               </button>
             </div>
@@ -131,4 +98,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default DisplayProfile;

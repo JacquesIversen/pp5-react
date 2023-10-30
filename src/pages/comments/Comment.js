@@ -41,7 +41,7 @@ const Comment = ({
       : false
   );
 
-  const [is_owner, setIsOwner] = useState(owner === currentUser?.username);
+  const [is_owner] = useState(owner === currentUser?.username);
 
   const handleDelete = async () => {
     try {
@@ -73,13 +73,7 @@ const Comment = ({
         { headers: { Authorization: "Bearer " + Cookies.get("access") } }
       );
 
-      // console.log(data)
-      // console.log(data.comment === null)
-      // console.log(data.comment === id)
       if (data.comment === null) {
-        // unlike
-        // set comments like_id to null
-        // set decrement likes_count by one
         setComments((prevComments) => ({
           ...prevComments,
           results: prevComments.results.map((comment) => {
@@ -95,11 +89,6 @@ const Comment = ({
         setLiked(false);
       }
       if (data.comment === id) {
-        // like
-        // check if user has disliked this comment
-        // if yes, decrement dislikes_count by one
-        // and increment likes_count by one
-        // else increment likes_count by one
         setComments((prevComments) => ({
           ...prevComments,
           results: prevComments.results.map((comment) => {
@@ -127,7 +116,6 @@ const Comment = ({
       if (error.response.data.detail === "You cannot like your own comment.") {
         setCommentError("You cannot like your own comment.");
       }
-      // console.log(error.response.data.detail)
     }
   };
 
@@ -141,9 +129,6 @@ const Comment = ({
       );
       console.log(data);
       if (data.comment === null) {
-        // undislike
-        // set comments like_id to null
-        // set decrement likes_count by one
         setComments((prevComments) => ({
           ...prevComments,
           results: prevComments.results.map((comment) => {
@@ -159,11 +144,6 @@ const Comment = ({
         setDisliked(false);
       }
       if (data.comment === id) {
-        // dislike
-        // increment dislikes_count by one
-        // check if user has liked this comment
-        // if yes, decrement likes_count by one
-        // and increment dislikes_count by one
         setComments((prevComments) => ({
           ...prevComments,
           results: prevComments.results.map((comment) => {
@@ -196,46 +176,6 @@ const Comment = ({
       console.log(error.response.data.detail);
     }
   };
-
-  // const handleUnlike = async () => {
-  //   try {
-  //     await axios.delete(`/likes/${like_id}/`, {
-  //       headers: { Authorization: "Bearer " + Cookies.get("access") },
-  //     });
-  //     // setComments((prevComments) => ({
-  //     //   ...prevComments,
-  //     //   results: prevComments.results.map((comment) => {
-  //     //     return comment.id === id
-  //     //       ? {
-  //     //         ...comment,
-  //     //         likes_count: comment.likes_count - 1,
-  //     //         like_id: null,
-  //     //       }
-  //     //       : comment;
-  //     //   }),
-  //     // }));
-  //   } catch (err) { }
-  // };
-
-  // const handleUnDislike = async () => {
-  //   try {
-  //     await axios.delete(`/dislikes/${dislike_id}/`, {
-  //       headers: { Authorization: "Bearer " + Cookies.get("access") },
-  //     });
-  //     // setComments((prevComments) => ({
-  //     //   ...prevComments,
-  //     //   results: prevComments.results.map((comment) => {
-  //     //     return comment.id === id
-  //     //       ? {
-  //     //         ...comment,
-  //     //         dislikes_count: comment.dislikes_count - 1,
-  //     //         dislike_id: null,
-  //     //       }
-  //     //       : comment;
-  //     //   }),
-  //     // }));
-  //   } catch (err) { }
-  // };
 
   return (
     <Card className={styles.commentCard}>
@@ -293,64 +233,8 @@ const Comment = ({
                 <i className={`fa-regular fa-thumbs-up ${styles.like}`} />
               </span>
             )}
-            {/* {is_owner ? (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>You can't like your own comment!</Tooltip>}
-              >
-                <i className="fa-solid fa-hands" />
-              </OverlayTrigger>
-            ) : like_id ? (
-              <>
-                <span onClick={handleUnlike}>
-                  <i className={`fa-solid fa-thumbs-up ${styles.like}`} />
-                </span>
-                <span onClick={() => { }}>
-                  <i className="fa-solid fa-thumbs-up fa-rotate-180" />
-                </span>
-              </>
-            ) : currentUser ? (
-              <span onClick={handleLike}>
-                <i className={`fa-regular fa-thumbs-up ${styles.like}`} />
-              </span>
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to like comments!</Tooltip>}
-              >
-                <i className={`fa-regular fa-thumbs-up ${styles.like}`} />
-              </OverlayTrigger>
-            )} */}
           </Col>
           <Col>
-            {/* {is_owner ? (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>You can't dislike your comment!</Tooltip>}
-              >
-                <i className="fa-solid fa-hands" />
-              </OverlayTrigger>
-            ) : dislike_id ? (
-              <span onClick={handleUnDislike}>
-                <i
-                  className={`fa-solid fa-thumbs-up fa-rotate-180 ${styles.dislike}`}
-                />
-              </span>
-            ) : currentUser ? (
-              <span onClick={handleDisLike}>
-                <i
-                  className={`fa-regular fa-thumbs-up fa-rotate-180 ${styles.dislike}`}
-                />
-              </span>
-            ) : (
-              <OverlayTrigger
-                placement="top"
-                overlay={<Tooltip>Log in to dislike comments!</Tooltip>}
-              >
-                className=
-                {`fa-regular fa-thumbs-up fa-rotate-180 ${styles.dislike}`}
-              </OverlayTrigger>
-            )} */}
             {dislike ? (
               <span
                 onClick={() => {
@@ -371,9 +255,6 @@ const Comment = ({
                 <i className={`fa-regular fa-thumbs-up fa-rotate-180`} />
               </span>
             )}
-            {/* <span onClick={() => { handleDisLike() }}>
-              <i className="fa-solid fa-thumbs-up fa-rotate-180" />
-            </span> */}
             &emsp;
             {dislikes_count || 0}
           </Col>

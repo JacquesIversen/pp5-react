@@ -20,7 +20,6 @@ function UpdateProfile({ handleUpdateProfile, setUpdateProfileM }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle form submission here
     handleUpdateProfile({
       name,
       image,
@@ -41,7 +40,7 @@ function UpdateProfile({ handleUpdateProfile, setUpdateProfileM }) {
               <Form.Label>Full name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter Full name"
+                placeholder="Enter your name"
                 value={name}
                 onChange={handleNameChange}
               />
@@ -51,7 +50,6 @@ function UpdateProfile({ handleUpdateProfile, setUpdateProfileM }) {
               <Form.Label>Profile Picture</Form.Label>
               <Form.Control type="file" onChange={handleFileChange} />
             </Form.Group>
-
             <Form.Group controlId="formDescription">
               <Form.Label>Biography</Form.Label>
               <Form.Control

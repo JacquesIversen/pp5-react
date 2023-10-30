@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       Cookies.set("access", data.access);
       setCurrentUser(data.user);
       console.log("from context");
-      history.push("/");
+      history.push("/myprofile");
       return data;
     } catch (err) {
       setCurrentUser(null);
